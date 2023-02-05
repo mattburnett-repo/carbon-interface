@@ -54,7 +54,7 @@ export const useCountryCodes = () => {
     .sort((a, b) =>
       listOfCountries[a].name > listOfCountries[b].name ? 1 : -1
     )
-    .map((isoCode) =>
+    .forEach((isoCode) =>
       retVal.push(
         // stringify makes useful JSON entries, but surrounds the entries with single quotes
         // wrapping stringify with parse gets rid of the single quotes, which is what we want.

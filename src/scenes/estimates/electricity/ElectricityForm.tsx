@@ -1,4 +1,3 @@
-// FIXME: fix this typescript issue
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import React from 'react'
@@ -18,39 +17,35 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: create a type for this
 import {
   regionsEnabled,
   useCountryCodes,
   useRegionCodes
-  //  @ts-expect-error fix this by creating type in file
+  //  FIXME: resolve ts-expect error eslint @'s
+  // @ts-expect-error (fix this by typing ./contryCodes file, later)
 } from '../../../data/countryCodes.js'
 
 const initialValues = {
   type: 'electricity',
   electricity_unit: 'kwh',
-  electricity_value: 0,
+  electricity_value: 1,
   country: 'DE',
   state: ''
 }
 const validationSchema = yup.object().shape({
   electricity_value: yup
     .number()
+    .min(1, 'Electricity Value must be greater than 0.')
     .required('Electricity Value is required. Numbers only.')
 })
 
-interface Country {
-  code: string
-  name: string
-}
-interface Region {
+interface LocationOptionElement {
   code: string
   name: string
 }
 
 const ElectricityForm = (): JSX.Element => {
   const navigate = useNavigate()
-  const countryCodes = useCountryCodes()
 
   const formik = useFormik({
     initialValues,
@@ -60,6 +55,7 @@ const ElectricityForm = (): JSX.Element => {
     }
   })
 
+  const countryCodes = useCountryCodes()
   const regionCodes = useRegionCodes(formik.values.country)
 
   // if API doesn't yet support state/region for a country,
@@ -105,8 +101,8 @@ const ElectricityForm = (): JSX.Element => {
               {...formik.getFieldProps('electricity_value')}
             />
 
-            {formik.touched.electricity_value &&
-            formik.errors.electricity_value ? (
+            {formik.touched.electricity_value !== undefined &&
+            formik.errors.electricity_value !== undefined ? (
               <div>{formik.errors.electricity_value}</div>
             ) : null}
           </Grid>
@@ -117,7 +113,7 @@ const ElectricityForm = (): JSX.Element => {
               labelId='country-label'
               {...formik.getFieldProps('country')}
             >
-              {countryCodes.map((country: Country) => (
+              {countryCodes.map((country: LocationOptionElement) => (
                 <MenuItem key={country.code} value={country.code}>
                   {country.name}
                 </MenuItem>
@@ -132,7 +128,10 @@ const ElectricityForm = (): JSX.Element => {
                 labelId='state-select-label'
                 {...formik.getFieldProps('state')}
               >
-                {regionCodes.map((region: Region) => (
+                <MenuItem key={initialValues.state} value={initialValues.state}>
+                  -- None --
+                </MenuItem>
+                {regionCodes.map((region: LocationOptionElement) => (
                   <MenuItem key={region.code} value={region.code}>
                     {region.name}
                   </MenuItem>
@@ -151,6 +150,6 @@ const ElectricityForm = (): JSX.Element => {
   )
 }
 
-/* eslint-enable @typescript-eslint/strict-boolean-expressions */
-
 export default ElectricityForm
+
+/* eslint-enable @typescript-eslint/strict-boolean-expressions */

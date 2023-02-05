@@ -8,13 +8,13 @@ import ElectricityEstimate from './ElectricityEstimate'
 
 const Electricity = (): JSX.Element => {
   const location = useLocation()
-  // const theData = location.state?.values
 
   return (
     <Box>
       <ElectricityForm />
       {location.state?.values !== undefined && (
-        <ElectricityEstimate theData={location.state.values} />
+        // spread the props: https://stackoverflow.com/questions/59969756/not-assignable-to-type-intrinsicattributes-intrinsicclassattributes-react-js
+        <ElectricityEstimate {...location.state.values} />
       )}
     </Box>
   )
