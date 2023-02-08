@@ -21,9 +21,7 @@ import Vehicle from './scenes/estimates/vehicle'
 import FuelCombustion from './scenes/estimates/fuel-combustion'
 import Estimate from './scenes/estimates/estimate'
 
-// TODO: remember to delete these, along with thier route/s
-// import LoadingDisplay from './components/LoadingDisplay'
-import ErrorDisplay from './components/ErrorDisplay'
+// import withFormConfig from './scenes/estimates/withFormConfig'
 
 const queryClient = new QueryClient()
 
@@ -54,10 +52,7 @@ const App = (): JSX.Element => {
                   element={<FuelCombustion />}
                 />
                 <Route path='/estimates/estimate' element={<Estimate />} />
-                <Route
-                  path='/test'
-                  element={<ErrorDisplay message='asdfasdf' />}
-                />
+                <Route path='/estimates/test' element={<Flight />} />
               </Routes>
             </main>
           </div>

@@ -3,24 +3,22 @@ import { useQuery } from 'react-query'
 
 import LoadingDisplay from '../../../components/LoadingDisplay'
 import ErrorDisplay from '../../../components/ErrorDisplay'
-import ElectricityEstimateDisplay from './ElectricityEstimateDisplay'
+import FlightEstimateDisplay from './FlightEstimateDisplay'
 
-// import data from '../../../data/electricityResponse.json'
+// import data from '../../../data/flightResponse.json'
 
 interface iProps {
   type: string
-  electricity_unit: string
-  electricity_value: number
-  country: string
-  state?: string
+  passengers: number
+  legs: []
+  distance_unit: 'km' | 'mi'
+  cabin_class: 'economy' | 'premium'
 }
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const ElectricityEstimate: React.FC<iProps> = (
-  requestData: iProps
-): JSX.Element => {
+const FlightEstimate: React.FC<iProps> = (requestData: iProps): JSX.Element => {
   const { isLoading, error, data } = useQuery(
     [requestData.type, requestData],
     async () => {
@@ -46,7 +44,7 @@ const ElectricityEstimate: React.FC<iProps> = (
   if (isLoading) return <LoadingDisplay />
   if (error !== null) return <ErrorDisplay error={error} />
 
-  return <ElectricityEstimateDisplay {...data} />
+  return <FlightEstimateDisplay {...data} />
 }
 
-export default ElectricityEstimate
+export default FlightEstimate

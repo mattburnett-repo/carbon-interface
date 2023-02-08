@@ -44,7 +44,7 @@ interface LocationOptionElement {
   name: string
 }
 
-const ElectricityForm = (): JSX.Element => {
+const ShippingForm = (): JSX.Element => {
   const navigate = useNavigate()
 
   const formik = useFormik({
@@ -80,9 +80,7 @@ const ElectricityForm = (): JSX.Element => {
           columnGap={'12.5rem'}
         >
           <Grid item>
-            <InputLabel id='electricity_unit-label'>
-              Electricity Unit
-            </InputLabel>
+            <InputLabel id='Shipping_unit-label'>Electricity Unit</InputLabel>
             <Select
               id='electricity_unit'
               labelId='electricity_unit-label'
@@ -150,6 +148,6 @@ const ElectricityForm = (): JSX.Element => {
   )
 }
 
-export default ElectricityForm
+export default ShippingForm
 
 /* eslint-enable @typescript-eslint/strict-boolean-expressions */

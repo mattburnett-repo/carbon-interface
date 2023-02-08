@@ -1,14 +1,21 @@
 import React from 'react'
 
-// TODO: needs MUI / styling
 import { Box, Typography } from '@mui/material'
 
-const ErrorDisplay = (message: any): JSX.Element => {
+// interface iProps {
+//   message?: string
+// }
+
+//  TODO: better typing of prop/s
+const ErrorDisplay = (errorProp: any): JSX.Element => {
+  const { name, message } = errorProp.error
+
   return (
     <Box className='estimate' padding={'5rem'}>
-      <Typography variant={'h1'}>Error</Typography>
-      {/* FIXME: type and implement message */}
-      {/* <Typography variant={'h2'}>Message: {message}</Typography> */}
+      <Typography variant={'h1'} paddingBottom={'2rem'}>
+        {name}
+      </Typography>
+      <Typography variant={'h2'}>{message}</Typography>
     </Box>
   )
 }

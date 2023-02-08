@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import LoadingDisplay from '../../../components/LoadingDisplay'
 import ErrorDisplay from '../../../components/ErrorDisplay'
-import ElectricityEstimateDisplay from './ElectricityEstimateDisplay'
+import ShippingEstimateDisplay from './ShippingEstimateDisplay'
 
 // import data from '../../../data/electricityResponse.json'
 
@@ -46,7 +46,7 @@ const ElectricityEstimate: React.FC<iProps> = (
   if (isLoading) return <LoadingDisplay />
   if (error !== null) return <ErrorDisplay error={error} />
 
-  return <ElectricityEstimateDisplay {...data} />
+  return <ShippingEstimateDisplay {...data} />
 }
 
 export default ElectricityEstimate
