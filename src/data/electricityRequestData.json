@@ -1,0 +1,7 @@
+{
+  "type": "electricity",
+  "electricity_unit": "kwh",
+  "electricity_value": 0,
+  "country": "DE",
+  "state": ""
+}

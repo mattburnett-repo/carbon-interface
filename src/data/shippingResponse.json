@@ -1,0 +1,18 @@
+{
+  "data": {
+    "id": "4746e4ba-6605-4acc-802b-fd229a9503b4",
+    "type": "estimate",
+    "attributes": {
+      "distance_value": "2000.0",
+      "distance_unit": "km",
+      "weight_value": "200.0",
+      "weight_unit": "g",
+      "transport_method": "truck",
+      "estimated_at": "2020-07-31T13:00:04.446Z",
+      "carbon_g": 25,
+      "carbon_lb": 0.06,
+      "carbon_kg": 0.03,
+      "carbon_mt": 0.0
+    }
+  }
+}

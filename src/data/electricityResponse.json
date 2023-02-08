@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": "e76b836e-8c95-441b-81ee-e33fe6f6f4e0",
+    "type": "estimate",
+    "attributes": {
+      "country": "us",
+      "state": "fl",
+      "electricity_unit": "mwh",
+      "electricity_value": 42.0,
+      "estimated_at": "2023-02-04T08:20:03.891Z",
+      "carbon_g": 16710476,
+      "carbon_lb": 36840.29,
+      "carbon_kg": 16710.48,
+      "carbon_mt": 16.71
+    }
+  }
+}

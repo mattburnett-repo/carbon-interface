@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": "e6d7d2eb-65a6-431a-a0a1-b672c84930a7",
+    "type": "estimate",
+    "attributes": {
+      "passengers": 1,
+      "legs": [{ "departure_airport": "NCE", "destination_airport": "ARN" }],
+      "distance_value": 2019.74,
+      "distance_unit": "km",
+      "estimated_at": "2023-02-06T11:37:00.947Z",
+      "carbon_g": 118392,
+      "carbon_lb": 261.01,
+      "carbon_kg": 118.39,
+      "carbon_mt": 0.12
+    }
+  }
+}
