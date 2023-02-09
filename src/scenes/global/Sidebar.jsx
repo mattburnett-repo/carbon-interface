@@ -167,13 +167,13 @@ const Sidebar = () => {
             />
             <Item
               title="Fuel Combustion"
-              to="/estimates/fuel-combustion"
+              to="/estimates/fuel_combustion"
               icon={<LocalGasStationOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Get Specific Estimate"
+              title="Show Estimates"
               to="/estimates/estimate"
               icon={<FindInPageOutlinedIcon />}
               selected={selected}

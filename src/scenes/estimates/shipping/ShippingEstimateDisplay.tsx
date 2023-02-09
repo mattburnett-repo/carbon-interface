@@ -7,10 +7,11 @@ interface iProps {
     id: string
     type: string
     attributes: {
-      country: string
-      state: string
-      electricity_unit: string
-      electricity_value: number
+      weight_unit: 'g' | 'kg' | 'lb' | 'mt'
+      weight_value: number
+      distance_unit: 'mi' | 'km'
+      distance_value: number
+      transport_method: 'ship' | 'train' | 'truck' | 'plane'
       estimated_at: string
       carbon_g: number
       carbon_lb: number
@@ -35,37 +36,46 @@ const ShippingEstimateDisplay = (data: iProps): JSX.Element => {
           textTransform: 'capitalize'
         }}
       >
-        Electricity Estimate
+        Shipping Estimate
       </Typography>
-
       <Grid
         container
         alignContent={'space-between'}
         justifyContent={'center'}
-        columnGap={'5rem'}
+        columnGap={'1rem'}
       >
         <Grid item>
           <Typography padding='0.5rem'>
-            Unit: {data.data.attributes.electricity_unit}
+            Weight Unit: {data.data.attributes.weight_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Value: {data.data.attributes.electricity_value}
+            Weight Value:
+            {new Intl.NumberFormat('en-US', {}).format(
+              data.data.attributes.weight_value
+            )}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Country: {data.data.attributes.country.toUpperCase()}
+            Distance Unit: {data.data.attributes.distance_unit}
           </Typography>
         </Grid>
-        {data.data.attributes.state !== '' ? (
-          <Grid item>
-            <Typography padding='0.5rem'>
-              State/Region: {data.data.attributes.state.toUpperCase()}
-            </Typography>
-          </Grid>
-        ) : null}
+        <Grid item>
+          <Typography padding='0.5rem'>
+            Distance Value:{' '}
+            {new Intl.NumberFormat('en-US', {}).format(
+              data.data.attributes.distance_value
+            )}
+          </Typography>
+        </Grid>
+
+        <Grid item>
+          <Typography padding='0.5rem' textTransform={'capitalize'}>
+            Transport Method: {data.data.attributes.transport_method}
+          </Typography>
+        </Grid>
         <Grid item>
           {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>

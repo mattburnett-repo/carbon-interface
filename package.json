@@ -19,6 +19,7 @@
     "airport-iata-codes": "^1.0.12",
     "formik": "^2.2.9",
     "iso3166-2-db": "^2.3.10",
+    "node-fetch": "2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pro-sidebar": "0.7.1",

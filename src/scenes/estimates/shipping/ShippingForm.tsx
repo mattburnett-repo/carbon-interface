@@ -17,32 +17,33 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-import {
-  regionsEnabled,
-  useCountryCodes,
-  useRegionCodes
-  //  FIXME: resolve ts-expect error eslint @'s
-  // @ts-expect-error (fix this by typing ./contryCodes file, later)
-} from '../../../data/countryCodes.js'
+interface iInitialValues {
+  type: string
+  weight_unit: 'g' | 'kg' | 'lb' | 'mt'
+  weight_value: number
+  distance_unit: 'mi' | 'km'
+  distance_value: number
+  transport_method: 'ship' | 'train' | 'truck' | 'plane'
+}
 
-const initialValues = {
-  type: 'electricity',
-  electricity_unit: 'kwh',
-  electricity_value: 1,
-  country: 'DE',
-  state: ''
+const initialValues: iInitialValues = {
+  type: 'shipping',
+  weight_unit: 'g',
+  weight_value: 1,
+  distance_unit: 'km',
+  distance_value: 1,
+  transport_method: 'truck'
 }
 const validationSchema = yup.object().shape({
-  electricity_value: yup
+  weight_value: yup
     .number()
-    .min(1, 'Electricity Value must be greater than 0.')
-    .required('Electricity Value is required. Numbers only.')
+    .min(1, 'Weight value must be greater than 0.')
+    .required('Weight value is required. Numbers only.'),
+  distance_value: yup
+    .number()
+    .min(1, 'Distance value must be greater than 0.')
+    .required('Distance value is required. Numbers only.')
 })
-
-interface LocationOptionElement {
-  code: string
-  name: string
-}
 
 const ShippingForm = (): JSX.Element => {
   const navigate = useNavigate()
@@ -54,15 +55,6 @@ const ShippingForm = (): JSX.Element => {
       navigate(`/estimates/${initialValues.type}`, { state: { values } })
     }
   })
-
-  const countryCodes = useCountryCodes()
-  const regionCodes = useRegionCodes(formik.values.country)
-
-  // if API doesn't yet support state/region for a country,
-  //    set state/region value to original value/empty string
-  if (!regionsEnabled.includes(formik.values.country)) {
-    formik.values.state = initialValues.state
-  }
 
   return (
     <Box className='estimate'>
@@ -77,66 +69,70 @@ const ShippingForm = (): JSX.Element => {
           container
           alignContent={'space-around'}
           justifyContent={'center'}
-          columnGap={'12.5rem'}
+          columnGap={'5rem'}
+          gridTemplateColumns={'5'}
         >
           <Grid item>
-            <InputLabel id='Shipping_unit-label'>Electricity Unit</InputLabel>
+            <InputLabel id='weight_unit-label'>Weight Unit</InputLabel>
             <Select
-              id='electricity_unit'
-              labelId='electricity_unit-label'
-              {...formik.getFieldProps('electricity_unit')}
+              id='weight_unit'
+              labelId='weight_unit-label'
+              {...formik.getFieldProps('weight_unit')}
             >
-              <MenuItem value={'kwh'}>KWH</MenuItem>
-              <MenuItem value={'mwh'}>MWH</MenuItem>
+              <MenuItem value={'g'}>Grams</MenuItem>
+              <MenuItem value={'kg'}>Kilograms</MenuItem>
+              <MenuItem value={'lb'}>Pounds</MenuItem>
+              <MenuItem value={'mt'}>Tonnes</MenuItem>
             </Select>
           </Grid>
           <Grid item>
-            <InputLabel id='electricity_value-label'>
-              Electricity Value
-            </InputLabel>
+            <InputLabel id='weight_value-label'>Weight Value</InputLabel>
             <TextField
-              id='electricity_value'
-              {...formik.getFieldProps('electricity_value')}
+              id='weight_value'
+              {...formik.getFieldProps('weight_value')}
             />
-
-            {formik.touched.electricity_value !== undefined &&
-            formik.errors.electricity_value !== undefined ? (
-              <div>{formik.errors.electricity_value}</div>
+            {formik.touched.weight_value !== undefined &&
+            formik.errors.weight_value !== undefined ? (
+              <div>{formik.errors.weight_value}</div>
             ) : null}
           </Grid>
           <Grid item>
-            <InputLabel id='country-label'>Country</InputLabel>
+            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
             <Select
-              id='country'
-              labelId='country-label'
-              {...formik.getFieldProps('country')}
+              id='distance_unit'
+              labelId='distance_unit-label'
+              {...formik.getFieldProps('distance_unit')}
             >
-              {countryCodes.map((country: LocationOptionElement) => (
-                <MenuItem key={country.code} value={country.code}>
-                  {country.name}
-                </MenuItem>
-              ))}
+              <MenuItem value={'mi'}>Miles</MenuItem>
+              <MenuItem value={'km'}>Kilometers</MenuItem>
             </Select>
           </Grid>
-          {regionsEnabled.includes(formik.values.country) ? (
-            <Grid item>
-              <InputLabel id='state-label'>State</InputLabel>
-              <Select
-                id='state'
-                labelId='state-select-label'
-                {...formik.getFieldProps('state')}
-              >
-                <MenuItem key={initialValues.state} value={initialValues.state}>
-                  -- None --
-                </MenuItem>
-                {regionCodes.map((region: LocationOptionElement) => (
-                  <MenuItem key={region.code} value={region.code}>
-                    {region.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </Grid>
-          ) : null}
+          <Grid item>
+            <InputLabel id='distance_value-label'>Distance Value</InputLabel>
+            <TextField
+              id='distance_value'
+              {...formik.getFieldProps('distance_value')}
+            />
+            {formik.touched.distance_value !== undefined &&
+            formik.errors.distance_value !== undefined ? (
+              <div>{formik.errors.distance_value}</div>
+            ) : null}
+          </Grid>
+          <Grid item>
+            <InputLabel id='transport_method-label'>
+              Transport Method
+            </InputLabel>
+            <Select
+              id='transport_method'
+              labelId='transport_method-label'
+              {...formik.getFieldProps('transport_method')}
+            >
+              <MenuItem value={'ship'}>Ship</MenuItem>
+              <MenuItem value={'train'}>Train</MenuItem>
+              <MenuItem value={'truck'}>Truck</MenuItem>
+              <MenuItem value={'plane'}>Plane</MenuItem>
+            </Select>
+          </Grid>
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
           <Button type='submit' color='secondary' variant='contained'>

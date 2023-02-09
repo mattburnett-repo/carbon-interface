@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": "2d968fce-859d-4dc1-9489-987e795f42bb",
+    "type": "estimate",
+    "attributes": {
+      "fuel_source_type": "dfo",
+      "fuel_source_unit": "btu",
+      "fuel_source_value": 2,
+      "estimated_at": "2020-07-24T02:23:24.441Z",
+      "carbon_g": 146320,
+      "carbon_lb": 322.58,
+      "carbon_kg": 146.32,
+      "carbon_mt": 0.15
+    }
+  }
+}

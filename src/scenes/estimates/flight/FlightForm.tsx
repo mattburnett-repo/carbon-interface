@@ -41,7 +41,7 @@ const initialValues: FlightFormFields = {
 }
 
 const validationSchema = yup.object().shape({
-  legs: yup.array().min(1, 'At least one flight legs is required.'),
+  legs: yup.array().min(1, 'At least one flight leg is required.'),
   passengers: yup
     .number()
     .min(1, 'Passenger Count must be greater than 0.')

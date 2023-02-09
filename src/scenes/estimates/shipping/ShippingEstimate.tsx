@@ -5,14 +5,15 @@ import LoadingDisplay from '../../../components/LoadingDisplay'
 import ErrorDisplay from '../../../components/ErrorDisplay'
 import ShippingEstimateDisplay from './ShippingEstimateDisplay'
 
-// import data from '../../../data/electricityResponse.json'
+// import data from '../../../data/shippingResponse.json'
 
 interface iProps {
   type: string
-  electricity_unit: string
-  electricity_value: number
-  country: string
-  state?: string
+  weight_unit: 'g' | 'kg' | 'lb' | 'mt'
+  weight_value: number
+  distance_unit: 'mi' | 'km'
+  distance_value: number
+  transport_method: 'ship' | 'train' | 'truck' | 'plane'
 }
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL

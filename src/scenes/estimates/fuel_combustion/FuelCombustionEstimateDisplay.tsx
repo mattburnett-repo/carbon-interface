@@ -2,15 +2,20 @@ import React from 'react'
 
 import { Box, Grid, Typography } from '@mui/material'
 
+import {
+  useFuelSourceName
+  //  FIXME: resolve ts-expect error eslint @'s
+  // @ts-expect-error (fix this by typing ./fuelSources file, later)
+} from '../../../data/fuelSources.js'
+
 interface iProps {
   data: {
     id: string
     type: string
     attributes: {
-      country: string
-      state: string
-      electricity_unit: 'kwh' | 'mwh'
-      electricity_value: number
+      fuel_source_type: string
+      fuel_source_unit: string
+      fuel_source_value: number
       estimated_at: string
       carbon_g: number
       carbon_lb: number
@@ -20,11 +25,14 @@ interface iProps {
   }
 }
 
-const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
+const VehicleEstimateDisplay = (data: iProps): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
 
+  const fuelSourceName = useFuelSourceName(
+    data.data.attributes.fuel_source_type
+  )
   return (
     <Box className='estimate'>
       <Typography
@@ -35,37 +43,33 @@ const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
           textTransform: 'capitalize'
         }}
       >
-        Electricity Estimate
+        Fuel Combustion Estimate
       </Typography>
-
       <Grid
         container
         alignContent={'space-between'}
         justifyContent={'center'}
-        columnGap={'5rem'}
+        columnGap={'1rem'}
       >
         <Grid item>
           <Typography padding='0.5rem'>
-            Unit: {data.data.attributes.electricity_unit}
+            Fuel Source Type: {fuelSourceName}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Value: {data.data.attributes.electricity_value}
+            Fuel Source Unit: {data.data.attributes.fuel_source_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Country: {data.data.attributes.country.toUpperCase()}
+            Fuel Source Value:{' '}
+            {new Intl.NumberFormat('en-US', {}).format(
+              data.data.attributes.fuel_source_value
+            )}
           </Typography>
         </Grid>
-        {data.data.attributes.state !== '' ? (
-          <Grid item>
-            <Typography padding='0.5rem'>
-              State/Region: {data.data.attributes.state.toUpperCase()}
-            </Typography>
-          </Grid>
-        ) : null}
+
         <Grid item>
           {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>
@@ -124,4 +128,4 @@ const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
   )
 }
 
-export default ElectricityEstimateDisplay
+export default VehicleEstimateDisplay

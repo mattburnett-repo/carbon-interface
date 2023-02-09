@@ -15,14 +15,14 @@ interface iProps {
     | 'Shipping'
     | 'Vehicle'
     | 'Fuel Combustion'
-    | 'Get Specific Estimate'
+    | 'Show Estimates'
   image: string
   endpoint:
     | 'electricity'
     | 'flight'
     | 'shipping'
     | 'vehicle'
-    | 'fuel-combustion'
+    | 'fuel_combustion'
     | 'estimate'
 }
 

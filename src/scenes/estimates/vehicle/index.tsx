@@ -1,11 +1,20 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
+
+import VehicleForm from './VehicleForm'
+import VehicleEstimate from './VehicleEstimate'
 
 const Vehicle = (): JSX.Element => {
+  const location = useLocation()
+
   return (
     <Box>
-      <Typography variant='h2'>Vehicle</Typography>
+      <VehicleForm />
+      {location.state?.values !== undefined && (
+        <VehicleEstimate {...location.state.values} />
+      )}
     </Box>
   )
 }

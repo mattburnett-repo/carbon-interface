@@ -29,10 +29,10 @@ const Dashboard: React.FC = (): JSX.Element => {
         <DashboardCard
           title='Fuel Combustion'
           image='gas-pump.jpg'
-          endpoint='fuel-combustion'
+          endpoint='fuel_combustion'
         />
         <DashboardCard
-          title='Get Specific Estimate'
+          title='Show Estimates'
           image='search-all.jpg'
           endpoint='estimate'
         />

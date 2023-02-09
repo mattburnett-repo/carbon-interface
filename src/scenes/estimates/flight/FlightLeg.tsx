@@ -3,7 +3,7 @@
 
 // TODO: sort out field validation
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -28,14 +28,14 @@ import {
   // @ts-expect-error (fix this by typing ./airportCodes file, later)
 } from '../../../data/airportCodes.js'
 
-const airportCodes = useAirportCodes()
+const airportCodes = useMemo(() => useAirportCodes(), [])
 
 interface iFlightLeg {
   departure_airport: string
   destination_airport: string
   cabin_class: string
 }
-interface AirportSelectOption {
+interface iAirportSelectOptiion {
   code: string
   name: string
 }
@@ -128,7 +128,7 @@ const FlightLeg = (props: any): JSX.Element => {
                 }
                 // autoSelect={true}
                 options={airportCodes}
-                getOptionLabel={(option: AirportSelectOption) => option.code}
+                getOptionLabel={(option: iAirportSelectOptiion) => option.code}
                 renderInput={(params) => <TextField {...params} />}
               />
               {formik.touched.departure_airport !== undefined &&
@@ -149,7 +149,7 @@ const FlightLeg = (props: any): JSX.Element => {
                   option.code === value.code
                 }
                 options={airportCodes}
-                getOptionLabel={(option: AirportSelectOption) => option.code}
+                getOptionLabel={(option: iAirportSelectOptiion) => option.code}
                 renderInput={(params) => <TextField {...params} />}
               />
               {formik.touched.destination_airport !== undefined &&
@@ -207,6 +207,17 @@ const FlightLeg = (props: any): JSX.Element => {
           </Grid>
         </Grid>
       ))}
+      {formik.values.legs.length < 1 ? (
+        <Grid item>
+          {/* <Typography margin={'auto'} width={'fit-content'}>
+            At least one flight leg is required.
+          </Typography> */}
+          <Typography margin={'auto'} width={'fit-content'}>
+            Select a departure airport, a destination airport and a cabin class,
+            then click the plus (+) sign.
+          </Typography>
+        </Grid>
+      ) : null}
     </Grid>
   )
 }

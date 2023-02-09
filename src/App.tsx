@@ -18,10 +18,8 @@ import Electricity from './scenes/estimates/electricity'
 import Flight from './scenes/estimates/flight'
 import Shipping from './scenes/estimates/shipping'
 import Vehicle from './scenes/estimates/vehicle'
-import FuelCombustion from './scenes/estimates/fuel-combustion'
+import FuelCombustion from './scenes/estimates/fuel_combustion'
 import Estimate from './scenes/estimates/estimate'
-
-// import withFormConfig from './scenes/estimates/withFormConfig'
 
 const queryClient = new QueryClient()
 
@@ -48,7 +46,7 @@ const App = (): JSX.Element => {
                 <Route path='/estimates/shipping' element={<Shipping />} />
                 <Route path='/estimates/vehicle' element={<Vehicle />} />
                 <Route
-                  path='/estimates/fuel-combustion'
+                  path='/estimates/fuel_combustion'
                   element={<FuelCombustion />}
                 />
                 <Route path='/estimates/estimate' element={<Estimate />} />

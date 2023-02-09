@@ -7,10 +7,12 @@ interface iProps {
     id: string
     type: string
     attributes: {
-      country: string
-      state: string
-      electricity_unit: 'kwh' | 'mwh'
-      electricity_value: number
+      vehicle_make: string
+      vehicle_model: string
+      vehicle_year: number
+      vehicle_model_id: string
+      distance_unit: string
+      distance_value: number
       estimated_at: string
       carbon_g: number
       carbon_lb: number
@@ -20,7 +22,7 @@ interface iProps {
   }
 }
 
-const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
+const VehicleEstimateDisplay = (data: iProps): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
@@ -35,37 +37,43 @@ const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
           textTransform: 'capitalize'
         }}
       >
-        Electricity Estimate
+        Vehicle Estimate
       </Typography>
-
       <Grid
         container
         alignContent={'space-between'}
         justifyContent={'center'}
-        columnGap={'5rem'}
+        columnGap={'1rem'}
       >
         <Grid item>
           <Typography padding='0.5rem'>
-            Unit: {data.data.attributes.electricity_unit}
+            Distance Unit: {data.data.attributes.distance_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Value: {data.data.attributes.electricity_value}
+            Distance Value:{' '}
+            {new Intl.NumberFormat('en-US', {}).format(
+              data.data.attributes.distance_value
+            )}
+          </Typography>
+        </Grid>
+
+        <Grid item>
+          <Typography padding='0.5rem' textTransform={'capitalize'}>
+            Vehicle Make: {data.data.attributes.vehicle_make}
           </Typography>
         </Grid>
         <Grid item>
-          <Typography padding='0.5rem'>
-            Country: {data.data.attributes.country.toUpperCase()}
+          <Typography padding='0.5rem' textTransform={'capitalize'}>
+            Vehicle Model: {data.data.attributes.vehicle_model}
           </Typography>
         </Grid>
-        {data.data.attributes.state !== '' ? (
-          <Grid item>
-            <Typography padding='0.5rem'>
-              State/Region: {data.data.attributes.state.toUpperCase()}
-            </Typography>
-          </Grid>
-        ) : null}
+        <Grid item>
+          <Typography padding='0.5rem' textTransform={'capitalize'}>
+            Vehicle Year: {data.data.attributes.vehicle_year}
+          </Typography>
+        </Grid>
         <Grid item>
           {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>
@@ -124,4 +132,4 @@ const ElectricityEstimateDisplay = (data: iProps): JSX.Element => {
   )
 }
 
-export default ElectricityEstimateDisplay
+export default VehicleEstimateDisplay

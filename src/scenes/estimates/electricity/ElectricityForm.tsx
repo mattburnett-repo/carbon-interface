@@ -1,6 +1,7 @@
+// FIXME: resolve typescript issue/s
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -25,7 +26,15 @@ import {
   // @ts-expect-error (fix this by typing ./contryCodes file, later)
 } from '../../../data/countryCodes.js'
 
-const initialValues = {
+interface iInitialValues {
+  type: string
+  electricity_unit: 'kwh' | 'mwh'
+  electricity_value: number
+  country: string
+  state: string
+}
+
+const initialValues: iInitialValues = {
   type: 'electricity',
   electricity_unit: 'kwh',
   electricity_value: 1,
@@ -55,8 +64,11 @@ const ElectricityForm = (): JSX.Element => {
     }
   })
 
-  const countryCodes = useCountryCodes()
-  const regionCodes = useRegionCodes(formik.values.country)
+  const countryCodes = useMemo(() => useCountryCodes(), [])
+  const regionCodes = useMemo(
+    () => useRegionCodes(formik.values.country),
+    [formik.values.country]
+  )
 
   // if API doesn't yet support state/region for a country,
   //    set state/region value to original value/empty string

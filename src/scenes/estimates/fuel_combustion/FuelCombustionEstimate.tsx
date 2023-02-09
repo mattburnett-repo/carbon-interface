@@ -3,22 +3,21 @@ import { useQuery } from 'react-query'
 
 import LoadingDisplay from '../../../components/LoadingDisplay'
 import ErrorDisplay from '../../../components/ErrorDisplay'
-import ElectricityEstimateDisplay from './ElectricityEstimateDisplay'
+import FuelCombustionEstimateDisplay from './FuelCombustionEstimateDisplay'
 
-// import data from '../../../data/electricityResponse.json'
+// import data from '../../../data/fuelSourceResponse.json'
 
 interface iProps {
   type: string
-  electricity_unit: 'kwh' | 'mwh'
-  electricity_value: number
-  country: string
-  state?: string
+  fuel_source_type: string
+  fuel_source_unit: string
+  fuel_source_value: number
 }
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const ElectricityEstimate: React.FC<iProps> = (
+const FuelCombustionEstimate: React.FC<iProps> = (
   requestData: iProps
 ): JSX.Element => {
   const { isLoading, error, data } = useQuery(
@@ -46,7 +45,7 @@ const ElectricityEstimate: React.FC<iProps> = (
   if (isLoading) return <LoadingDisplay />
   if (error !== null) return <ErrorDisplay error={error} />
 
-  return <ElectricityEstimateDisplay {...data} />
+  return <FuelCombustionEstimateDisplay {...data} />
 }
 
-export default ElectricityEstimate
+export default FuelCombustionEstimate
