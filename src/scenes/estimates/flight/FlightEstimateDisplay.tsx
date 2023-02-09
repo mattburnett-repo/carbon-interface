@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useTheme } from '@mui/material'
+
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../../theme'
 
 interface Leg {
   departure_airport: string
@@ -32,8 +36,15 @@ const FlightEstimateDisplay = (data: iProps): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
+
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   return (
-    <Box className='estimate'>
+    <Box
+      className='estimate'
+      sx={{ mt: '5rem', backgroundColor: colors.primary[400] }}
+    >
       <Typography
         variant={'h1'}
         sx={{
@@ -45,19 +56,26 @@ const FlightEstimateDisplay = (data: iProps): JSX.Element => {
         Flight Estimate
       </Typography>
 
-      <Grid container justifyContent={'center'} columnGap={'5rem'}>
+      <Grid
+        container
+        alignContent={'space-between'}
+        justifyContent={'center'}
+        columnGap={'5rem'}
+      >
         <Grid item>
-          <Typography>
+          <Typography padding='0.5rem'>
             Distance Unit: {data.data.attributes.distance_unit}
           </Typography>
         </Grid>
 
         <Grid item>
-          <Typography>Passengers: {data.data.attributes.passengers}</Typography>
+          <Typography padding='0.5rem'>
+            Passengers: {data.data.attributes.passengers}
+          </Typography>
         </Grid>
         <Grid item>
           {/*  FIXME: better date/time formatting */}
-          <Typography>
+          <Typography padding='0.5rem'>
             Estimated at:
             {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}
             {data.data.attributes.estimated_at.replace(
@@ -67,17 +85,18 @@ const FlightEstimateDisplay = (data: iProps): JSX.Element => {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography>ID: {data.data.id}</Typography>
+          <Typography padding='0.5rem'>ID: {data.data.id}</Typography>
         </Grid>
         <Grid item>
           <Grid container gridTemplateColumns={'2'}>
             <Grid item paddingRight={'5px'}>
-              <Typography>Legs:</Typography>
+              <Typography padding='0.5rem'>Legs:</Typography>
             </Grid>
             <Grid item>
               {data.data.attributes.legs.map((leg: Leg, i: number) => {
                 return (
                   <Typography
+                    padding='0.5rem'
                     key={`${leg.departure_airport}-${leg.destination_airport}-${i}`}
                   >
                     {leg.departure_airport} to {leg.destination_airport}

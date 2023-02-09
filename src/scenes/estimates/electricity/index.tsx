@@ -1,19 +1,33 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { Box } from '@mui/material'
+import { Box, useTheme } from '@mui/material'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../../theme'
 
 import ElectricityForm from './ElectricityForm'
 import ElectricityEstimate from './ElectricityEstimate'
 
 const Electricity = (): JSX.Element => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   const location = useLocation()
 
   return (
-    <Box>
+    <Box
+      sx={{
+        m: 'auto',
+        height: '89vh',
+        alignContent: 'center',
+        justifyContent: 'center',
+        p: '30px',
+        backgroundColor: colors.primary[400]
+      }}
+    >
       <ElectricityForm />
       {location.state?.values !== undefined && (
-        // spread the props: https://stackoverflow.com/questions/59969756/not-assignable-to-type-intrinsicattributes-intrinsicclassattributes-react-js
         <ElectricityEstimate {...location.state.values} />
       )}
     </Box>

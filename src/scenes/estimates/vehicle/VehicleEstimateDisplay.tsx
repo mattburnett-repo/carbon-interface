@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useTheme } from '@mui/material'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../../theme'
 
 interface iProps {
   data: {
@@ -27,8 +30,14 @@ const VehicleEstimateDisplay = (data: iProps): JSX.Element => {
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
 
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   return (
-    <Box className='estimate'>
+    <Box
+      className='estimate'
+      sx={{ mt: '5rem', backgroundColor: colors.primary[400] }}
+    >
       <Typography
         variant={'h1'}
         sx={{

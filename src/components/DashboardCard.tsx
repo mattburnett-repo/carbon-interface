@@ -35,15 +35,15 @@ const DashboardCard: React.FC<iProps> = ({
     <Card
       variant='outlined'
       sx={{
-        maxWidth: 200,
-        mt: '80px',
+        // maxWidth: '250px',
+        width: '250px',
         '&:hover': { boxShadow: 20, transform: 'translate(-2px, -5px)' }
       }}
     >
       <CardActionArea component={Link} to={`/estimates/${endpoint}`}>
         <CardMedia
           component='img'
-          height='200'
+          height='250'
           image={`/src/assets/${image}`}
           alt={`${title} image`}
         />

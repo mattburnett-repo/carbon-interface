@@ -12,8 +12,13 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  TextField
+  TextField,
+  useTheme
 } from '@mui/material'
+
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../../theme'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
@@ -50,6 +55,9 @@ const validationSchema = yup.object().shape({
 })
 
 const FlightForm = (): JSX.Element => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   const navigate = useNavigate()
 
   const formik = useFormik({
@@ -61,7 +69,7 @@ const FlightForm = (): JSX.Element => {
   })
 
   return (
-    <Box className='estimate'>
+    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
       <form onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
@@ -104,13 +112,12 @@ const FlightForm = (): JSX.Element => {
 
           {/* Component to select filight legs */}
           <FlightLeg parentState={formik.values.legs} />
-
-          <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
-            <Button type='submit' color='secondary' variant='contained'>
-              Get Estimate
-            </Button>
-          </Box>
         </Grid>
+        <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
+          <Button type='submit' color='secondary' variant='contained'>
+            Get Estimate
+          </Button>
+        </Box>
       </form>
     </Box>
   )

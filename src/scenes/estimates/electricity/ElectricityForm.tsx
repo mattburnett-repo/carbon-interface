@@ -12,8 +12,13 @@ import {
   TextField,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  useTheme
 } from '@mui/material'
+
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../../theme'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
@@ -54,6 +59,9 @@ interface LocationOptionElement {
 }
 
 const ElectricityForm = (): JSX.Element => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   const navigate = useNavigate()
 
   const formik = useFormik({
@@ -74,7 +82,7 @@ const ElectricityForm = (): JSX.Element => {
   }
 
   return (
-    <Box className='estimate'>
+    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
       <form onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
