@@ -25,20 +25,9 @@ import * as yup from 'yup'
 
 import FlightLeg from './FlightLeg'
 
-interface Leg {
-  departure_airport: string
-  destination_airport: string
-  cabin_class: string
-}
+import { type iFlightFormFields } from './types'
 
-interface FlightFormFields {
-  type: string
-  passengers: number
-  legs: Leg[]
-  distance_unit: string
-}
-
-const initialValues: FlightFormFields = {
+const initialValues: iFlightFormFields = {
   type: 'flight',
   passengers: 1,
   legs: [],

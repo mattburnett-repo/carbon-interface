@@ -7,18 +7,14 @@ import FlightEstimateDisplay from './FlightEstimateDisplay'
 
 // import data from '../../../data/flightResponse.json'
 
-interface iProps {
-  type: string
-  passengers: number
-  legs: []
-  distance_unit: 'km' | 'mi'
-  cabin_class: 'economy' | 'premium'
-}
+import { type iEstimateProps } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const FlightEstimate: React.FC<iProps> = (requestData: iProps): JSX.Element => {
+const FlightEstimate: React.FC<iEstimateProps> = (
+  requestData: iEstimateProps
+): JSX.Element => {
   const { isLoading, error, data } = useQuery(
     [requestData.type, requestData],
     async () => {

@@ -24,13 +24,7 @@ import * as yup from 'yup'
 // @ts-expect-error (fix this by typing ./vehicles.js file, later)
 import { useVehicleMakes, useVehicleModels } from '../../../data/vehicles.js'
 
-interface iInitialValues {
-  type: string
-  distance_unit: 'km' | 'mi'
-  distance_value: number
-  vehicle_make_id: string
-  vehicle_model_id: string
-}
+import { type iInitialValues, type SelectOption } from './types'
 
 const initialValues: iInitialValues = {
   type: 'vehicle',
@@ -47,11 +41,6 @@ const validationSchema = yup.object().shape({
     .min(1, 'Distance value must be greater than 0.')
     .required('Distance value is required. Numbers only.')
 })
-
-interface SelectOption {
-  id: string
-  name: string
-}
 
 const VehicleForm = (): JSX.Element => {
   const navigate = useNavigate()

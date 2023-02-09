@@ -6,37 +6,11 @@ import { Box, Grid, Typography, useTheme } from '@mui/material'
 // @ts-expect-error (fix this by typing ./contryCodes file, later)
 import { tokens } from '../../../theme'
 
-interface Leg {
-  departure_airport: string
-  destination_airport: string
-  cabin_class?: string
-}
-
-interface iProps {
-  data: {
-    id: string
-    type: string
-    attributes: {
-      passengers: number
-      legs: Leg[]
-      distance_value: number
-      distance_unit: string
-      estimated_at: string
-      carbon_g: number
-      carbon_lb: number
-      carbon_kg: number
-      carbon_mt: number
-    }
-  }
-}
+import { type iDisplayProps, type iLeg } from './types'
 
 // TODO: validation here and in FlightLeg needs to be improved. Not really using Formik completely well.
 
-const FlightEstimateDisplay = (data: iProps): JSX.Element => {
-  // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
-  //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
-  // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
-
+const FlightEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
@@ -93,7 +67,7 @@ const FlightEstimateDisplay = (data: iProps): JSX.Element => {
               <Typography padding='0.5rem'>Legs:</Typography>
             </Grid>
             <Grid item>
-              {data.data.attributes.legs.map((leg: Leg, i: number) => {
+              {data.data.attributes.legs.map((leg: iLeg, i: number) => {
                 return (
                   <Typography
                     padding='0.5rem'

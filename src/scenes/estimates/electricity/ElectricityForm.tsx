@@ -31,13 +31,7 @@ import {
   // @ts-expect-error (fix this by typing ./contryCodes file, later)
 } from '../../../data/countryCodes.js'
 
-interface iInitialValues {
-  type: string
-  electricity_unit: 'kwh' | 'mwh'
-  electricity_value: number
-  country: string
-  state: string
-}
+import { type iInitialValues, type LocationOptionElement } from './types'
 
 const initialValues: iInitialValues = {
   type: 'electricity',
@@ -52,11 +46,6 @@ const validationSchema = yup.object().shape({
     .min(1, 'Electricity Value must be greater than 0.')
     .required('Electricity Value is required. Numbers only.')
 })
-
-interface LocationOptionElement {
-  code: string
-  name: string
-}
 
 const ElectricityForm = (): JSX.Element => {
   const theme = useTheme()

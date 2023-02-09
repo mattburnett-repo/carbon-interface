@@ -28,7 +28,6 @@ const Flight = (): JSX.Element => {
     >
       <FlightForm />
       {location.state?.values !== undefined && (
-        // spread the props: https://stackoverflow.com/questions/59969756/not-assignable-to-type-intrinsicattributes-intrinsicclassattributes-react-js
         <FlightEstimate {...location.state.values} />
       )}
     </Box>

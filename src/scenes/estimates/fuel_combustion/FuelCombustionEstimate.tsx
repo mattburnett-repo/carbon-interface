@@ -7,18 +7,13 @@ import FuelCombustionEstimateDisplay from './FuelCombustionEstimateDisplay'
 
 // import data from '../../../data/fuelSourceResponse.json'
 
-interface iProps {
-  type: string
-  fuel_source_type: string
-  fuel_source_unit: string
-  fuel_source_value: number
-}
+import { type iFormInitialValues } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const FuelCombustionEstimate: React.FC<iProps> = (
-  requestData: iProps
+const FuelCombustionEstimate: React.FC<iFormInitialValues> = (
+  requestData: iFormInitialValues
 ): JSX.Element => {
   const { isLoading, error, data } = useQuery(
     [requestData.type, requestData],

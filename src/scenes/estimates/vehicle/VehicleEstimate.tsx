@@ -7,18 +7,13 @@ import VehicleEstimateDisplay from './VehicleEstimateDisplay'
 
 import data from '../../../data/vehicleResponse.json'
 
-interface iProps {
-  type: string
-  distance_unit: 'km' | 'mi'
-  distance_value: number
-  vehicle_model_id: string
-}
+import { type iEstimateProps } from './types'
 
 // const baseURL: string = import.meta.env.VITE_API_BASE_URL
 // const apiKey: string = import.meta.env.VITE_API_KEY
 
-const VehicleEstimate: React.FC<iProps> = (
-  requestData: iProps
+const VehicleEstimate: React.FC<iEstimateProps> = (
+  requestData: iEstimateProps
 ): JSX.Element => {
   //   const { isLoading, error, data } = useQuery(
   //     [requestData.type, requestData],

@@ -26,23 +26,13 @@ import {
   // @ts-expect-error (fix this by typing ./fuelSources file, later)
 } from '../../../data/fuelSources.js'
 
-interface iFuelSourceTypes {
-  api_name: string
-  name: string
-}
+import {
+  type iFuelSourceTypes,
+  type iFuelSourceUnits,
+  type iFormInitialValues
+} from './types'
 
-interface iFuelSourceUnits {
-  unit: string
-}
-
-interface iInitialValues {
-  type: string
-  fuel_source_type: string
-  fuel_source_unit: string
-  fuel_source_value: number
-}
-
-const initialValues: iInitialValues = {
+const initialValues: iFormInitialValues = {
   type: 'fuel_combustion',
   fuel_source_type: '',
   fuel_source_unit: '',

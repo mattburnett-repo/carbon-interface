@@ -28,27 +28,15 @@ import {
   // @ts-expect-error (fix this by typing ./airportCodes file, later)
 } from '../../../data/airportCodes.js'
 
+import {
+  type iLeg,
+  type iAirportSelectOptiion,
+  type iDisplayInitialValues
+} from './types'
+
 const airportCodes = useAirportCodes()
 
-interface iFlightLeg {
-  departure_airport: string
-  destination_airport: string
-  cabin_class: string
-}
-interface iAirportSelectOptiion {
-  code: string
-  name: string
-}
-
-interface iInitialValues {
-  type: string
-  departure_airport: string
-  destination_airport: string
-  cabin_class: string
-  legs: iFlightLeg[]
-}
-
-const initialValues: iInitialValues = {
+const initialValues: iDisplayInitialValues = {
   type: 'flight',
   departure_airport: '',
   destination_airport: '',
@@ -78,7 +66,7 @@ const FlightLeg = (props: any): JSX.Element => {
   })
 
   const handleAddLeg = (): void => {
-    const leg: iFlightLeg = JSON.parse(
+    const leg: iLeg = JSON.parse(
       JSON.stringify({
         departure_airport: formik.values.departure_airport,
         destination_airport: formik.values.destination_airport,
@@ -176,7 +164,7 @@ const FlightLeg = (props: any): JSX.Element => {
           </Grid>
         </Grid>
       </Grid>
-      {formik.values.legs.map((leg: iFlightLeg, i: number) => (
+      {formik.values.legs.map((leg: iLeg, i: number) => (
         <Grid
           container
           key={`flight-leg-container-${i}`}

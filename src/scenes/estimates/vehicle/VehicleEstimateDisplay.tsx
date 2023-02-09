@@ -5,27 +5,9 @@ import { Box, Grid, Typography, useTheme } from '@mui/material'
 // @ts-expect-error (fix this by typing ./contryCodes file, later)
 import { tokens } from '../../../theme'
 
-interface iProps {
-  data: {
-    id: string
-    type: string
-    attributes: {
-      vehicle_make: string
-      vehicle_model: string
-      vehicle_year: number
-      vehicle_model_id: string
-      distance_unit: string
-      distance_value: number
-      estimated_at: string
-      carbon_g: number
-      carbon_lb: number
-      carbon_kg: number
-      carbon_mt: number
-    }
-  }
-}
+import { type iDisplayProps } from './types'
 
-const VehicleEstimateDisplay = (data: iProps): JSX.Element => {
+const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key

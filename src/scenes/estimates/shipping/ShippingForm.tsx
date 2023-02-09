@@ -17,14 +17,7 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-interface iInitialValues {
-  type: string
-  weight_unit: 'g' | 'kg' | 'lb' | 'mt'
-  weight_value: number
-  distance_unit: 'mi' | 'km'
-  distance_value: number
-  transport_method: 'ship' | 'train' | 'truck' | 'plane'
-}
+import { type iInitialValues } from './types'
 
 const initialValues: iInitialValues = {
   type: 'shipping',

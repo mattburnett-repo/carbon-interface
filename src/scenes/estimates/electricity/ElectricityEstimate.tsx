@@ -7,19 +7,13 @@ import ElectricityEstimateDisplay from './ElectricityEstimateDisplay'
 
 // import data from '../../../data/electricityResponse.json'
 
-interface iProps {
-  type: string
-  electricity_unit: 'kwh' | 'mwh'
-  electricity_value: number
-  country: string
-  state?: string
-}
+import { type iEstimateProps } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_BASE_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const ElectricityEstimate: React.FC<iProps> = (
-  requestData: iProps
+const ElectricityEstimate: React.FC<iEstimateProps> = (
+  requestData: iEstimateProps
 ): JSX.Element => {
   const { isLoading, error, data } = useQuery(
     [requestData.type, requestData],
