@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -69,7 +69,7 @@ const FuelCombustionForm = (): JSX.Element => {
     }
   })
 
-  const fuelSourceTypes = useMemo(() => useFuelSources(), [])
+  const fuelSourceTypes = useFuelSources()
   const fuelSourceUnits = useFuelSourceUnits(formik.values.fuel_source_type)
 
   return (

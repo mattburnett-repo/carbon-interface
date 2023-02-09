@@ -1,3 +1,5 @@
+//  TODO: material useTheme in all scenes/ components
+
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'

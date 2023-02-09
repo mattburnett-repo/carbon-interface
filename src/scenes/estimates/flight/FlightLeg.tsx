@@ -3,7 +3,7 @@
 
 // TODO: sort out field validation
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -28,7 +28,7 @@ import {
   // @ts-expect-error (fix this by typing ./airportCodes file, later)
 } from '../../../data/airportCodes.js'
 
-const airportCodes = useMemo(() => useAirportCodes(), [])
+const airportCodes = useAirportCodes()
 
 interface iFlightLeg {
   departure_airport: string

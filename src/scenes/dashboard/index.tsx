@@ -7,7 +7,7 @@ import DashboardCard from '../../components/DashboardCard'
 const Dashboard: React.FC = (): JSX.Element => {
   return (
     <Box sx={{ ml: '150px', p: '30px' }}>
-      <Typography variant='h1'>Carbon Estimate API Frontend</Typography>
+      <Typography variant='h1'>Carbon Interface API Frontend</Typography>
       <Box
         display='grid'
         gridTemplateColumns='repeat(3, 1fr)'

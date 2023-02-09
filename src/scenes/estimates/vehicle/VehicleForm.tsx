@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -64,7 +64,7 @@ const VehicleForm = (): JSX.Element => {
     }
   })
 
-  const vehicleMakes = useMemo(() => useVehicleMakes(), [])
+  const vehicleMakes = useVehicleMakes()
   const vehicleModels = useVehicleModels(formik.values.vehicle_make_id)
   return (
     <Box className='estimate'>

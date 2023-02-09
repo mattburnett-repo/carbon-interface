@@ -1,13 +1,14 @@
 import React from 'react'
+// import { useLocation } from 'react-router-dom'
 
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 
-//  use data grid thing, add filtering to columns
+import Estimates from './Estimates'
 
 const Estimate = (): JSX.Element => {
   return (
     <Box>
-      <Typography variant='h2'>Estimate</Typography>
+      <Estimates />
     </Box>
   )
 }

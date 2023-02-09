@@ -1,0 +1,2788 @@
+[
+  {
+    "data": {
+      "id": "163042bb-fb05-4c31-a13f-4d3373bc6253",
+      "type": "estimate",
+      "attributes": {
+        "country": "us",
+        "state": "fl",
+        "electricity_unit": "mwh",
+        "electricity_value": 42.0,
+        "estimated_at": "2023-01-29T06:56:53.676Z",
+        "carbon_g": 16710476,
+        "carbon_lb": 36840.29,
+        "carbon_kg": 16710.48,
+        "carbon_mt": 16.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e76b836e-8c95-441b-81ee-e33fe6f6f4e0",
+      "type": "estimate",
+      "attributes": {
+        "country": "us",
+        "state": "fl",
+        "electricity_unit": "mwh",
+        "electricity_value": 42.0,
+        "estimated_at": "2023-02-04T08:20:03.891Z",
+        "carbon_g": 16710476,
+        "carbon_lb": 36840.29,
+        "carbon_kg": 16710.48,
+        "carbon_mt": 16.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "35066a5a-60f2-455a-863e-669937de8a4c",
+      "type": "estimate",
+      "attributes": {
+        "country": "us",
+        "state": "fl",
+        "electricity_unit": "mwh",
+        "electricity_value": 42.0,
+        "estimated_at": "2023-02-04T15:11:39.905Z",
+        "carbon_g": 16710476,
+        "carbon_lb": 36840.29,
+        "carbon_kg": 16710.48,
+        "carbon_mt": 16.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "10bfc076-fa20-4701-b7b1-ad215a3fff53",
+      "type": "estimate",
+      "attributes": {
+        "country": "us",
+        "state": "fl",
+        "electricity_unit": "mwh",
+        "electricity_value": 42.0,
+        "estimated_at": "2023-02-04T15:13:14.630Z",
+        "carbon_g": 16710476,
+        "carbon_lb": 36840.29,
+        "carbon_kg": 16710.48,
+        "carbon_mt": 16.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "ce711bcd-96c9-4d10-9f8f-6b86fa72d9b8",
+      "type": "estimate",
+      "attributes": {
+        "country": "us",
+        "state": "fl",
+        "electricity_unit": "mwh",
+        "electricity_value": 42.0,
+        "estimated_at": "2023-02-04T15:13:58.068Z",
+        "carbon_g": 16710476,
+        "carbon_lb": 36840.29,
+        "carbon_kg": 16710.48,
+        "carbon_mt": 16.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "88930f50-30b2-4f58-8f45-6059315c6851",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 111.0,
+        "estimated_at": "2023-02-04T15:42:33.201Z",
+        "carbon_g": 33411,
+        "carbon_lb": 73.66,
+        "carbon_kg": 33.41,
+        "carbon_mt": 0.03
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "128a5ee5-4317-4217-8ee9-b4052ce941f5",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 111.0,
+        "estimated_at": "2023-02-04T15:43:58.697Z",
+        "carbon_g": 33411,
+        "carbon_lb": 73.66,
+        "carbon_kg": 33.41,
+        "carbon_mt": 0.03
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "11232ecb-fe15-4ed9-9c9c-03b7a34eba5b",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 111.0,
+        "estimated_at": "2023-02-04T15:44:38.953Z",
+        "carbon_g": 33411,
+        "carbon_lb": 73.66,
+        "carbon_kg": 33.41,
+        "carbon_mt": 0.03
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "5065854f-5672-4ee4-9817-c452c7cd565b",
+      "type": "estimate",
+      "attributes": {
+        "country": "it",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 555555.0,
+        "estimated_at": "2023-02-04T15:45:30.066Z",
+        "carbon_g": 117777660000,
+        "carbon_lb": 259655293.58,
+        "carbon_kg": 117777660.0,
+        "carbon_mt": 117777.66
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "547e360a-c1d3-411b-ab00-d3538896ab96",
+      "type": "estimate",
+      "attributes": {
+        "country": "it",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 555555.0,
+        "estimated_at": "2023-02-04T15:48:59.599Z",
+        "carbon_g": 117777660000,
+        "carbon_lb": 259655293.58,
+        "carbon_kg": 117777660.0,
+        "carbon_mt": 117777.66
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "107098f2-754a-4469-9fb8-2020a5cf981d",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 1111.0,
+        "estimated_at": "2023-02-04T15:49:08.270Z",
+        "carbon_g": 61105000,
+        "carbon_lb": 134713.47,
+        "carbon_kg": 61105.0,
+        "carbon_mt": 61.11
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "9e7473c5-c400-4ad7-a69c-62db5b833aa0",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 1111.0,
+        "estimated_at": "2023-02-04T15:49:36.923Z",
+        "carbon_g": 61105000,
+        "carbon_lb": 134713.47,
+        "carbon_kg": 61105.0,
+        "carbon_mt": 61.11
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "2593290b-d502-41c7-afae-e02f3d79d028",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 1111.0,
+        "estimated_at": "2023-02-04T15:49:48.612Z",
+        "carbon_g": 61105000,
+        "carbon_lb": 134713.47,
+        "carbon_kg": 61105.0,
+        "carbon_mt": 61.11
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "b0c00ea1-3ef2-454f-a1b3-df7a25a436e7",
+      "type": "estimate",
+      "attributes": {
+        "country": "fi",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 222.0,
+        "estimated_at": "2023-02-04T15:53:45.597Z",
+        "carbon_g": 14874,
+        "carbon_lb": 32.79,
+        "carbon_kg": 14.87,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "6139d7be-eba7-4b73-ad89-9a26d1edce4a",
+      "type": "estimate",
+      "attributes": {
+        "country": "fi",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 222.0,
+        "estimated_at": "2023-02-04T15:53:49.393Z",
+        "carbon_g": 14874,
+        "carbon_lb": 32.79,
+        "carbon_kg": 14.87,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "380b1725-4307-482d-85fe-9dc4fde8aa74",
+      "type": "estimate",
+      "attributes": {
+        "country": "fi",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 222.0,
+        "estimated_at": "2023-02-04T15:55:55.516Z",
+        "carbon_g": 14874,
+        "carbon_lb": 32.79,
+        "carbon_kg": 14.87,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "479b39aa-c992-4328-8b87-6d8b85d0f0e4",
+      "type": "estimate",
+      "attributes": {
+        "country": "fi",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 222.0,
+        "estimated_at": "2023-02-04T15:56:13.336Z",
+        "carbon_g": 14874,
+        "carbon_lb": 32.79,
+        "carbon_kg": 14.87,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "acd1d957-fd32-4d2c-b716-bf39809faf41",
+      "type": "estimate",
+      "attributes": {
+        "country": "fi",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 222.0,
+        "estimated_at": "2023-02-04T15:56:39.527Z",
+        "carbon_g": 14874,
+        "carbon_lb": 32.79,
+        "carbon_kg": 14.87,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "a2c84eb0-0b79-4264-b1f6-035d2ed260e9",
+      "type": "estimate",
+      "attributes": {
+        "country": "hu",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T15:57:11.461Z",
+        "carbon_g": 26814000,
+        "carbon_lb": 59114.75,
+        "carbon_kg": 26814.0,
+        "carbon_mt": 26.81
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e47b1ac8-412b-4871-8ae2-4095f0be1111",
+      "type": "estimate",
+      "attributes": {
+        "country": "hu",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:01:04.359Z",
+        "carbon_g": 26814000,
+        "carbon_lb": 59114.75,
+        "carbon_kg": 26814.0,
+        "carbon_mt": 26.81
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "3320835a-dd8a-40b4-8d67-7508e1ac5020",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:05:48.921Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "f57d5976-625b-4a1c-bd6d-1dc76094e508",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:05:59.484Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "2e1aa26f-c1d4-438b-9fce-a138963700cb",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:07:25.615Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "a634abdc-5c39-4688-913d-f21e144069b9",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:10:03.785Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e7a78d4f-99ca-4dc0-b8bc-da1ca58cf987",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:11:56.328Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "9c6cc3ba-45da-447b-b9ea-cb169cc45f55",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:36:39.816Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "71a0ed77-2134-45b3-b7f4-5de1a83022f7",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-04T16:37:12.243Z",
+        "carbon_g": 37023000,
+        "carbon_lb": 81621.74,
+        "carbon_kg": 37023.0,
+        "carbon_mt": 37.02
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "df15b6ca-5584-44b3-af4f-8c4166c01f38",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 1111.0,
+        "estimated_at": "2023-02-05T10:24:30.762Z",
+        "carbon_g": 334411,
+        "carbon_lb": 737.25,
+        "carbon_kg": 334.41,
+        "carbon_mt": 0.33
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "50f15516-2363-48ae-b546-905ea804ad5c",
+      "type": "estimate",
+      "attributes": {
+        "country": "it",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 2222.0,
+        "estimated_at": "2023-02-05T10:24:41.172Z",
+        "carbon_g": 471064,
+        "carbon_lb": 1038.52,
+        "carbon_kg": 471.06,
+        "carbon_mt": 0.47
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "8a47a1b7-c054-4059-9dc0-8b5ccc34c3c4",
+      "type": "estimate",
+      "attributes": {
+        "country": "it",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 2222.0,
+        "estimated_at": "2023-02-05T10:26:29.950Z",
+        "carbon_g": 471064,
+        "carbon_lb": 1038.52,
+        "carbon_kg": 471.06,
+        "carbon_mt": 0.47
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "08e9efac-8ef5-458e-899e-b2d9867a63a9",
+      "type": "estimate",
+      "attributes": {
+        "country": "it",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 2222.0,
+        "estimated_at": "2023-02-05T10:26:31.586Z",
+        "carbon_g": 471064,
+        "carbon_lb": 1038.52,
+        "carbon_kg": 471.06,
+        "carbon_mt": 0.47
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "8115fd15-4468-4e5b-81d7-bbe454a0c972",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-05T10:26:53.589Z",
+        "carbon_g": 37023,
+        "carbon_lb": 81.62,
+        "carbon_kg": 37.02,
+        "carbon_mt": 0.04
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "0bac55f7-45b4-4da1-b1c0-183296674c84",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:27:20.762Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "99a78ed5-be87-4b5e-9dd7-6cdd6cd323b6",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:28:31.271Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "c4537a73-28db-4ca0-a289-2cbcd27b3aac",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:28:46.497Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "8fea717d-d5e9-47d3-85dd-dd359be9dac6",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:29:53.176Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "922c5ded-bd0d-47d6-a81e-d298ad06d473",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:31:33.483Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "882b57bc-c335-4d26-a858-fb71adb78b72",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:32:51.093Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "600031b9-2b3a-43e9-b0e4-f607f78e5b92",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:35:51.892Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "5f13832d-7122-48d8-84b0-709f290a82ca",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:37:51.897Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "073e4493-6347-4a71-b6ac-7197f579ebf4",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:38:38.827Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "eeea7dce-abda-4956-8421-41046585fd2a",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:39:00.723Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "cdf0e7fa-0ffd-4951-9b89-303b38b3a528",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:39:45.193Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "513afafb-3ac4-48d5-8dae-f340d93a53a5",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:41:32.847Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "04cd6092-17da-4402-a9cb-7b3422fc3a14",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:41:35.386Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "953dfbf1-a286-4ef9-8bdc-d1176bde7334",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123123123.0,
+        "estimated_at": "2023-02-05T10:41:37.226Z",
+        "carbon_g": 16006005990,
+        "carbon_lb": 35287202.89,
+        "carbon_kg": 16006005.99,
+        "carbon_mt": 16006.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "64edef40-696c-4436-bfde-38f8f95a1f27",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:42:30.847Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d9e5dccc-29e6-4d49-a06f-82c9d5471448",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:00.105Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "c9f2c25e-7f7d-414b-a860-826d30c3e348",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:00.387Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "74cd1a5b-76a6-4480-b6ab-6497f177b61e",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:18.155Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "126b6252-ee58-4bf0-930d-47d23a512965",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:18.387Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "8fdd48e6-f51e-434f-af03-eb17dd27c2f5",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:30.027Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d392d376-78d7-43e7-b5f8-3d0ecb8c2233",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:31.867Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "17b23c7c-99a2-4f39-9c80-81e8edc4ac31",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "mb",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:38.911Z",
+        "carbon_g": 172777277727600,
+        "carbon_lb": 380908695019.72,
+        "carbon_kg": 172777277727.6,
+        "carbon_mt": 172777277.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "09c927d2-b005-4cbb-aaa5-22ca4d3091ea",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:45:42.915Z",
+        "carbon_g": 16043604360420000,
+        "carbon_lb": 35370093108973.6,
+        "carbon_kg": 16043604360420.0,
+        "carbon_mt": 16043604360.42
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "ed4c25b7-4586-4528-985a-c6de12242176",
+      "type": "estimate",
+      "attributes": {
+        "country": "ca",
+        "state": "",
+        "electricity_unit": "mwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-05T10:46:55.815Z",
+        "carbon_g": 16043604360420000,
+        "carbon_lb": 35370093108973.6,
+        "carbon_kg": 16043604360420.0,
+        "carbon_mt": 16043604360.42
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e6d7d2eb-65a6-431a-a0a1-b672c84930a7",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [{ "departure_airport": "NCE", "destination_airport": "ARN" }],
+        "distance_value": 2019.74,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-06T11:37:00.947Z",
+        "carbon_g": 118392,
+        "carbon_lb": 261.01,
+        "carbon_kg": 118.39,
+        "carbon_mt": 0.12
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "695434d3-0144-4a57-a1f2-c2c222b1b461",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123412341234.0,
+        "estimated_at": "2023-02-07T09:00:34.523Z",
+        "carbon_g": 37147114711434,
+        "carbon_lb": 81895369429.24,
+        "carbon_kg": 37147114711.43,
+        "carbon_mt": 37147114.71
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "ebc61555-1cef-4171-a727-9a763d0081f9",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T11:49:49.287Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "0204fe56-3706-43b3-bc6f-abc93f5417a8",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T11:50:06.580Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "5898361e-01b5-49eb-962a-fa4d4980177e",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T11:51:25.940Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "18029375-d627-4e5f-986c-9715521bc5cf",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T11:52:11.785Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "026fba9b-69b5-440d-a43b-2836a1e6c051",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T12:00:56.364Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "a1942c67-65c1-4ce9-ae21-166542fef789",
+      "type": "estimate",
+      "attributes": {
+        "country": "fr",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T12:02:49.624Z",
+        "carbon_g": 6765,
+        "carbon_lb": 14.91,
+        "carbon_kg": 6.77,
+        "carbon_mt": 0.01
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "78769536-6ae4-4ae1-bc37-4a06de4cf820",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "AAA",
+            "destination_airport": "AAE"
+          }
+        ],
+        "distance_value": 16742.24,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:19:09.596Z",
+        "carbon_g": 3727710,
+        "carbon_lb": 8218.19,
+        "carbon_kg": 3727.71,
+        "carbon_mt": 3.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "9e6d8c91-504d-4335-9267-c88d950af9e5",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "AAA",
+            "destination_airport": "AAE"
+          }
+        ],
+        "distance_value": 16742.24,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:19:25.257Z",
+        "carbon_g": 3727710,
+        "carbon_lb": 8218.19,
+        "carbon_kg": 3727.71,
+        "carbon_mt": 3.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "cf33bb89-ad2e-484d-93f5-bb7e766b6dd2",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "AAA",
+            "destination_airport": "AAE"
+          }
+        ],
+        "distance_value": 16742.24,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:19:32.770Z",
+        "carbon_g": 3727710,
+        "carbon_lb": 8218.19,
+        "carbon_kg": 3727.71,
+        "carbon_mt": 3.73
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "40265d8e-b0d7-4b43-a37a-1eb1ff96f4f8",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [{ "departure_airport": "BER", "destination_airport": "LAX" }],
+        "distance_value": 9465.65,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:46:11.658Z",
+        "carbon_g": 1322464,
+        "carbon_lb": 2915.54,
+        "carbon_kg": 1322.46,
+        "carbon_mt": 1.32
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "67cafb03-835d-40c7-a9ec-932554ac1519",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 9465.65,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:46:51.050Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d1c5ff82-ef19-4eef-aeca-b9b08322bb49",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "BER"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:47:22.539Z",
+        "carbon_g": 5289858,
+        "carbon_lb": 11662.14,
+        "carbon_kg": 5289.86,
+        "carbon_mt": 5.29
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "bae69442-fc88-4108-a6a9-8a28331b512e",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "BER"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:49:46.753Z",
+        "carbon_g": 5289858,
+        "carbon_lb": 11662.14,
+        "carbon_kg": 5289.86,
+        "carbon_mt": 5.29
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "b1787084-22bd-4a7b-b689-7354bfd47763",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "BER"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:49:57.593Z",
+        "carbon_g": 5289858,
+        "carbon_lb": 11662.14,
+        "carbon_kg": 5289.86,
+        "carbon_mt": 5.29
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "bd8d1f96-c22e-4f74-b8ca-4e6007f671ac",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "BER"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:50:05.428Z",
+        "carbon_g": 5289858,
+        "carbon_lb": 11662.14,
+        "carbon_kg": 5289.86,
+        "carbon_mt": 5.29
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "5190c244-78fe-4e40-9444-4c658e020830",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "BER"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T13:50:07.618Z",
+        "carbon_g": 5289858,
+        "carbon_lb": 11662.14,
+        "carbon_kg": 5289.86,
+        "carbon_mt": 5.29
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "c35eb1eb-6d01-4a5b-b6a1-43990178432c",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 9465.65,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:12:01.441Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "50ca6f54-461a-4098-a2f4-001df861cd26",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:12:51.641Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "1a507be4-a802-4a35-85fc-2aa14681e74d",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:15:10.153Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d3097011-dbf1-49a8-a8b1-9df2d8cd5552",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:15:28.201Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "dab5b94c-9344-42f5-a20a-3282bd43960d",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:16:12.546Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d6c48929-21af-4906-9e0e-ee89d39abf84",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:16:17.709Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "a13a5a05-6a72-43fa-b73a-3f496104a7fb",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:19:02.975Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "b98a1d8d-383e-4fc9-a9d6-89215b0a63ce",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "SFO"
+          },
+          {
+            "cabin_class": "premium",
+            "departure_airport": "LAX",
+            "destination_airport": "AUS"
+          }
+        ],
+        "distance_value": 12152.85,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T16:19:50.229Z",
+        "carbon_g": 3053389,
+        "carbon_lb": 6731.57,
+        "carbon_kg": 3053.39,
+        "carbon_mt": 3.05
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "6bceae4e-a871-4e34-b2ff-58cc1f1e201a",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 1.0,
+        "estimated_at": "2023-02-07T17:01:04.167Z",
+        "carbon_g": 301,
+        "carbon_lb": 0.66,
+        "carbon_kg": 0.3,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "128ac38d-de56-4460-b14b-2f39b44f19c8",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:03:17.333Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "2e94b511-eafc-4498-b1f8-25c57efe0977",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:05:25.014Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "4c3e81af-e349-4a74-9fb0-f0413c8bfa11",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:08:44.139Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "6d776d62-5281-4779-b766-1b4c5a6dc13f",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:08:54.835Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "da445019-4177-4e10-871e-e5b555781cbe",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:10:19.500Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "f537af4c-61fb-4bee-9a14-584ab748a71b",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:10:31.050Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "1f791a70-a02f-4425-be1b-25f406604c63",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:11:45.217Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "f72af973-2baf-42dc-92a0-34e3ee8d67ea",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:16:41.494Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "fc6f6125-fb1d-4814-85aa-d55f84d271ad",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T17:18:17.221Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "6ebfdc74-1c7e-491b-9f34-3650e96c8575",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T18:15:04.485Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "07202736-be25-4199-a9db-b8813bd3651c",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 56793.88,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T21:15:05.491Z",
+        "carbon_g": 7934787,
+        "carbon_lb": 17493.21,
+        "carbon_kg": 7934.79,
+        "carbon_mt": 7.93
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "2313c20a-d94c-4ec2-ac56-5c5fb22713c7",
+      "type": "estimate",
+      "attributes": {
+        "country": "de",
+        "state": "",
+        "electricity_unit": "kwh",
+        "electricity_value": 123.0,
+        "estimated_at": "2023-02-07T21:15:13.045Z",
+        "carbon_g": 37023,
+        "carbon_lb": 81.62,
+        "carbon_kg": 37.02,
+        "carbon_mt": 0.04
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "254b9c45-2ede-4a55-8c2f-87f34bd719f2",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "premium",
+            "departure_airport": "BER",
+            "destination_airport": "AAC"
+          }
+        ],
+        "distance_value": 2985.71,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-07T21:15:43.503Z",
+        "carbon_g": 835317,
+        "carbon_lb": 1841.56,
+        "carbon_kg": 835.32,
+        "carbon_mt": 0.84
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "11f2ea26-8c89-4257-9f53-738ed5986d67",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T12:54:00.473Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "278ad81a-2eb3-41b8-9cb7-2d0ad7b13aa8",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T12:56:04.516Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "d8b92b43-c98c-4fb9-b07b-88f570793741",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T12:56:15.735Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "79c78c2d-c44d-4367-9a4b-ed95f274b4a0",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T12:57:47.977Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "96600da8-2633-4a2f-a48f-5cc9f30e1a62",
+      "type": "estimate",
+      "attributes": {
+        "passengers": 1,
+        "legs": [
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          },
+          {
+            "cabin_class": "economy",
+            "departure_airport": "BER",
+            "destination_airport": "LAX"
+          }
+        ],
+        "distance_value": 18931.29,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T13:40:59.441Z",
+        "carbon_g": 2644929,
+        "carbon_lb": 5831.07,
+        "carbon_kg": 2644.93,
+        "carbon_mt": 2.64
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "77b78025-42c0-4b0f-b909-4a464bf1cec5",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 2000.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 200.0,
+        "distance_unit": "mi",
+        "estimated_at": "2023-02-08T14:12:47.934Z",
+        "carbon_g": 41,
+        "carbon_lb": 0.09,
+        "carbon_kg": 0.04,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "38303b22-2b15-44b9-91ac-fe043d08873b",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "ship",
+        "weight_value": 123.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:18:59.395Z",
+        "carbon_g": 121032,
+        "carbon_lb": 266.83,
+        "carbon_kg": 121.03,
+        "carbon_mt": 0.12
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "577d3db0-b032-4e81-93ca-72bc39dfceae",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "ship",
+        "weight_value": 123.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:19:28.264Z",
+        "carbon_g": 121032,
+        "carbon_lb": 266.83,
+        "carbon_kg": 121.03,
+        "carbon_mt": 0.12
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "ba4f8396-84c7-4595-80e4-a7fce9febccb",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "train",
+        "weight_value": 123.0,
+        "distance_unit": "mi",
+        "estimated_at": "2023-02-08T14:19:43.569Z",
+        "carbon_g": 535650,
+        "carbon_lb": 1180.91,
+        "carbon_kg": 535.65,
+        "carbon_mt": 0.54
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e1742240-5592-447d-b1cd-3276792c5cee",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "train",
+        "weight_value": 123.0,
+        "distance_unit": "mi",
+        "estimated_at": "2023-02-08T14:20:31.697Z",
+        "carbon_g": 535650,
+        "carbon_lb": 1180.91,
+        "carbon_kg": 535.65,
+        "carbon_mt": 0.54
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "678cc46d-d796-4c8e-912a-e9a8f2a35ffc",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "train",
+        "weight_value": 123.0,
+        "distance_unit": "mi",
+        "estimated_at": "2023-02-08T14:20:41.125Z",
+        "carbon_g": 535650,
+        "carbon_lb": 1180.91,
+        "carbon_kg": 535.65,
+        "carbon_mt": 0.54
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "dfc437b8-517f-4c76-b536-9b42696e3eb0",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123.0,
+        "weight_unit": "mt",
+        "transport_method": "train",
+        "weight_value": 123.0,
+        "distance_unit": "mi",
+        "estimated_at": "2023-02-08T14:21:04.978Z",
+        "carbon_g": 535650,
+        "carbon_lb": 1180.91,
+        "carbon_kg": 535.65,
+        "carbon_mt": 0.54
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "a1ae7928-f3e4-4c38-be6b-5482fef5795b",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123456.0,
+        "weight_unit": "lb",
+        "transport_method": "plane",
+        "weight_value": 123456.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:21:27.711Z",
+        "carbon_g": 4161852025,
+        "carbon_lb": 9175313.12,
+        "carbon_kg": 4161852.03,
+        "carbon_mt": 4161.85
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "9958e449-346b-4795-95d3-c88bc4132931",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123456.0,
+        "weight_unit": "lb",
+        "transport_method": "plane",
+        "weight_value": 123456.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:22:40.427Z",
+        "carbon_g": 4161852025,
+        "carbon_lb": 9175313.12,
+        "carbon_kg": 4161852.03,
+        "carbon_mt": 4161.85
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "825a4c0c-1de0-4340-b954-d3fe0e24b68c",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123456.0,
+        "weight_unit": "lb",
+        "transport_method": "plane",
+        "weight_value": 123456.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:23:39.575Z",
+        "carbon_g": 4161852025,
+        "carbon_lb": 9175313.12,
+        "carbon_kg": 4161852.03,
+        "carbon_mt": 4161.85
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "1f8fc3ab-c09e-4922-9a30-40df6db0e7c5",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 123456.0,
+        "weight_unit": "lb",
+        "transport_method": "plane",
+        "weight_value": 123456.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:24:07.848Z",
+        "carbon_g": 4161852025,
+        "carbon_lb": 9175313.12,
+        "carbon_kg": 4161852.03,
+        "carbon_mt": 4161.85
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "5e49ae2b-a8a0-4761-b596-e0e265b47d55",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:26:46.193Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "07ff5417-8555-4b7c-b0c6-29ca4ad2bee2",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:26:59.355Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "9bb6ad63-7eaa-4106-b5e0-71d976eb4137",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:04.705Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "19a3e9fa-763b-4f6e-8328-ffcc4cec86ba",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:06.574Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "39bc11d1-7703-4a5b-a930-6bad6801d22a",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:08.562Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "c32baa79-37d3-40d0-a852-71d9a465a9eb",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:11.227Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "e98684ac-b328-43c3-a787-3cc2ec4be0a0",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:14.861Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "cd34f1fd-ecf7-42ea-bb4d-a505a8871522",
+      "type": "estimate",
+      "attributes": {
+        "distance_value": 1.0,
+        "weight_unit": "g",
+        "transport_method": "truck",
+        "weight_value": 1.0,
+        "distance_unit": "km",
+        "estimated_at": "2023-02-08T14:27:20.398Z",
+        "carbon_g": 0,
+        "carbon_lb": 0.0,
+        "carbon_kg": 0.0,
+        "carbon_mt": 0.0
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "b774a40c-1048-4b0d-a5f6-f168fe09d023",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "dfo",
+        "fuel_source_unit": "btu",
+        "fuel_source_value": 2.0,
+        "estimated_at": "2023-02-08T21:50:03.624Z",
+        "carbon_g": 146320,
+        "carbon_lb": 322.58,
+        "carbon_kg": 146.32,
+        "carbon_mt": 0.15
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "3ea64f16-96eb-4c39-b394-2f5ed419b537",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "ker",
+        "fuel_source_unit": "btu",
+        "fuel_source_value": 123.0,
+        "estimated_at": "2023-02-09T10:02:50.202Z",
+        "carbon_g": 8892900,
+        "carbon_lb": 19605.49,
+        "carbon_kg": 8892.9,
+        "carbon_mt": 8.89
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "92455df4-b514-4ee2-84e6-a8ce009f06e4",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "ker",
+        "fuel_source_unit": "btu",
+        "fuel_source_value": 123.0,
+        "estimated_at": "2023-02-09T10:03:27.094Z",
+        "carbon_g": 8892900,
+        "carbon_lb": 19605.49,
+        "carbon_kg": 8892.9,
+        "carbon_mt": 8.89
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "2d667ef5-d21e-405f-aba5-bf90354a1cdb",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "ker",
+        "fuel_source_unit": "btu",
+        "fuel_source_value": 123.0,
+        "estimated_at": "2023-02-09T10:03:54.417Z",
+        "carbon_g": 8892900,
+        "carbon_lb": 19605.49,
+        "carbon_kg": 8892.9,
+        "carbon_mt": 8.89
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "754a5abb-4f65-4f50-a159-d396641b56bd",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "pc",
+        "fuel_source_unit": "gallon",
+        "fuel_source_value": 456.0,
+        "estimated_at": "2023-02-09T10:04:08.501Z",
+        "carbon_g": 6703200,
+        "carbon_lb": 14778.03,
+        "carbon_kg": 6703.2,
+        "carbon_mt": 6.7
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "26fdff20-65ed-4723-b7de-041441836e6c",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "pc",
+        "fuel_source_unit": "gallon",
+        "fuel_source_value": 456.0,
+        "estimated_at": "2023-02-09T10:05:26.851Z",
+        "carbon_g": 6703200,
+        "carbon_lb": 14778.03,
+        "carbon_kg": 6703.2,
+        "carbon_mt": 6.7
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "6fb432d5-e0ad-4fde-bfa1-a13f0c6b1718",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "pc",
+        "fuel_source_unit": "gallon",
+        "fuel_source_value": 456.0,
+        "estimated_at": "2023-02-09T10:07:23.102Z",
+        "carbon_g": 6703200,
+        "carbon_lb": 14778.03,
+        "carbon_kg": 6703.2,
+        "carbon_mt": 6.7
+      }
+    }
+  },
+  {
+    "data": {
+      "id": "3e251e52-cfdb-41d3-a24f-ce20eda39f75",
+      "type": "estimate",
+      "attributes": {
+        "fuel_source_type": "pc",
+        "fuel_source_unit": "gallon",
+        "fuel_source_value": 456.0,
+        "estimated_at": "2023-02-09T10:11:12.584Z",
+        "carbon_g": 6703200,
+        "carbon_lb": 14778.03,
+        "carbon_kg": 6703.2,
+        "carbon_mt": 6.7
+      }
+    }
+  }
+]

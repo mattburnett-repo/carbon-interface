@@ -1,7 +1,7 @@
 // FIXME: resolve typescript issue/s
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -64,11 +64,8 @@ const ElectricityForm = (): JSX.Element => {
     }
   })
 
-  const countryCodes = useMemo(() => useCountryCodes(), [])
-  const regionCodes = useMemo(
-    () => useRegionCodes(formik.values.country),
-    [formik.values.country]
-  )
+  const countryCodes = useCountryCodes()
+  const regionCodes = useRegionCodes(formik.values.country)
 
   // if API doesn't yet support state/region for a country,
   //    set state/region value to original value/empty string
