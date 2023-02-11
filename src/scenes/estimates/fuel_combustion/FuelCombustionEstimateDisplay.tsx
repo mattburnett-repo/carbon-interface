@@ -9,7 +9,7 @@ import {
   useFuelSourceName
   //  FIXME: resolve ts-expect error eslint @'s
   // @ts-expect-error (fix this by typing ./fuelSources file, later)
-} from '../../../data/fuelSources.js'
+} from '../../../components/fuel_combustion/FuelSources.jsx'
 
 import { type iDisplayProps } from './types'
 

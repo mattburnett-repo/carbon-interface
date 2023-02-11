@@ -10,8 +10,6 @@ import {
   Typography,
   Button,
   InputLabel,
-  Select,
-  MenuItem,
   TextField,
   useTheme
 } from '@mui/material'
@@ -23,7 +21,11 @@ import { tokens } from '../../../theme'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-import FlightLeg from './FlightLeg'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import DistanceUnits from '../../../components/distance/DistanceUnits'
+
+import FlightLeg from '../../../components/flight/FlightLeg'
 
 import { type iFlightFormFields } from './types'
 
@@ -77,15 +79,7 @@ const FlightForm = (): JSX.Element => {
           columnGap={'12.5rem'}
         >
           <Grid item>
-            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
-            <Select
-              id='distance_unit'
-              labelId='distance_unit-label'
-              {...formik.getFieldProps('distance_unit')}
-            >
-              <MenuItem value={'km'}>Kilometers</MenuItem>
-              <MenuItem value={'mi'}>Miles</MenuItem>
-            </Select>
+            <DistanceUnits parentState={formik} />
           </Grid>
           <Grid item>
             <InputLabel id='passengers-label'>Passengers</InputLabel>
@@ -99,7 +93,6 @@ const FlightForm = (): JSX.Element => {
             ) : null}
           </Grid>
 
-          {/* Component to select filight legs */}
           <FlightLeg parentState={formik.values.legs} />
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>

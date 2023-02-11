@@ -6,15 +6,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import {
-  Grid,
-  Typography,
-  Select,
-  MenuItem,
-  Autocomplete,
-  TextField,
-  Button
-} from '@mui/material'
+import { Grid, Typography, Button, useTheme } from '@mui/material'
+
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { tokens } from '../../theme'
 
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
@@ -22,19 +18,16 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-import {
-  useAirportCodes
-  //  FIXME: resolve ts-expect error eslint @'s
-  // @ts-expect-error (fix this by typing ./airportCodes file, later)
-} from '../../../data/airportCodes.js'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import AirportSelect from './AirportSelect.jsx'
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import CabinClassSelect from './CabinClassSelect.jsx'
 
 import {
   type iLeg,
-  type iAirportSelectOptiion,
   type iDisplayInitialValues
-} from './types'
-
-const airportCodes = useAirportCodes()
+} from '../../scenes/estimates/flight/types'
 
 const initialValues: iDisplayInitialValues = {
   type: 'flight',
@@ -57,6 +50,9 @@ const FlightLeg = (props: any): JSX.Element => {
 
   const navigate = useNavigate()
 
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -66,21 +62,25 @@ const FlightLeg = (props: any): JSX.Element => {
   })
 
   const handleAddLeg = (): void => {
-    const leg: iLeg = JSON.parse(
-      JSON.stringify({
-        departure_airport: formik.values.departure_airport,
-        destination_airport: formik.values.destination_airport,
-        cabin_class: formik.values.cabin_class
-      })
-    )
+    if (
+      formik.values.departure_airport !== '' &&
+      formik.values.destination_airport !== ''
+    ) {
+      const leg: iLeg = JSON.parse(
+        JSON.stringify({
+          departure_airport: formik.values.departure_airport,
+          destination_airport: formik.values.destination_airport,
+          cabin_class: formik.values.cabin_class
+        })
+      )
 
-    formik.values.legs.push(leg)
-    parentState.push(leg)
+      formik.values.legs.push(leg)
+      parentState.push(leg)
 
-    console.log('parentState legs: ', parentState)
-    // do this to re-render the form and update the leg/s array display
-    // FIXME: find a better way to do this.
-    navigate(`/estimates/${initialValues.type}`)
+      // do this to re-render the form and update the leg/s array display
+      // FIXME: find a better way to do this.
+      navigate(`/estimates/${initialValues.type}`)
+    }
   }
 
   const handleRemoveLeg = (
@@ -104,60 +104,33 @@ const FlightLeg = (props: any): JSX.Element => {
         <Grid item>
           <Grid container columnGap={'2rem'}>
             <Grid item>
-              <Typography>Departure Airport</Typography>
-              <Autocomplete
-                disablePortal
-                id='departure_airport'
-                onChange={(e, v) => {
-                  formik.setFieldValue('departure_airport', v?.code)
-                }}
-                isOptionEqualToValue={(option, value) =>
-                  option.code === value.code
-                }
-                // autoSelect={true}
-                options={airportCodes}
-                getOptionLabel={(option: iAirportSelectOptiion) => option.code}
-                renderInput={(params) => <TextField {...params} />}
+              <AirportSelect
+                parentState={formik}
+                endpoint='departure_airport'
+                title='Departure Airport'
               />
-              {formik.touched.departure_airport !== undefined &&
-              formik.errors.departure_airport !== undefined ? (
-                <div>{formik.errors.departure_airport}</div>
-              ) : null}
             </Grid>
             <Grid item>
-              <Typography>Destination Airport</Typography>
-              <Autocomplete
-                disablePortal
-                id='destination_airport'
-                onChange={(e, v) => {
-                  formik.setFieldValue('destination_airport', v?.code)
-                }}
-                // {...formik.getFieldProps('destination_airport')}
-                isOptionEqualToValue={(option, value) =>
-                  option.code === value.code
-                }
-                options={airportCodes}
-                getOptionLabel={(option: iAirportSelectOptiion) => option.code}
-                renderInput={(params) => <TextField {...params} />}
+              <AirportSelect
+                parentState={formik}
+                endpoint='destination_airport'
+                title='Destination Airport'
               />
-              {formik.touched.destination_airport !== undefined &&
-              formik.errors.destination_airport !== undefined ? (
-                <div>{formik.errors.destination_airport}</div>
-              ) : null}
             </Grid>
             <Grid item>
-              <Typography>Cabin Class</Typography>
-              <Select id='cabin_class' {...formik.getFieldProps('cabin_class')}>
-                <MenuItem key={'economy'} value={'economy'}>
-                  Economy
-                </MenuItem>
-                <MenuItem key={'premium'} value={'premium'}>
-                  Premium
-                </MenuItem>
-              </Select>
+              <CabinClassSelect parentState={formik} />
             </Grid>
-            <Grid item margin={'auto'}>
-              <Button onClick={handleAddLeg}>
+            <Grid item margin={'auto'} marginTop={'2rem'}>
+              <Button
+                onClick={handleAddLeg}
+                sx={{
+                  '&:hover': {
+                    color: colors.primary[900],
+                    backgroundColor: colors.grey[200]
+                  },
+                  color: colors.primary[100]
+                }}
+              >
                 <AddIcon />
               </Button>
             </Grid>
@@ -197,9 +170,6 @@ const FlightLeg = (props: any): JSX.Element => {
       ))}
       {formik.values.legs.length < 1 ? (
         <Grid item>
-          {/* <Typography margin={'auto'} width={'fit-content'}>
-            At least one flight leg is required.
-          </Typography> */}
           <Typography margin={'auto'} width={'fit-content'}>
             Select a departure airport, a destination airport and a cabin class,
             then click the plus (+) sign.

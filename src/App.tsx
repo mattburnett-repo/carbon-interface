@@ -1,6 +1,6 @@
 //  TODO: material useTheme in all scenes/ components
 
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -14,18 +14,22 @@ import { ColorModeContext, useMode } from './theme'
 import Topbar from './scenes/global/Topbar'
 // @ts-expect-error (fix this by typing Sidebar file, later)
 import Sidebar from './scenes/global/Sidebar'
-
 import Dashboard from './scenes/dashboard'
-import Electricity from './scenes/estimates/electricity'
-import Flight from './scenes/estimates/flight'
-import Shipping from './scenes/estimates/shipping'
-import Vehicle from './scenes/estimates/vehicle'
-import FuelCombustion from './scenes/estimates/fuel_combustion'
-import Estimate from './scenes/estimates/estimate'
+import LoadingDisplay from './components/LoadingDisplay'
+
+const Electricity = lazy(
+  async () => await import('./scenes/estimates/electricity')
+)
+const Flight = lazy(async () => await import('./scenes/estimates/flight'))
+const Shipping = lazy(async () => await import('./scenes/estimates/shipping'))
+const Vehicle = lazy(async () => await import('./scenes/estimates/vehicle'))
+const FuelCombustion = lazy(
+  async () => await import('./scenes/estimates/fuel_combustion')
+)
+const Estimate = lazy(async () => await import('./scenes/estimates/estimate'))
 
 const queryClient = new QueryClient()
 
-//  TODO: lazy loading / Suspense
 const App = (): JSX.Element => {
   const [theme, colorMode] = useMode()
 
@@ -38,22 +42,24 @@ const App = (): JSX.Element => {
             <Sidebar />
             <main className='content'>
               <Topbar />
-              <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route
-                  path='/estimates/electricity'
-                  element={<Electricity />}
-                />
-                <Route path='/estimates/flight' element={<Flight />} />
-                <Route path='/estimates/shipping' element={<Shipping />} />
-                <Route path='/estimates/vehicle' element={<Vehicle />} />
-                <Route
-                  path='/estimates/fuel_combustion'
-                  element={<FuelCombustion />}
-                />
-                <Route path='/estimates/estimate' element={<Estimate />} />
-                <Route path='/estimates/test' element={<Flight />} />
-              </Routes>
+              <Suspense fallback={<LoadingDisplay />}>
+                <Routes>
+                  <Route path='/' element={<Dashboard />} />
+                  <Route
+                    path='/estimates/electricity'
+                    element={<Electricity />}
+                  />
+                  <Route path='/estimates/flight' element={<Flight />} />
+                  <Route path='/estimates/shipping' element={<Shipping />} />
+                  <Route path='/estimates/vehicle' element={<Vehicle />} />
+                  <Route
+                    path='/estimates/fuel_combustion'
+                    element={<FuelCombustion />}
+                  />
+                  <Route path='/estimates/estimate' element={<Estimate />} />
+                  <Route path='/estimates/test' element={<Flight />} />
+                </Routes>
+              </Suspense>
             </main>
           </div>
         </ThemeProvider>

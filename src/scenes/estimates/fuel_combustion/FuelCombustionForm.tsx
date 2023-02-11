@@ -11,26 +11,20 @@ import {
   Typography,
   Button,
   TextField,
-  InputLabel,
-  Select,
-  MenuItem
+  InputLabel
 } from '@mui/material'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import {
-  useFuelSources,
-  useFuelSourceUnits
+  FuelSourceTypes,
+  FuelSourceUnits
   //  FIXME: resolve ts-expect error eslint @'s
-  // @ts-expect-error (fix this by typing ./fuelSources file, later)
-} from '../../../data/fuelSources.js'
+  // @ts-expect-error (fix this by typing ./contryCodes file, later)
+} from '../../../components/fuel_combustion/FuelSources.jsx'
 
-import {
-  type iFuelSourceTypes,
-  type iFuelSourceUnits,
-  type iFormInitialValues
-} from './types'
+import { type iFormInitialValues } from './types'
 
 const initialValues: iFormInitialValues = {
   type: 'fuel_combustion',
@@ -59,9 +53,6 @@ const FuelCombustionForm = (): JSX.Element => {
     }
   })
 
-  const fuelSourceTypes = useFuelSources()
-  const fuelSourceUnits = useFuelSourceUnits(formik.values.fuel_source_type)
-
   return (
     <Box className='estimate'>
       <form onSubmit={formik.handleSubmit}>
@@ -79,45 +70,11 @@ const FuelCombustionForm = (): JSX.Element => {
           gridTemplateColumns={'5'}
         >
           <Grid item>
-            <InputLabel id='fuel_source_type-label'>
-              Fuel Source Type
-            </InputLabel>
-            <Select
-              id='fuel_source_type'
-              labelId='fuel_source_type-label'
-              {...formik.getFieldProps('fuel_source_type')}
-            >
-              {fuelSourceTypes.map((type: iFuelSourceTypes) => (
-                <MenuItem key={type.api_name} value={type.api_name}>
-                  {type.name}
-                </MenuItem>
-              ))}
-            </Select>
-            {formik.touched.fuel_source_type !== undefined &&
-            formik.errors.fuel_source_type !== undefined ? (
-              <div>{formik.errors.fuel_source_type}</div>
-            ) : null}
+            <FuelSourceTypes parentState={formik} />
           </Grid>
           {formik.values.fuel_source_type !== '' ? (
             <Grid item>
-              <InputLabel id='fuel_source_unit-label'>
-                Fuel Source Unit
-              </InputLabel>
-              <Select
-                id='fuel_source_unit'
-                labelId='fuel_source_unit-label'
-                {...formik.getFieldProps('fuel_source_unit')}
-              >
-                {fuelSourceUnits.map((unit: iFuelSourceUnits) => (
-                  <MenuItem key={unit.unit} value={unit.unit}>
-                    {unit.unit}
-                  </MenuItem>
-                ))}
-              </Select>
-              {formik.touched.fuel_source_unit !== undefined &&
-              formik.errors.fuel_source_unit !== undefined ? (
-                <div>{formik.errors.fuel_source_unit}</div>
-              ) : null}
+              <FuelSourceUnits parentState={formik} />
             </Grid>
           ) : null}
 

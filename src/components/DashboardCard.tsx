@@ -35,9 +35,12 @@ const DashboardCard: React.FC<iProps> = ({
     <Card
       variant='outlined'
       sx={{
-        // maxWidth: '250px',
         width: '250px',
-        '&:hover': { boxShadow: 20, transform: 'translate(-2px, -5px)' }
+        '&:hover': {
+          // boxShadow: `5px 5px 25px ${colors.greenAccent[200]}`,
+          boxShadow: '5px 5px 25px #868dfb !important',
+          transform: 'translate(-2px, -5px)'
+        }
       }}
     >
       <CardActionArea component={Link} to={`/estimates/${endpoint}`}>

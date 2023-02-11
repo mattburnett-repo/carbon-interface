@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import React from 'react'
+// import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -11,20 +12,22 @@ import {
   Typography,
   Button,
   TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  Autocomplete
+  InputLabel
 } from '@mui/material'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 //  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./vehicles.js file, later)
-import { useVehicleMakes, useVehicleModels } from '../../../data/vehicles.js'
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import VehicleMakes from '../../../components/vehicle/VehicleMakes.jsx'
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import VehicleModels from '../../../components/vehicle/VehicleModels.jsx'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import DistanceUnits from '../../../components/distance/DistanceUnits'
 
-import { type iInitialValues, type SelectOption } from './types'
+import { type iInitialValues } from './types'
 
 const initialValues: iInitialValues = {
   type: 'vehicle',
@@ -53,8 +56,6 @@ const VehicleForm = (): JSX.Element => {
     }
   })
 
-  const vehicleMakes = useVehicleMakes()
-  const vehicleModels = useVehicleModels(formik.values.vehicle_make_id)
   return (
     <Box className='estimate'>
       <form onSubmit={formik.handleSubmit}>
@@ -66,10 +67,6 @@ const VehicleForm = (): JSX.Element => {
         </Typography>
         {/*  TODO:  get vehicle makes based on model selection. finish api call for
           estimate */}
-        <Typography variant='h3' textAlign={'center'}>
-          (todo: get vehicle makes based on model selection. finish api call for
-          estimate)
-        </Typography>
         <Grid
           container
           alignContent={'space-around'}
@@ -78,15 +75,7 @@ const VehicleForm = (): JSX.Element => {
           gridTemplateColumns={'5'}
         >
           <Grid item>
-            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
-            <Select
-              id='distance_unit'
-              labelId='distance_unit-label'
-              {...formik.getFieldProps('distance_unit')}
-            >
-              <MenuItem value={'mi'}>Miles</MenuItem>
-              <MenuItem value={'km'}>Kilometers</MenuItem>
-            </Select>
+            <DistanceUnits parentState={formik} />
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>
@@ -101,28 +90,21 @@ const VehicleForm = (): JSX.Element => {
           </Grid>
           <Grid item>
             <InputLabel id='vehicle_make_id-label'>Vehicle Make</InputLabel>
-            <Autocomplete
-              disablePortal
-              id='vehicle_make_id'
-              onChange={(e, v) => {
-                formik.setFieldValue('vehicle_make_id', v?.id)
-              }}
-              isOptionEqualToValue={(option, value) => option.id === value.id}
-              options={vehicleMakes}
-              getOptionLabel={(option: SelectOption) => option.name}
-              renderInput={(params) => <TextField {...params} />}
-              fullWidth
-              sx={{ width: '250px' }}
-            />
-            {formik.touched.vehicle_make_id !== undefined &&
+            <VehicleMakes parentState={formik} />
+            {formik.touched.vehicle_make_id !== undefined ||
             formik.errors.vehicle_make_id !== undefined ? (
               <div>{formik.errors.vehicle_make_id}</div>
             ) : null}
           </Grid>
-          {formik.values.vehicle_make_id !== '' ? (
+          {formik.values.vehicle_make_id !== '' &&
+          formik.values.vehicle_make_id !== undefined ? (
             <Grid item>
               <InputLabel id='vehicle_model_id-label'>Vehicle Model</InputLabel>
-              <Autocomplete
+              <VehicleModels
+                parentState={formik}
+                makeId={formik.values.vehicle_make_id}
+              />
+              {/* <Autocomplete
                 disablePortal
                 id='vehicle_model_id'
                 onChange={(e, v) => {
@@ -134,7 +116,7 @@ const VehicleForm = (): JSX.Element => {
                 renderInput={(params) => <TextField {...params} />}
                 fullWidth
                 sx={{ width: '250px' }}
-              />
+              /> */}
               {formik.touched.vehicle_model_id !== undefined &&
               formik.errors.vehicle_model_id !== undefined ? (
                 <div>{formik.errors.vehicle_model_id}</div>

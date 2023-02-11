@@ -7,12 +7,6 @@ export interface iInitialValues {
   state: string
 }
 
-export interface LocationOptionElement {
-  code: string
-  name: string
-
-}
-
 // estimate
 export interface iEstimateProps {
   type: string

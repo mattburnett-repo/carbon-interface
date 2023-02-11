@@ -9,7 +9,7 @@ import FlightEstimateDisplay from './FlightEstimateDisplay'
 
 import { type iEstimateProps } from './types'
 
-const baseURL: string = import.meta.env.VITE_API_BASE_URL
+const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
 const FlightEstimate: React.FC<iEstimateProps> = (

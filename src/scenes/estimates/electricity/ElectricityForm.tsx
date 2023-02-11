@@ -23,15 +23,17 @@ import { tokens } from '../../../theme'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-import {
-  regionsEnabled,
-  useCountryCodes,
-  useRegionCodes
-  //  FIXME: resolve ts-expect error eslint @'s
-  // @ts-expect-error (fix this by typing ./contryCodes file, later)
-} from '../../../data/countryCodes.js'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import CountryCodes from '../../../components/regions/CountryCodes.jsx'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import { regionsEnabled } from '../../../components/regions/CountriesList.jsx'
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import RegionCodes from '../../../components/regions/RegionCodes.jsx'
 
-import { type iInitialValues, type LocationOptionElement } from './types'
+import { type iInitialValues } from './types'
 
 const initialValues: iInitialValues = {
   type: 'electricity',
@@ -60,9 +62,6 @@ const ElectricityForm = (): JSX.Element => {
       navigate(`/estimates/${initialValues.type}`, { state: { values } })
     }
   })
-
-  const countryCodes = useCountryCodes()
-  const regionCodes = useRegionCodes(formik.values.country)
 
   // if API doesn't yet support state/region for a country,
   //    set state/region value to original value/empty string
@@ -106,43 +105,20 @@ const ElectricityForm = (): JSX.Element => {
               id='electricity_value'
               {...formik.getFieldProps('electricity_value')}
             />
-
             {formik.touched.electricity_value !== undefined &&
             formik.errors.electricity_value !== undefined ? (
               <div>{formik.errors.electricity_value}</div>
             ) : null}
           </Grid>
           <Grid item>
-            <InputLabel id='country-label'>Country</InputLabel>
-            <Select
-              id='country'
-              labelId='country-label'
-              {...formik.getFieldProps('country')}
-            >
-              {countryCodes.map((country: LocationOptionElement) => (
-                <MenuItem key={country.code} value={country.code}>
-                  {country.name}
-                </MenuItem>
-              ))}
-            </Select>
+            <CountryCodes parentState={formik} />
           </Grid>
           {regionsEnabled.includes(formik.values.country) ? (
             <Grid item>
-              <InputLabel id='state-label'>State</InputLabel>
-              <Select
-                id='state'
-                labelId='state-select-label'
-                {...formik.getFieldProps('state')}
-              >
-                <MenuItem key={initialValues.state} value={initialValues.state}>
-                  -- None --
-                </MenuItem>
-                {regionCodes.map((region: LocationOptionElement) => (
-                  <MenuItem key={region.code} value={region.code}>
-                    {region.name}
-                  </MenuItem>
-                ))}
-              </Select>
+              <RegionCodes
+                parentState={formik}
+                countryCode={formik.values.country}
+              />
             </Grid>
           ) : null}
         </Grid>

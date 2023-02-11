@@ -8,7 +8,7 @@ import EstimatesDisplay from './EstimatesDisplay'
 
 // import data from '../../../data/allEstimates.json'
 
-const baseURL: string = import.meta.env.VITE_API_BASE_URL
+const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
 const Estimates = (): JSX.Element => {

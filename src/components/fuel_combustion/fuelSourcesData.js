@@ -1,6 +1,9 @@
 // https://www.notion.so/Carbon-Interface-Fuel-Sources-0166b59ec1514984895cc7dd35836392
 
-const FuelSources = [
+// DO NOT DELETE THIS
+// THIS IS A DATA FILE FOR THE APPLICATION
+
+const FuelSourceData = [
   {
     api_name: 'bit',
     name: 'Bituminous Coal',
@@ -68,4 +71,4 @@ const FuelSources = [
   }
 ]
 
-export default FuelSources
+export default FuelSourceData

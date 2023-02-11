@@ -17,6 +17,10 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
+//  FIXME: resolve ts-expect error eslint @'s
+// @ts-expect-error (fix this by typing ./contryCodes file, later)
+import DistanceUnits from '../../../components/distance/DistanceUnits'
+
 import { type iInitialValues } from './types'
 
 const initialValues: iInitialValues = {
@@ -90,15 +94,7 @@ const ShippingForm = (): JSX.Element => {
             ) : null}
           </Grid>
           <Grid item>
-            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
-            <Select
-              id='distance_unit'
-              labelId='distance_unit-label'
-              {...formik.getFieldProps('distance_unit')}
-            >
-              <MenuItem value={'mi'}>Miles</MenuItem>
-              <MenuItem value={'km'}>Kilometers</MenuItem>
-            </Select>
+            <DistanceUnits parentState={formik} />
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>

@@ -102,19 +102,11 @@ const Sidebar = () => {
                   width="100px"
                   height="100px"
                   src={ladderIcon}
-                  style={{ cursor: 'pointer', borderRadius: '50%' }}
+                  style={{ cursor: 'default', borderRadius: '50%' }}
                 />
               </Box>
               <Box textAlign="center">
-                {/* <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: '10px 0 0 0' }}
-                >
-                  Carbon Estimate
-                </Typography> */}
-                <Typography variant="h5" color={colors.greenAccent[500]} sx={{ m: '10px 0 0 0' }}>
+                <Typography variant="h5" color={colors.greenAccent[500]} sx={{ m: '30px 0 0 0' }}>
                   Carbon Interface API Frontend
                 </Typography>
               </Box>
@@ -133,14 +125,14 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: '15px 0 5px 20px' }}
+              sx={{ m: '15px 5px 9px 15px' }}
             >
               Estimates
             </Typography>
             <Item
               title="Electricity"
               to="/estimates/electricity"
-              icon={<TungstenOutlinedIcon />}
+              icon={<TungstenOutlinedIcon sx={{ rotate: '180deg' }}/>}
               selected={selected}
               setSelected={setSelected}
             />

@@ -8,10 +8,6 @@ import { tokens } from '../../../theme'
 import { type iDisplayProps } from './types'
 
 const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
-  // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
-  //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
-  // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
-
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
@@ -57,12 +53,12 @@ const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
         </Grid>
         <Grid item>
           <Typography padding='0.5rem' textTransform={'capitalize'}>
-            Vehicle Model: {data.data.attributes.vehicle_model}
+            Vehicle Year: {data.data.attributes.vehicle_year}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem' textTransform={'capitalize'}>
-            Vehicle Year: {data.data.attributes.vehicle_year}
+            Vehicle Model: {data.data.attributes.vehicle_model}
           </Typography>
         </Grid>
         <Grid item>
