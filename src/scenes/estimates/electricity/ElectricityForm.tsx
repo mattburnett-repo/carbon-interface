@@ -1,6 +1,3 @@
-// FIXME: resolve typescript issue/s
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,21 +13,16 @@ import {
   useTheme
 } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
-import { tokens } from '../../../theme'
-
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
+import { tokens } from '../../../theme'
+// @ts-expect-error type this
 import CountryCodes from '../../../components/regions/CountryCodes.jsx'
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import { regionsEnabled } from '../../../components/regions/CountriesList.jsx'
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import RegionCodes from '../../../components/regions/RegionCodes.jsx'
 
 import { type iInitialValues } from './types'
@@ -133,5 +125,3 @@ const ElectricityForm = (): JSX.Element => {
 }
 
 export default ElectricityForm
-
-/* eslint-enable @typescript-eslint/strict-boolean-expressions */

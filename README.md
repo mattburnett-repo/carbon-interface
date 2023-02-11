@@ -1,11 +1,12 @@
 # Carbon Interface API Frontend
 
-## What
 This is a React application that provides a front end for the [Carbon Interface Estimates API](https://www.carboninterface.com/).
 
-It was created using the [Vite framework](https://vitejs.dev/).
+It is deployed at (deploy link here).
 
-(need a deploy link here)
+There is a limit of 200 api requests per month. The deployed app will not return any data if this limit has already been exceeded during the month.
+
+---
 
 ## Tech Used
 * React 18
@@ -14,30 +15,37 @@ It was created using the [Vite framework](https://vitejs.dev/).
 * Typescript
 * Formik
 * Yup
-* Sass CSS compiler
+* [iso3166-2-db](https://www.npmjs.com/package/iso3166-2-db) (for standardized international country / region codes)
+* [airport-iata-codes](https://www.npmjs.com/package/airport-iata-codes)
+* [react-pro-sidebar](https://www.npmjs.com/package/react-pro-sidebar)
 * Material UI v5
   * @mui/material
     * The Autocomplete component is especially useful
   * @mui/x-data-grid
-* [iso3166-2-db](https://www.npmjs.com/package/iso3166-2-db)
-* [airport-iata-codes](https://www.npmjs.com/package/airport-iata-codes)
-* [react-pro-sidebar](https://www.npmjs.com/package/react-pro-sidebar)
+* Sass CSS compiler
 * Postman (api has a [Collection](https://carbon-interface.s3.ca-central-1.amazonaws.com/assets/Carbon+Interface.postman_collection.json) that is useful for development )
 
 ## Installation and start up
-git clone, etc...
-
-copy sample.env to .env
-
-get [api key](https://www.carboninterface.com/account/api_credentials) and enter into .env
-
+* Clone the repo 
+  ```bash
+  git clone putLinkHere
+  ```
+* Copy sample.env to .env
+  ```bash
+  cp sample.env .env
+  ```
+* [Get an api key](https://www.carboninterface.com/account/api_credentials) and enter it into .env file
+  ```bash
+  VITE_API_KEY=your.api.key.goes.here
+  ```
+* Start the app
+  ```bash
+  yarn dev
+  ```
 ## Todo
-* Clean out todo and fixmes
-* Deploy (Vercel, or...?)
+* Build and Deploy (AWS, Vercel, or...?)
   * update this doc when deployment is complete
-* Resolve duplicate key problem with Vehicle Models
-  
-## Nice-to-have
+* Resolve duplicate key problem with Vehicle Models.
 * Tests. Try using Vitest.
-* Some sort of HOC to reduce repeated code in forms and estimates components.
+* Some sort of HOC / wrapper components to reduce repeated code in forms and estimates components.
 * Start on app for [Carbon Ledger api / functionality](https://docs.carboninterface.com/#/?id=carbon-ledger-api).

@@ -2,8 +2,7 @@ import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import { type iDisplayProps } from './types'
@@ -57,7 +56,6 @@ const ElectricityEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           </Grid>
         ) : null}
         <Grid item>
-          {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>
             Estimated at:
             {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}

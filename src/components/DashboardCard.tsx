@@ -37,7 +37,6 @@ const DashboardCard: React.FC<iProps> = ({
       sx={{
         width: '250px',
         '&:hover': {
-          // boxShadow: `5px 5px 25px ${colors.greenAccent[200]}`,
           boxShadow: '5px 5px 25px #868dfb !important',
           transform: 'translate(-2px, -5px)'
         }
@@ -47,7 +46,9 @@ const DashboardCard: React.FC<iProps> = ({
         <CardMedia
           component='img'
           height='250'
-          image={`/src/assets/${image}`}
+          // put images in 'public' folder, not 'assets'
+          // https://stackoverflow.com/questions/68547439/assets-not-showing-after-build-process-with-vite-and-vue3
+          image={image}
           alt={`${title} image`}
         />
         <CardContent>

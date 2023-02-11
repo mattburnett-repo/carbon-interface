@@ -9,15 +9,6 @@ import {
   type GridColDef
 } from '@mui/x-data-grid'
 
-//  TODO: needs better typing. But right now the shape of the api-returned data is different
-//    depending on the kind of estimate.
-//    This is a little confusing, because of overuse of the work 'type':
-//      Estimate 'type' doesn't reflect the type of estimate,
-//        ie. all of the estimates types are 'estimate', and not Electricity / Shipping / usw.
-//        The shape of the data (in the attributes) is different, depending on the type
-
-//  TODO: better styling, as part of overall app styling
-
 const EstimatesDisplay = (props: any): JSX.Element => {
   const { data } = props
 

@@ -17,8 +17,7 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import DistanceUnits from '../../../components/distance/DistanceUnits'
 
 import { type iInitialValues } from './types'

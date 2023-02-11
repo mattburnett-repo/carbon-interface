@@ -1,7 +1,5 @@
-// FIXME: eslint
-/* eslint-disable react/prop-types */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { InputLabel, Select, MenuItem } from '@mui/material'
 
@@ -24,6 +22,8 @@ const DistanceUnits = (props) => {
   )
 }
 
-export default DistanceUnits
+DistanceUnits.propTypes = {
+  parentState: PropTypes.object
+}
 
-/* eslint-enxable react/prop-types */
+export default DistanceUnits

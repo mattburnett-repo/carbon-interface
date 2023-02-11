@@ -2,8 +2,8 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { Box, useTheme } from '@mui/material'
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+
+// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import FlightForm from './FlightForm'

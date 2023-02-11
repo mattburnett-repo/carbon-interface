@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// TODO: upgrade to latest eslint tooling (ln. 25: title, to, etc...)
 
 import React, { useState } from 'react'
 
@@ -19,7 +18,7 @@ import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFi
 import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined'
 import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined'
 
-import ladderIcon from '../../assets/laddericon_01.png'
+import ladderIcon from '../../assets/ladderIcon_01.png'
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme()
@@ -84,8 +83,8 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  Carbon Estimates
+                <Typography variant="h3" color={colors.grey[100]} marginRight={'10px'}>
+                  Carbon Interface
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -105,11 +104,11 @@ const Sidebar = () => {
                   style={{ cursor: 'default', borderRadius: '50%' }}
                 />
               </Box>
-              <Box textAlign="center">
+              {/* <Box textAlign="center">
                 <Typography variant="h5" color={colors.greenAccent[500]} sx={{ m: '30px 0 0 0' }}>
                   Carbon Interface API Frontend
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
           )}
 
@@ -179,3 +178,5 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+
+/* eslint-enable react/prop-types */

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+
+// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import {
   useFuelSourceName
-  //  FIXME: resolve ts-expect error eslint @'s
+
   // @ts-expect-error (fix this by typing ./fuelSources file, later)
 } from '../../../components/fuel_combustion/FuelSources.jsx'
 
@@ -66,7 +66,6 @@ const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
         </Grid>
 
         <Grid item>
-          {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>
             Estimated at:
             {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}

@@ -2,13 +2,10 @@ import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import { type iDisplayProps, type iLeg } from './types'
-
-// TODO: validation here and in FlightLeg needs to be improved. Not really using Formik completely well.
 
 const FlightEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   const theme = useTheme()
@@ -48,7 +45,6 @@ const FlightEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           </Typography>
         </Grid>
         <Grid item>
-          {/*  FIXME: better date/time formatting */}
           <Typography padding='0.5rem'>
             Estimated at:
             {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}
@@ -74,7 +70,6 @@ const FlightEstimateDisplay = (data: iDisplayProps): JSX.Element => {
                     key={`${leg.departure_airport}-${leg.destination_airport}-${i}`}
                   >
                     {leg.departure_airport} to {leg.destination_airport}
-                    {/* FIXME: {leg?.cabin_class !== undefined ? leg.cabin_class : null} */}
                   </Typography>
                 )
               })}

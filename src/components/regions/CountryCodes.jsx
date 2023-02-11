@@ -1,7 +1,5 @@
-// FIXME: eslint
-/* eslint-disable react/prop-types */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { InputLabel, Select, MenuItem } from '@mui/material'
 
@@ -53,4 +51,6 @@ const CountryCodes = (props) => {
 
 export default CountryCodes
 
-/* eslint-enxable react/prop-types */
+CountryCodes.propTypes = {
+  parentState: PropTypes.object
+}

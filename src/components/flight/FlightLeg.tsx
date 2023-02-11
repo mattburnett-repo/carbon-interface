@@ -1,16 +1,7 @@
-// FIXME: resolve the issue with no-floating-promises
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
-// TODO: sort out field validation
-
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Grid, Typography, Button, useTheme } from '@mui/material'
-
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
-import { tokens } from '../../theme'
 
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
@@ -18,10 +9,11 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
+import { tokens } from '../../theme'
+// @ts-expect-error type this
 import AirportSelect from './AirportSelect.jsx'
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import CabinClassSelect from './CabinClassSelect.jsx'
 
 import {
@@ -78,7 +70,6 @@ const FlightLeg = (props: any): JSX.Element => {
       parentState.push(leg)
 
       // do this to re-render the form and update the leg/s array display
-      // FIXME: find a better way to do this.
       navigate(`/estimates/${initialValues.type}`)
     }
   }
@@ -91,7 +82,6 @@ const FlightLeg = (props: any): JSX.Element => {
     parentState.splice(i, 1)
 
     // do this to re-render the form and update the leg/s array display
-    // FIXME: find a better way to do this.
     navigate(`/estimates/${initialValues.type}`)
   }
 
@@ -181,5 +171,3 @@ const FlightLeg = (props: any): JSX.Element => {
 }
 
 export default FlightLeg
-
-/* eslint-enable @typescript-eslint/no-floating-promises */

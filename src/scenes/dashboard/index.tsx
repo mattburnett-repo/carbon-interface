@@ -2,8 +2,7 @@ import React from 'react'
 
 import { Box, Typography, Grid, useTheme } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import { tokens } from '../../theme'
 import DashboardCard from '../../components/DashboardCard'
 

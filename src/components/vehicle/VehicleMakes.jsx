@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-// FIXME: add prop-types
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import { Autocomplete, TextField } from '@mui/material'
 
@@ -22,7 +21,7 @@ const VehicleMakes = (props) => {
     }).then(response => { return response.json() })
       .then(data => setVehicleMakes(data))
       .catch((err) => {
-        const { message } = err.json()
+        const { message } = err
         throw Error(message)
       })
   }, [])
@@ -47,11 +46,6 @@ const VehicleMakes = (props) => {
       )
     )
 
-  //  FIXME: even with useEffect, this renders three times when clicking 'Vehicles' from sidebar
-  //    just a thought: on click/load, it mounts index.tsx, then VehicleForm.tsx, then this file,
-  //      that's three times...
-  // console.log('vehicleMakesList: ', vehicleMakesList)
-
   return (
     <>
       <Autocomplete
@@ -74,4 +68,6 @@ const VehicleMakes = (props) => {
 
 export default VehicleMakes
 
-/* eslint-enable react/prop-types */
+VehicleMakes.propTypes = {
+  parentState: PropTypes.object
+}

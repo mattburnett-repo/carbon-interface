@@ -1,9 +1,6 @@
-// FIXME: eslint
-/* eslint-disable react/prop-types */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
-//  TODO: useMemo() belongs here, somewhere
 import { InputLabel, Select, MenuItem } from '@mui/material'
 
 import { listOfCountries } from './CountriesList'
@@ -50,4 +47,7 @@ const RegionCodes = (props) => {
 
 export default RegionCodes
 
-/* eslint-enxable react/prop-types */
+RegionCodes.propTypes = {
+  parentState: PropTypes.object,
+  countryCode: PropTypes.string
+}

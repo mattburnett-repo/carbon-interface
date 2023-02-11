@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-// FIXME: add prop-types
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import { Autocomplete, TextField } from '@mui/material'
 
@@ -28,9 +27,6 @@ const VehicleModels = (props) => {
       })
   }, [makeId])
 
-  // FIXME: clean apiResponse to remove dupes. year and name are duped
-  //    vehicleModels will become the de-deduped version. for now, set it
-  //      to apiResponse and cludge things with the id in the Autocomplete component
   const vehicleModels = apiResponse
 
   // this is the final list
@@ -48,6 +44,12 @@ const VehicleModels = (props) => {
         : 1
     )
     // dedupe here?
+    //    https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
+    // .filter((value, index, self) =>
+    //   index === self.findIndex((t) => (
+    //     t.year === value.year && t.name === value.name
+    //   ))
+    // )
     .forEach((record) =>
       vehicleModelsList.push(
         JSON.parse(
@@ -59,10 +61,6 @@ const VehicleModels = (props) => {
         )
       )
     )
-
-  //  FIXME: even with useEffect, this renders three times when clicking 'Vehicles' from sidebar
-  //    just a thought: on click/load, it mounts index.tsx, then VehicleForm.tsx, then this file,
-  //      that's three times...
 
   return (
     <>
@@ -87,4 +85,7 @@ const VehicleModels = (props) => {
 
 export default VehicleModels
 
-/* eslint-enable react/prop-types */
+VehicleModels.propTypes = {
+  parentState: PropTypes.object,
+  makeId: PropTypes.string
+}

@@ -1,6 +1,3 @@
-// FIXME: resolve the issue with no-floating-promises
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,15 +11,13 @@ import {
   useTheme
 } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import DistanceUnits from '../../../components/distance/DistanceUnits'
 
 import FlightLeg from '../../../components/flight/FlightLeg'
@@ -106,5 +101,3 @@ const FlightForm = (): JSX.Element => {
 }
 
 export default FlightForm
-
-/* eslint-enable @typescript-eslint/no-floating-promises */

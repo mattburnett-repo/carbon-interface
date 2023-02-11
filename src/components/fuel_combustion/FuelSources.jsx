@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-// FIXME: add prop-types
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import FuelSourceData from './fuelSourcesData.js'
 
@@ -102,4 +100,9 @@ export const FuelSourceUnits = (props) => {
   )
 }
 
-/* eslint-enable react/prop-types */
+FuelSourceTypes.propTypes = {
+  parentState: PropTypes.object
+}
+FuelSourceUnits.propTypes = {
+  parentState: PropTypes.object
+}

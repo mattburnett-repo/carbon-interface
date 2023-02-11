@@ -1,9 +1,4 @@
-// FIXME: resolve the issue with no-floating-promises
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import React from 'react'
-// import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -18,13 +13,11 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import VehicleMakes from '../../../components/vehicle/VehicleMakes.jsx'
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import VehicleModels from '../../../components/vehicle/VehicleModels.jsx'
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./contryCodes file, later)
+// @ts-expect-error type this
 import DistanceUnits from '../../../components/distance/DistanceUnits'
 
 import { type iInitialValues } from './types'
@@ -65,8 +58,6 @@ const VehicleForm = (): JSX.Element => {
         >
           {formik.values.type}
         </Typography>
-        {/*  TODO:  get vehicle makes based on model selection. finish api call for
-          estimate */}
         <Grid
           container
           alignContent={'space-around'}
@@ -104,19 +95,6 @@ const VehicleForm = (): JSX.Element => {
                 parentState={formik}
                 makeId={formik.values.vehicle_make_id}
               />
-              {/* <Autocomplete
-                disablePortal
-                id='vehicle_model_id'
-                onChange={(e, v) => {
-                  formik.setFieldValue('vehicle_model_id', v?.id)
-                }}
-                isOptionEqualToValue={(option, value) => option.id === value.id}
-                options={vehicleModels}
-                getOptionLabel={(option: SelectOption) => option.name}
-                renderInput={(params) => <TextField {...params} />}
-                fullWidth
-                sx={{ width: '250px' }}
-              /> */}
               {formik.touched.vehicle_model_id !== undefined &&
               formik.errors.vehicle_model_id !== undefined ? (
                 <div>{formik.errors.vehicle_model_id}</div>
@@ -135,6 +113,3 @@ const VehicleForm = (): JSX.Element => {
 }
 
 export default VehicleForm
-
-/* eslint-enable @typescript-eslint/strict-boolean-expressions */
-/* eslint-enable @typescript-eslint/no-floating-promises */

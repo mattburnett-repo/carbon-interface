@@ -1,7 +1,5 @@
-// FIXME: eslint
-/* eslint-disable react/prop-types */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Typography,
@@ -69,6 +67,10 @@ export const useAirportCode = (code) => {
   return allData(code)
 }
 
-export default AirportSelect
+AirportSelect.propTypes = {
+  parentState: PropTypes.object,
+  endpoint: PropTypes.string,
+  title: PropTypes.string
+}
 
-/* eslint-enable react/prop-types */
+export default AirportSelect

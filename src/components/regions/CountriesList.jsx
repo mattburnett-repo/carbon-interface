@@ -1,7 +1,6 @@
 // docs about the data package: https://www.npmjs.com/package/iso3166-2-db
 // usage info: https://codesandbox.io/s/LgBN3qy5j
 
-//  TODO: useMemo() belongs here, somewhere
 import { getDataSet, reduce } from 'iso3166-2-db'
 
 // these are the countries that Carbon Interface API currently supports
@@ -43,5 +42,5 @@ const enabledCountriesList = [
 
 export const listOfCountries = reduce(getDataSet(), 'en', enabledCountriesList)
 
-// TODO: update this list if/when Carbon Interface API provides region-level coverage for other countries
+// update this list if/when Carbon Interface API provides region-level coverage for other countries
 export const regionsEnabled = ['US', 'CA']

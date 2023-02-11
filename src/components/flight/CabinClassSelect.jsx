@@ -1,7 +1,5 @@
-// FIXME: eslint
-/* eslint-disable react/prop-types */
-
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Typography, Select, MenuItem } from '@mui/material'
 
@@ -23,6 +21,8 @@ const CabinClassSelect = (props) => {
   )
 }
 
-export default CabinClassSelect
+CabinClassSelect.propTypes = {
+  parentState: PropTypes.object
+}
 
-/* eslint-enable react/prop-types */
+export default CabinClassSelect

@@ -1,5 +1,3 @@
-//  TODO: material useTheme in all scenes/ components
-
 import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -7,13 +5,13 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './styles/index.css'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
-//  FIXME: resolve ts-expect error eslint @'s
-// @ts-expect-error (fix this by typing ./theme file, later)
+// @ts-expect-error type this
 import { ColorModeContext, useMode } from './theme'
-// @ts-expect-error (fix this by typing Topbar file, later)
+// @ts-expect-error type this
 import Topbar from './scenes/global/Topbar'
-// @ts-expect-error (fix this by typing Sidebar file, later)
+// @ts-expect-error type this
 import Sidebar from './scenes/global/Sidebar'
+
 import Dashboard from './scenes/dashboard'
 import LoadingDisplay from './components/LoadingDisplay'
 
@@ -45,6 +43,7 @@ const App = (): JSX.Element => {
               <Suspense fallback={<LoadingDisplay />}>
                 <Routes>
                   <Route path='/' element={<Dashboard />} />
+                  {/* <Route path='/test' element={<LoadingDisplay />} /> */}
                   <Route
                     path='/estimates/electricity'
                     element={<Electricity />}
@@ -57,7 +56,6 @@ const App = (): JSX.Element => {
                     element={<FuelCombustion />}
                   />
                   <Route path='/estimates/estimate' element={<Estimate />} />
-                  <Route path='/estimates/test' element={<Flight />} />
                 </Routes>
               </Suspense>
             </main>

@@ -2,11 +2,6 @@ import React from 'react'
 
 import { Box, Typography } from '@mui/material'
 
-// interface iProps {
-//   message?: string
-// }
-
-//  TODO: better typing of prop/s
 const ErrorDisplay = (errorProp: any): JSX.Element => {
   const { name, message } = errorProp.error
 

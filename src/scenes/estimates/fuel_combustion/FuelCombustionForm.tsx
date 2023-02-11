@@ -1,7 +1,3 @@
-// FIXME: resolve these typescript issues
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,8 +16,8 @@ import * as yup from 'yup'
 import {
   FuelSourceTypes,
   FuelSourceUnits
-  //  FIXME: resolve ts-expect error eslint @'s
-  // @ts-expect-error (fix this by typing ./contryCodes file, later)
+
+  // @ts-expect-error type this
 } from '../../../components/fuel_combustion/FuelSources.jsx'
 
 import { type iFormInitialValues } from './types'
@@ -103,6 +99,3 @@ const FuelCombustionForm = (): JSX.Element => {
 }
 
 export default FuelCombustionForm
-
-/* eslint-enable @typescript-eslint/strict-boolean-expressions */
-/* eslint-enable @typescript-eslint/no-floating-promises */
