@@ -27,7 +27,7 @@ const ElectricityEstimate: React.FC<iInitialValues> = (
         body: JSON.stringify({ ...requestData })
       })
 
-      if (response.status === 422) {
+      if (!response.ok) {
         const { message } = await response.json()
 
         throw Error(message)
