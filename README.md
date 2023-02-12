@@ -2,9 +2,9 @@
 
 This is a React application that provides a front end for the [Carbon Interface Estimates API](https://www.carboninterface.com/).
 
-It is deployed at (deploy link here).
+It is deployed [here](https://carbon-interface.vercel.app/).
 
-There is a limit of 200 api requests per month. The deployed app will not return any estimate data if this limit has already been exceeded during the month.
+There is a limit of 200 api requests per month. The api/app will return an error if this monthly limit has already been exceeded.
 
 ---
 
@@ -43,8 +43,6 @@ There is a limit of 200 api requests per month. The deployed app will not return
   yarn dev
   ```
 ## To Do
-* Build and Deploy (AWS, Vercel, or...?)
-  * update this doc when deployment is complete
 * Tests. Try using Vitest.
 * Some sort of HOC / wrapper components to reduce repeated code in forms and estimates components.
 * Start on app for [Carbon Ledger api / functionality](https://docs.carboninterface.com/#/?id=carbon-ledger-api).
