@@ -48,8 +48,3 @@ There is a limit of 200 api requests per month. The deployed app will not return
 * Tests. Try using Vitest.
 * Some sort of HOC / wrapper components to reduce repeated code in forms and estimates components.
 * Start on app for [Carbon Ledger api / functionality](https://docs.carboninterface.com/#/?id=carbon-ledger-api).
-
-## Issues
-* Resolve duplicate key problem in VehicleModels.jsx.
-* Tab-away from app then tab-return in browser causes form to resubmit, triggering a new network request. This shouldn't happen.
-  * Passing requestData to useQuery() queryKeys, but this doesn't consistently solve the problem.
