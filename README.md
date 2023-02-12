@@ -10,8 +10,6 @@ There is a limit of 200 api requests per month. The api/app will return an error
 
 ## Tech Used
 * React 18
-  * useState / useEffect / useQuery
-  * Lazy module loading
 * Typescript
 * Formik
 * Yup
@@ -19,9 +17,6 @@ There is a limit of 200 api requests per month. The api/app will return an error
 * [airport-iata-codes](https://www.npmjs.com/package/airport-iata-codes)
 * [react-pro-sidebar](https://www.npmjs.com/package/react-pro-sidebar)
 * Material UI v5
-  * @mui/material
-    * The Autocomplete component is especially useful
-  * @mui/x-data-grid
 * Sass CSS compiler
 * Postman (api has a [Collection](https://carbon-interface.s3.ca-central-1.amazonaws.com/assets/Carbon+Interface.postman_collection.json) that is useful for development )
 
