@@ -9,7 +9,9 @@ There is a limit of 200 api requests per month. The api/app will return an error
 ---
 
 ## Tech Used
+* Vite
 * React 18
+* Vercel Analytics
 * Typescript
 * Formik
 * Yup
@@ -29,7 +31,7 @@ There is a limit of 200 api requests per month. The api/app will return an error
   ```bash
   cp sample.env .env
   ```
-* [Get an api key](https://www.carboninterface.com/account/api_credentials) and enter it into .env file
+* [Get an api key](https://www.carboninterface.com/account/api_credentials) and enter it into the .env file
   ```bash
   VITE_API_KEY=your.api.key.goes.here
   ```
@@ -38,6 +40,9 @@ There is a limit of 200 api requests per month. The api/app will return an error
   yarn dev
   ```
 ## To Do
+* Analytics
+  * Vercel Audiences
+  * Web Vitals
 * Tests. Try using Vitest.
 * Some sort of HOC / wrapper components to reduce repeated code in forms and estimates components.
 * Start on app for [Carbon Ledger api / functionality](https://docs.carboninterface.com/#/?id=carbon-ledger-api).
