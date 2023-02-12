@@ -4,7 +4,7 @@ This is a React application that provides a front end for the [Carbon Interface 
 
 It is deployed at (deploy link here).
 
-There is a limit of 200 api requests per month. The deployed app will not return any data if this limit has already been exceeded during the month.
+There is a limit of 200 api requests per month. The deployed app will not return any estimate data if this limit has already been exceeded during the month.
 
 ---
 
@@ -42,10 +42,14 @@ There is a limit of 200 api requests per month. The deployed app will not return
   ```bash
   yarn dev
   ```
-## Todo
+## To Do
 * Build and Deploy (AWS, Vercel, or...?)
   * update this doc when deployment is complete
-* Resolve duplicate key problem with Vehicle Models.
 * Tests. Try using Vitest.
 * Some sort of HOC / wrapper components to reduce repeated code in forms and estimates components.
 * Start on app for [Carbon Ledger api / functionality](https://docs.carboninterface.com/#/?id=carbon-ledger-api).
+
+## Issues
+* Resolve duplicate key problem in VehicleModels.jsx.
+* Tab-away from app then tab-return in browser causes form to resubmit, triggering a new network request. This shouldn't happen.
+  * Passing requestData to useQuery() queryKeys, but this doesn't consistently solve the problem.

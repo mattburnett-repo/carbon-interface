@@ -43,7 +43,7 @@ const VehicleModels = (props) => {
         ? -1
         : 1
     )
-    // dedupe here?
+    // TODO: dedupe here
     //    https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
     // .filter((value, index, self) =>
     //   index === self.findIndex((t) => (
