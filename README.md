@@ -28,7 +28,7 @@ There is a limit of 200 api requests per month. The deployed app will not return
 ## Installation and start up
 * Clone the repo 
   ```bash
-  git clone putLinkHere
+  git clone https://github.com/mattburnett-repo/carbon-interface.git
   ```
 * Copy sample.env to .env
   ```bash
