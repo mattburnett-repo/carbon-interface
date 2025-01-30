@@ -1,17 +1,10 @@
 import React, { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
-
-import './styles/index.css'
 import { CssBaseline, ThemeProvider } from '@mui/material'
-
-// @ts-expect-error type this
 import { ColorModeContext, useMode } from './theme'
-// @ts-expect-error type this
 import Topbar from './scenes/global/Topbar'
-// @ts-expect-error type this
 import Sidebar from './scenes/global/Sidebar'
-
 import Dashboard from './scenes/dashboard'
 import LoadingDisplay from './components/LoadingDisplay'
 

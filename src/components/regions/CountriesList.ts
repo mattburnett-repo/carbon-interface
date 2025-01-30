@@ -1,11 +1,9 @@
-// docs about the data package: https://www.npmjs.com/package/iso3166-2-db
-// usage info: https://codesandbox.io/s/LgBN3qy5j
-
 import { getDataSet, reduce } from 'iso3166-2-db'
+import { LocationOptionElement } from './types'
 
 // these are the countries that Carbon Interface API currently supports
 // https://www.notion.so/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0
-const enabledCountriesList = [
+const enabledCountriesList: string[] = [
   'US',
   'CA',
   'AT',
@@ -40,7 +38,8 @@ const enabledCountriesList = [
   'GB'
 ].sort()
 
-export const listOfCountries = reduce(getDataSet(), 'en', enabledCountriesList)
+const countryData = reduce(getDataSet(), 'en', enabledCountriesList)
+export const listOfCountries: LocationOptionElement[] = Object.values(countryData)
 
 // update this list if/when Carbon Interface API provides region-level coverage for other countries
-export const regionsEnabled = ['US', 'CA']
+export const regionsEnabled: string[] = ['US', 'CA'] 

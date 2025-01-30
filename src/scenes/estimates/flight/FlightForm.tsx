@@ -11,28 +11,33 @@ import {
   useTheme
 } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
-// @ts-expect-error type this
 import DistanceUnits from '../../../components/distance/DistanceUnits'
-
 import FlightLeg from '../../../components/flight/FlightLeg'
-
 import { type iFlightFormFields } from './types'
 
 const initialValues: iFlightFormFields = {
   type: 'flight',
   passengers: 1,
-  legs: [],
-  distance_unit: 'km'
+  legs: [{
+    departure_airport: '',
+    destination_airport: '',
+    cabin_class: 'economy'
+  }],
+  distance_unit: 'km',
+  cabin_class: 'economy'
 }
 
 const validationSchema = yup.object().shape({
-  legs: yup.array().min(1, 'At least one flight leg is required.'),
+  legs: yup.array().of(
+    yup.object().shape({
+      departure_airport: yup.string().required('At least one flight leg is required.'),
+      destination_airport: yup.string().required('At least one flight leg is required.')
+    })
+  ).min(1, 'At least one flight leg is required.'),
   passengers: yup
     .number()
     .min(1, 'Passenger Count must be greater than 0.')
@@ -49,14 +54,14 @@ const FlightForm = (): JSX.Element => {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values: object): void => {
-      navigate(`/estimates/${initialValues.type}`, { state: { values } })
+    onSubmit: (values: iFlightFormFields): void => {
+      navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
   return (
     <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
-      <form onSubmit={formik.handleSubmit}>
+      <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
           sx={{
@@ -74,21 +79,36 @@ const FlightForm = (): JSX.Element => {
           columnGap={'12.5rem'}
         >
           <Grid item>
-            <DistanceUnits parentState={formik} />
+            <DistanceUnits 
+              value={formik.values.distance_unit}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
           </Grid>
           <Grid item>
-            <InputLabel id='passengers-label'>Passengers</InputLabel>
+            <InputLabel htmlFor="passengers">Passengers</InputLabel>
             <TextField
-              id='passengers'
+              id="passengers"
+              inputProps={{ "aria-label": "passengers" }}
               {...formik.getFieldProps('passengers')}
             />
             {formik.touched.passengers !== undefined &&
             formik.errors.passengers !== undefined ? (
-              <div>{formik.errors.passengers}</div>
+              <div role="alert">{formik.errors.passengers}</div>
             ) : null}
           </Grid>
 
           <FlightLeg parentState={formik.values.legs} />
+          {formik.touched.legs !== undefined &&
+          formik.errors.legs !== undefined ? (
+            <Grid item xs={12}>
+              <Typography role="alert" color="error" sx={{ textAlign: 'center', mt: 2 }}>
+                {Array.isArray(formik.errors.legs) 
+                  ? 'At least one flight leg is required.' 
+                  : String(formik.errors.legs)}
+              </Typography>
+            </Grid>
+          ) : null}
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
           <Button type='submit' color='secondary' variant='contained'>

@@ -1,15 +1,9 @@
-/* eslint-disable object-curly-spacing */
-/* eslint-disable react/prop-types */
-
-import React, {useState} from 'react'
-
-import {ProSidebar, Menu, MenuItem} from 'react-pro-sidebar'
-import {Box, IconButton, Typography, useTheme} from '@mui/material'
-import {Link} from 'react-router-dom'
-
+import React, { useState } from 'react'
+import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar'
+import { Box, IconButton, Typography, useTheme } from '@mui/material'
+import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
-
-import {tokens} from '../../theme'
+import { tokens } from '../../theme'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import TungstenOutlinedIcon from '@mui/icons-material/TungstenOutlined'
@@ -18,19 +12,23 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined'
 import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined'
 import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined'
-
 import ladderIcon from '../../assets/ladderIcon_01.png'
 
-const Item = ({title, to, icon, selected, setSelected}) => {
+interface ItemProps {
+  title: string
+  to: string
+  icon?: React.ReactElement
+  selected: string
+  setSelected: (title: string) => void
+}
+
+const Item = ({ title, to, icon, selected, setSelected }: ItemProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
   return (
     <MenuItem
       active={selected === title}
-      style={{
-        color: colors.grey[100]
-      }}
+      style={{ color: colors.grey[100] }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
@@ -40,7 +38,7 @@ const Item = ({title, to, icon, selected, setSelected}) => {
   )
 }
 
-const Sidebar = () => {
+const Sidebar = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -68,60 +66,19 @@ const Sidebar = () => {
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape='square'>
-          {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            style={{
-              margin: '10px 0 20px 0',
-              color: colors.grey[100]
-            }}
           >
             {!isCollapsed && (
-              <Box
-                display='flex'
-                justifyContent='space-between'
-                alignItems='center'
-                ml='15px'
-              >
-                <Typography
-                  variant='h3'
-                  color={colors.grey[100]}
-                  marginRight={'10px'}
-                >
-                  Carbon Interface
-                </Typography>
+              <Box display='flex' justifyContent='space-between' alignItems='center'>
+                <Typography variant='h3'>Carbon Interface</Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
               </Box>
             )}
           </MenuItem>
-
-          {!isCollapsed && (
-            <Box mb='25px'>
-              <Box display='flex' justifyContent='center' alignItems='center'>
-                <a href='https://mattburnett-repo.github.io/portfolio-website/'>
-                  <img
-                    alt='ladder icon'
-                    width='100px'
-                    height='100px'
-                    src={ladderIcon}
-                    style={{
-                      cursor: 'default',
-                      borderRadius: '50%'
-                    }}
-                  />
-                </a>
-              </Box>
-
-              {/* <Box textAlign="center">
-                <Typography variant="h5" color={colors.greenAccent[500]} sx={{ m: '30px 0 0 0' }}>
-                  Carbon Interface API Frontend
-                </Typography>
-              </Box> */}
-            </Box>
-          )}
 
           <Box paddingLeft={isCollapsed ? undefined : '10%'}>
             <Item
@@ -135,14 +92,14 @@ const Sidebar = () => {
             <Typography
               variant='h6'
               color={colors.grey[300]}
-              sx={{m: '15px 5px 9px 15px'}}
+              sx={{ m: '15px 5px 9px 15px' }}
             >
               Estimates
             </Typography>
             <Item
               title='Electricity'
               to='/estimates/electricity'
-              icon={<TungstenOutlinedIcon sx={{rotate: '180deg'}} />}
+              icon={<TungstenOutlinedIcon sx={{ rotate: '180deg' }} />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -182,20 +139,6 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
           </Box>
-          <Box
-            marginTop={5}
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-          >
-            <Item
-              title='&copy; 2023 Matt Burnett'
-              to='https://mattburnett-repo.github.io/portfolio-website/'
-              // image='../../assets/ladderIcon_01.png'
-              // selected={selected}
-              // setSelected={setSelected}
-            />
-          </Box>
         </Menu>
       </ProSidebar>
     </Box>
@@ -203,5 +146,3 @@ const Sidebar = () => {
 }
 
 export default Sidebar
-
-/* eslint-enable react/prop-types */

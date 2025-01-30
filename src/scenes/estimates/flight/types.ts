@@ -2,7 +2,8 @@ export interface iFlightFormFields {
   type: string
   passengers: number
   legs: iLeg[]
-  distance_unit: string
+  distance_unit: 'km' | 'mi'
+  cabin_class: 'economy' | 'premium'
 }
 
 export interface iLeg {
@@ -14,7 +15,7 @@ export interface iLeg {
 export interface iEstimateProps {
   type: string
   passengers: number
-  legs: []
+  legs: iLeg[]
   distance_unit: 'km' | 'mi'
   cabin_class: 'economy' | 'premium'
 }

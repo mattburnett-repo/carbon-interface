@@ -9,12 +9,9 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-// @ts-expect-error type this
 import { tokens } from '../../theme'
-// @ts-expect-error type this
-import AirportSelect from './AirportSelect.jsx'
-// @ts-expect-error type this
-import CabinClassSelect from './CabinClassSelect.jsx'
+import AirportSelect from './AirportSelect'
+import CabinClassSelect from './CabinClassSelect'
 
 import {
   type iLeg,
@@ -37,11 +34,12 @@ const validationSchema = yup.object().shape({
   legs: yup.array().min(1, 'At least one leg is required.')
 })
 
-const FlightLeg = (props: any): JSX.Element => {
-  const { parentState } = props
+interface Props {
+  parentState: any[]  // TODO: Type this properly
+}
 
+const FlightLeg = ({ parentState = [] }: Props): JSX.Element => {
   const navigate = useNavigate()
-
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 

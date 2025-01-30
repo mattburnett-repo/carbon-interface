@@ -2,8 +2,15 @@ import React from 'react'
 
 import { Box, Typography } from '@mui/material'
 
-const ErrorDisplay = (errorProp: any): JSX.Element => {
-  const { name, message } = errorProp.error
+interface ErrorDisplayProps {
+  error: {
+    name: string
+    message: string
+  }
+}
+
+const ErrorDisplay = ({ error }: ErrorDisplayProps): JSX.Element => {
+  const { name, message } = error
 
   return (
     <Box className='estimate' padding={'5rem'}>

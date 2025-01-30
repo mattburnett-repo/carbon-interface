@@ -1,19 +1,19 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-
 import { Box, useTheme } from '@mui/material'
-
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
-
 import FlightForm from './FlightForm'
 import FlightEstimate from './FlightEstimate'
+import { type iFlightFormFields } from './types'
+
+interface LocationState {
+  values: iFlightFormFields
+}
 
 const Flight = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
-  const location = useLocation()
+  const location = useLocation() as { state: LocationState }
 
   return (
     <Box

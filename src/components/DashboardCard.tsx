@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 
 /* eslint-disable @typescript-eslint/indent */
-interface iProps {
+export interface iProps {
   title:
     | 'Electricity'
     | 'Flight'
