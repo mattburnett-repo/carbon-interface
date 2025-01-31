@@ -27,4 +27,12 @@ describe('Topbar', () => {
     renderWithProviders()
     expect(screen.getByAltText('ladder icon')).toBeInTheDocument()
   })
+
+  it('renders portfolio link with correct attributes', () => {
+    renderWithProviders()
+    const link = screen.getByRole('link')
+    expect(link).toHaveAttribute('href', 'https://mattburnett-repo.github.io/portfolio-website/')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+  })
 }) 

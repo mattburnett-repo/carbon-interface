@@ -11,9 +11,24 @@ const Topbar = (): JSX.Element => {
   const colorMode = useContext(ColorModeContext)
 
   return (
-    <Box display='flex' justifyContent='flex-end' p={2} backgroundColor={colors.primary[400]}>
-      <Box display='flex' mr={'3rem'} mt={'1rem'} mb={'1rem'} gap={'40px'}>
-        <a href='https://mattburnett-repo.github.io/portfolio-website/'>
+    <Box sx={{ 
+      display: 'flex', 
+      justifyContent: 'flex-end', 
+      p: 2, 
+      bgcolor: colors.primary[400] 
+    }}>
+      <Box sx={{ 
+        display: 'flex', 
+        mr: '3rem', 
+        mt: '1rem', 
+        mb: '1rem', 
+        gap: '40px' 
+      }}>
+        <a 
+          href='https://mattburnett-repo.github.io/portfolio-website/'
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             alt='ladder icon'
             width='35px'

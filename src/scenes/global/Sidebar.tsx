@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar'
-import { Box, IconButton, Typography, useTheme } from '@mui/material'
+import { Box, IconButton, Typography, useTheme, Tooltip, Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
 import { tokens } from '../../theme'
@@ -20,21 +20,29 @@ interface ItemProps {
   icon?: React.ReactElement
   selected: string
   setSelected: (title: string) => void
+  isCollapsed: boolean
 }
 
-const Item = ({ title, to, icon, selected, setSelected }: ItemProps): JSX.Element => {
+const Item = ({ title, to, icon, selected, setSelected, isCollapsed }: ItemProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   return (
-    <MenuItem
-      active={selected === title}
-      style={{ color: colors.grey[100] }}
-      onClick={() => setSelected(title)}
-      icon={icon}
+    <Tooltip 
+      title={title} 
+      placement="right"
+      arrow
+      disableHoverListener={!isCollapsed}
     >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
+      <MenuItem
+        active={selected === title}
+        style={{ color: colors.grey[100] }}
+        onClick={() => setSelected(title)}
+        icon={icon}
+      >
+        <Typography>{title}</Typography>
+        <Link to={to} />
+      </MenuItem>
+    </Tooltip>
   )
 }
 
@@ -68,40 +76,50 @@ const Sidebar = (): JSX.Element => {
         <Menu iconShape='square'>
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+            icon={isCollapsed ? <MenuOutlinedIcon data-testid="MenuOutlinedIcon" /> : undefined}
           >
-            {!isCollapsed && (
-              <Box display='flex' justifyContent='space-between' alignItems='center'>
-                <Typography variant='h3'>Carbon Interface</Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
-                  <MenuOutlinedIcon />
-                </IconButton>
-              </Box>
-            )}
-          </MenuItem>
+          {!isCollapsed && (
+            <Box 
+              display='flex' 
+              alignItems='center'
+            >
+              <Typography variant='h5'>Carbon Interface</Typography>
+            </Box>
+          )}
+        </MenuItem>
 
-          <Box paddingLeft={isCollapsed ? undefined : '10%'}>
+          <Box paddingLeft={isCollapsed ? undefined : '0'}>
             <Item
               title='Dashboard'
               to='/'
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
 
-            <Typography
-              variant='h6'
-              color={colors.grey[300]}
-              sx={{ m: '15px 5px 9px 15px' }}
-            >
-              Estimates
-            </Typography>
+            {isCollapsed ? (
+              <Divider sx={{ 
+                m: '15px 0',
+                borderColor: colors.grey[300],
+                opacity: 0.4
+              }} />
+            ) : (
+              <Typography
+                variant='h6'
+                color={colors.grey[300]}
+                sx={{ m: '15px 5px 9px 20px' }}
+              >
+                Estimates
+              </Typography>
+            )}
             <Item
               title='Electricity'
               to='/estimates/electricity'
               icon={<TungstenOutlinedIcon sx={{ rotate: '180deg' }} />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title='Flight'
@@ -109,6 +127,7 @@ const Sidebar = (): JSX.Element => {
               icon={<FlightOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title='Shipping'
@@ -116,6 +135,7 @@ const Sidebar = (): JSX.Element => {
               icon={<LocalShippingOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title='Vehicle'
@@ -123,6 +143,7 @@ const Sidebar = (): JSX.Element => {
               icon={<DirectionsCarFilledOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title='Fuel Combustion'
@@ -130,6 +151,7 @@ const Sidebar = (): JSX.Element => {
               icon={<LocalGasStationOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
             <Item
               title='Show Estimates'
@@ -137,6 +159,7 @@ const Sidebar = (): JSX.Element => {
               icon={<FindInPageOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
           </Box>
         </Menu>

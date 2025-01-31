@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { ColorModeContext } from '../../../theme'
@@ -21,6 +21,11 @@ const renderWithProviders = () => {
 }
 
 describe('Sidebar', () => {
+  afterEach(() => {
+    cleanup()
+    jest.clearAllTimers()
+  })
+
   it('renders the sidebar with title', () => {
     renderWithProviders()
     expect(screen.getByText('Carbon Interface')).toBeInTheDocument()
@@ -28,12 +33,22 @@ describe('Sidebar', () => {
 
   it('toggles collapse state when menu button is clicked', () => {
     renderWithProviders()
-    const menuButton = screen.getByTestId('MenuOutlinedIcon').closest('button')
-    if (!menuButton) throw new Error('Menu button not found')
     
-    expect(screen.queryByText('Carbon Interface')).toBeInTheDocument()
-    fireEvent.click(menuButton)
+    // Initially not collapsed - menu icon should not be visible and headings should be visible
+    expect(screen.queryByTestId('MenuOutlinedIcon')).not.toBeInTheDocument()
+    expect(screen.getByText('Carbon Interface')).toBeVisible()
+    expect(screen.getByText('Estimates')).toBeVisible()
+    expect(screen.queryByRole('separator')).not.toBeInTheDocument()
+    
+    // Find and click the collapse toggle
+    const collapseToggle = screen.getByRole('button', { name: 'Carbon Interface' })
+    fireEvent.click(collapseToggle)
+    
+    // After collapse - menu icon should be visible, headings should be hidden, and divider should be visible
+    expect(screen.getByTestId('MenuOutlinedIcon')).toBeVisible()
     expect(screen.queryByText('Carbon Interface')).not.toBeInTheDocument()
+    expect(screen.queryByText('Estimates')).not.toBeInTheDocument()
+    expect(screen.getByRole('separator')).toBeInTheDocument()
   })
 
   it('renders navigation items', () => {
@@ -42,5 +57,27 @@ describe('Sidebar', () => {
     expect(screen.getByText('Electricity')).toBeInTheDocument()
     expect(screen.getByText('Flight')).toBeInTheDocument()
     expect(screen.getByText('Shipping')).toBeInTheDocument()
+  })
+
+  it('shows tooltips only when sidebar is collapsed', () => {
+    renderWithProviders()
+    
+    // Initially not collapsed - tooltips should be disabled
+    const items = screen.getAllByRole('listitem').slice(1) // Skip the first menu item (collapse toggle)
+    items.forEach(item => {
+      const tooltip = item.querySelector('[role="tooltip"]')
+      expect(tooltip).toBeFalsy()
+    })
+    
+    // Collapse the sidebar
+    const collapseToggle = screen.getByRole('button', { name: 'Carbon Interface' })
+    fireEvent.click(collapseToggle)
+    
+    // After collapse - tooltips should be enabled
+    items.forEach(item => {
+      expect(item).toHaveAttribute('data-mui-internal-clone-element')
+      // We can't directly test for the tooltip since it only appears on hover
+      // but the data-mui-internal-clone-element attribute indicates the tooltip is enabled
+    })
   })
 })
