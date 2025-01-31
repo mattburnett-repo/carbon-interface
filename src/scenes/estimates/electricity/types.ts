@@ -1,19 +1,20 @@
 // form
 export interface iInitialValues {
-  type: string
-  electricity_unit: 'kwh' | 'mwh'
-  electricity_value: number
-  country: string
-  state: string
+  type: 'electricity';
+  electricity_value: number;
+  electricity_unit: 'mwh' | 'kwh';
+  country: string;
+  state: string;
+}
+
+export interface iFormProps {
+  onSubmit: (values: iInitialValues) => void;
+  initialValues: iInitialValues;
 }
 
 // estimate
 export interface iEstimateProps {
-  type: string
-  electricity_unit: 'kwh' | 'mwh'
-  electricity_value: number
-  country: string
-  state?: string
+  estimateValues: iInitialValues;
 }
 
 // display

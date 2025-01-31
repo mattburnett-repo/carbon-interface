@@ -2,14 +2,12 @@ import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import {
   useFuelSourceName
 
-  // @ts-expect-error (fix this by typing ./fuelSources file, later)
-} from '../../../components/fuel_combustion/FuelSources.jsx'
+} from '../../../components/fuel_combustion/FuelSources'
 
 import { type iDisplayProps } from './types'
 

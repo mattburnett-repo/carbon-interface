@@ -3,17 +3,21 @@ import { useLocation } from 'react-router-dom'
 
 import { Box, useTheme } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import FuelCombustionForm from './FuelCombustionForm'
 import FuelCombustionEstimate from './FuelCombustionEstimate'
+import { type iFormInitialValues } from './types'
+
+interface LocationState {
+  state: { values: iFormInitialValues } | null
+}
 
 const FuelCombustion = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation()
+  const location = useLocation() as LocationState
 
   return (
     <Box

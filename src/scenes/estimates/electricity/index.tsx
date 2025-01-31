@@ -3,17 +3,35 @@ import { useLocation } from 'react-router-dom'
 
 import { Box, useTheme } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import ElectricityForm from './ElectricityForm'
 import ElectricityEstimate from './ElectricityEstimate'
+import { iInitialValues } from './types'
+
+type LocationState = {
+  values: iInitialValues;
+}
 
 const Electricity = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation()
+  const location = useLocation() as { state: LocationState | null }
+  const initialValues: iInitialValues | undefined = location.state?.values
+
+  const handleSubmit = (values: iInitialValues): void => {
+    // Handle form submission
+    console.log('Form submitted:', values)
+  }
+
+  const defaultValues: iInitialValues = {
+    type: 'electricity',
+    electricity_value: 1,
+    electricity_unit: 'kwh' as const,
+    country: 'us',
+    state: 'ca'
+  } as const
 
   return (
     <Box
@@ -26,9 +44,15 @@ const Electricity = (): JSX.Element => {
         backgroundColor: colors.primary[400]
       }}
     >
-      <ElectricityForm />
-      {location.state?.values !== undefined && (
-        <ElectricityEstimate {...location.state.values} />
+      {!initialValues ? (
+        <ElectricityForm
+          onSubmit={handleSubmit}
+          initialValues={defaultValues}
+        />
+      ) : (
+        <ElectricityEstimate 
+          estimateValues={initialValues}
+        />
       )}
     </Box>
   )

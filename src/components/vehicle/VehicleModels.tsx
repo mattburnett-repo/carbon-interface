@@ -44,6 +44,7 @@ const VehicleModels = ({ parentState, makeId }: VehicleModelsProps): JSX.Element
 
   return (
     <Autocomplete
+      data-testid="vehicle-model-autocomplete"
       disablePortal
       loading
       id='vehicle_model_id'

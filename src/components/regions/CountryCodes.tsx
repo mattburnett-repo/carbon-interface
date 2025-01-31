@@ -4,9 +4,10 @@ import { FormikProps } from 'formik'
 import { listOfCountries } from './CountriesList'
 import { LocationOptionElement } from './types'
 
-interface Props {
-  parentState: FormikProps<{
+interface CountryCodesProps<T> {
+  parentState: FormikProps<T & {
     country: string
+    state: string
   }>
 }
 
@@ -25,7 +26,7 @@ export const useCountryCodes = (): LocationOptionElement[] => {
   return retVal
 }
 
-const CountryCodes = ({ parentState }: Props): JSX.Element => {
+const CountryCodes = <T,>({ parentState }: CountryCodesProps<T>): JSX.Element => {
   const countryCodes = useCountryCodes()
 
   return (

@@ -3,17 +3,20 @@ import { useLocation } from 'react-router-dom'
 
 import { Box, useTheme } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
+import { type iInitialValues } from './types'
 
 import ShippingForm from './ShippingForm'
 import ShippingEstimate from './ShippingEstimate'
 
+interface LocationState {
+  state: { values: iInitialValues } | null
+}
+
 const Shipping = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
-  const location = useLocation()
+  const location = useLocation() as LocationState
 
   return (
     <Box

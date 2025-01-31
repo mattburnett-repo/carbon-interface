@@ -30,9 +30,13 @@ describe('RegionCodes', () => {
     }),
     initialValues: { state: '' }
   } as unknown as FormikProps<{ state: string }>
-
   it('renders state select', () => {
-    render(<RegionCodes parentState={mockFormik} countryCode="US" />)
+    const mockFormikWithCountry = {
+      ...mockFormik,
+      initialValues: { state: '', country: 'US' }
+    } as unknown as FormikProps<{ state: string, country: string }>
+    
+    render(<RegionCodes parentState={mockFormikWithCountry} countryCode="US" />)
     const select = screen.getByRole('button', { 
       name: /state/i
     })
@@ -40,16 +44,25 @@ describe('RegionCodes', () => {
   })
 
   it('renders region options for selected country', async () => {
-    render(<RegionCodes parentState={mockFormik} countryCode="US" />)
+    const mockFormikWithCountry = {
+      ...mockFormik,
+      initialValues: { state: '', country: 'US' }
+    } as unknown as FormikProps<{ state: string, country: string }>
+
+    render(<RegionCodes parentState={mockFormikWithCountry} countryCode="US" />)
     const select = screen.getByRole('button', { name: /state/i })
     await userEvent.click(select)
     
     expect(screen.getByText('California')).toBeInTheDocument()
     expect(screen.getByText('New York')).toBeInTheDocument()
   })
-
   it('shows none option', async () => {
-    render(<RegionCodes parentState={mockFormik} countryCode="US" />)
+    const mockFormikWithCountry = {
+      ...mockFormik,
+      initialValues: { state: '', country: 'US' }
+    } as unknown as FormikProps<{ state: string, country: string }>
+
+    render(<RegionCodes parentState={mockFormikWithCountry} countryCode="US" />)
     const select = screen.getByRole('button', { name: /state/i })
     await userEvent.click(select)
     

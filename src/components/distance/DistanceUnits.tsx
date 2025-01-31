@@ -1,26 +1,29 @@
 import React from 'react'
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { FormikProps } from 'formik'
 
-interface Props {
-  value: string
-  onChange: (event: any) => void
-  onBlur: (event: any) => void
+interface FormValues {
+  distance_unit: string
 }
 
-const DistanceUnits = ({ value = 'km', onChange, onBlur }: Props): JSX.Element => {
+interface Props {
+  parentState: FormikProps<FormValues>
+}
+
+const DistanceUnits = ({ parentState }: Props): JSX.Element => {
   return (
-    <FormControl>
-      <InputLabel id='distance-unit-label'>Distance Unit</InputLabel>
+    <FormControl fullWidth>
+      <InputLabel id="distance-unit-label">Distance Unit</InputLabel>
       <Select
-        labelId='distance-unit-label'
-        label='Distance Unit'
+        labelId="distance-unit-label"
+        label="Distance Unit"
         name="distance_unit"
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
+        value={parentState?.values?.distance_unit || ''}
+        onChange={parentState?.handleChange || (() => {})}
+        onBlur={parentState?.handleBlur || (() => {})}
       >
-        <MenuItem value='km'>Kilometers</MenuItem>
-        <MenuItem value='mi'>Miles</MenuItem>
+        <MenuItem value="km">Kilometers</MenuItem>
+        <MenuItem value="mi">Miles</MenuItem>
       </Select>
     </FormControl>
   )

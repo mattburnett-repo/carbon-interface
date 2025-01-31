@@ -2,6 +2,7 @@ import React from 'react'
 import { InputLabel, Select, MenuItem } from '@mui/material'
 import { FormikProps } from 'formik'
 import FuelSourceData from './fuelSourcesData'
+import { type iFormInitialValues } from '../../scenes/estimates/fuel_combustion/types'
 
 interface FuelSource {
   api_name: string
@@ -9,13 +10,8 @@ interface FuelSource {
   units: { unit: string }[]
 }
 
-export interface FormValues {
-  fuel_source_type: string
-  fuel_source_unit: string
-}
-
-interface Props {
-  parentState: FormikProps<FormValues>
+interface FuelSourceProps {
+  parentState: FormikProps<iFormInitialValues>
 }
 
 // get id/api_name and name for all fuel sources
@@ -41,7 +37,7 @@ export const useFuelSourceName = (idCode: string): string => {
   return (FuelSourceData as FuelSource[]).find((source) => source.api_name === idCode)?.name || ''
 }
 
-export const FuelSourceTypes = ({ parentState }: Props): JSX.Element => {
+export const FuelSourceTypes: React.FC<FuelSourceProps> = ({ parentState }) => {
   const fuelSourceTypes = useFuelSources()
 
   return (
@@ -73,7 +69,7 @@ export const useFuelSourceUnits = (name: string) => {
   return (FuelSourceData as FuelSource[]).find((source) => source.api_name === name)?.units || []
 }
 
-export const FuelSourceUnits = ({ parentState }: Props): JSX.Element => {
+export const FuelSourceUnits: React.FC<FuelSourceProps> = ({ parentState }) => {
   const fuelSourceUnits = useFuelSourceUnits(parentState.values.fuel_source_type)
 
   return (

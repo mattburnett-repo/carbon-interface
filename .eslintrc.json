@@ -7,7 +7,21 @@
     "plugin:react/recommended",
     "standard-with-typescript"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.spec.ts", // Playwright often uses .spec.ts
+        "**/*.spec.tsx"
+      ],
+      "rules": {
+        "@total-typescript/passing-generics-to-types": "off",
+        "ts-plugin-type-coverage": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ],
   "parserOptions": {
     "project": "./ui/tsconfig.json",
     "ecmaVersion": "latest",

@@ -11,8 +11,9 @@ type CountryList = {
   }
 }
 
-interface Props {
-  parentState: FormikProps<{
+interface RegionCodesProps<T> {
+  parentState: FormikProps<T & {
+    country: string
     state: string
   }>
   countryCode: string
@@ -32,7 +33,7 @@ export const useRegionCodes = (countryCode: string): LocationOptionElement[] => 
     }))
 }
 
-const RegionCodes = ({ parentState, countryCode }: Props): JSX.Element => {
+const RegionCodes = <T,>({ parentState, countryCode }: RegionCodesProps<T>): JSX.Element => {
   const regionCodes = useRegionCodes(countryCode)
 
   return (

@@ -16,16 +16,12 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
-// @ts-expect-error type this
-import CountryCodes from '../../../components/regions/CountryCodes.jsx'
-// @ts-expect-error type this
-import { regionsEnabled } from '../../../components/regions/CountriesList.jsx'
-// @ts-expect-error type this
-import RegionCodes from '../../../components/regions/RegionCodes.jsx'
+import CountryCodes from '../../../components/regions/CountryCodes'
+import { regionsEnabled } from '../../../components/regions/CountriesList'
+import RegionCodes from '../../../components/regions/RegionCodes'
 
-import { type iInitialValues } from './types'
+import { type iInitialValues, type iFormProps } from './types'
 
 const initialValues: iInitialValues = {
   type: 'electricity',
@@ -41,17 +37,18 @@ const validationSchema = yup.object().shape({
     .required('Electricity Value is required. Numbers only.')
 })
 
-const ElectricityForm = (): JSX.Element => {
+const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   const navigate = useNavigate()
 
-  const formik = useFormik({
+  const formik = useFormik<iInitialValues>({
     initialValues,
     validationSchema,
-    onSubmit: (values: object): void => {
-      navigate(`/estimates/${initialValues.type}`, { state: { values } })
+    onSubmit: (values: iInitialValues): void => {
+      onSubmit(values)
+      navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
@@ -103,11 +100,11 @@ const ElectricityForm = (): JSX.Element => {
             ) : null}
           </Grid>
           <Grid item>
-            <CountryCodes parentState={formik} />
+            <CountryCodes<iInitialValues> parentState={formik} />
           </Grid>
           {regionsEnabled.includes(formik.values.country) ? (
             <Grid item>
-              <RegionCodes
+              <RegionCodes<iInitialValues>
                 parentState={formik}
                 countryCode={formik.values.country}
               />

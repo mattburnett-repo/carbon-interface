@@ -17,8 +17,7 @@ import {
   FuelSourceTypes,
   FuelSourceUnits
 
-  // @ts-expect-error type this
-} from '../../../components/fuel_combustion/FuelSources.jsx'
+} from '../../../components/fuel_combustion/FuelSources'
 
 import { type iFormInitialValues } from './types'
 
@@ -41,17 +40,17 @@ const validationSchema = yup.object().shape({
 const FuelCombustionForm = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const formik = useFormik({
+  const formik = useFormik<iFormInitialValues>({
     initialValues,
     validationSchema,
-    onSubmit: (values: object): void => {
-      navigate(`/estimates/${initialValues.type}`, { state: { values } })
+    onSubmit: (values: iFormInitialValues): void => {
+      navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
   return (
     <Box className='estimate'>
-      <form onSubmit={formik.handleSubmit}>
+      <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
           sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
@@ -80,6 +79,9 @@ const FuelCombustionForm = (): JSX.Element => {
             </InputLabel>
             <TextField
               id='fuel_source_value'
+              inputProps={{
+                'aria-label': 'Fuel Source Value'
+              }}
               {...formik.getFieldProps('fuel_source_value')}
             />
             {formik.touched.fuel_source_value !== undefined &&

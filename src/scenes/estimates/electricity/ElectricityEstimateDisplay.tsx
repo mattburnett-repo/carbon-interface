@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
 
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import { type iDisplayProps } from './types'

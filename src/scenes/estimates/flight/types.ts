@@ -50,3 +50,23 @@ export interface iDisplayInitialValues {
   cabin_class: string
   legs: iLeg[]
 }
+
+// Add mock data to test file
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useLocation: () => ({
+    state: {
+      values: {
+        type: 'flight',
+        passengers: 2,
+        legs: [{
+          departure_airport: 'SFO',
+          destination_airport: 'JFK',
+          cabin_class: 'economy'
+        }],
+        distance_unit: 'km',
+        cabin_class: 'economy'
+      }
+    }
+  })
+}))

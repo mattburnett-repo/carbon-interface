@@ -21,8 +21,8 @@ describe('CountryCodes', () => {
       onChange: jest.fn(),
       onBlur: jest.fn()
     }),
-    initialValues: { country: '' }
-  } as unknown as FormikProps<{ country: string }>
+    initialValues: { country: '', state: '' }
+  } as unknown as FormikProps<{ country: string; state: string }>
 
   it('renders country select with label', () => {
     render(<CountryCodes parentState={mockFormik} />)

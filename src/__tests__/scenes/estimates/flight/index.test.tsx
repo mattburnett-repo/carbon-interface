@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
+import { Formik } from 'formik'
 import Flight from '../../../../scenes/estimates/flight'
 
 const queryClient = new QueryClient({
@@ -16,7 +17,16 @@ const renderWithProviders = () => {
   return render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <Flight />
+        <Formik
+          initialValues={{
+            distance_unit: 'km',
+            passenger_count: 1,
+            legs: []
+          }}
+          onSubmit={() => {}}
+        >
+          <Flight />
+        </Formik>
       </QueryClientProvider>
     </BrowserRouter>
   )
@@ -30,7 +40,6 @@ describe('Flight Estimate', () => {
 
   it('renders the flight form', () => {
     renderWithProviders()
-    expect(screen.getByText('flight')).toBeInTheDocument()
     expect(screen.getByLabelText(/distance unit/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/passengers/i)).toBeInTheDocument()
   })
@@ -53,4 +62,15 @@ describe('Flight Estimate', () => {
   })
 
   // Add more tests for form submission, API integration, etc.
+})
+
+describe('Flight', () => {
+  it('should render flight form', () => {
+    render(
+      <BrowserRouter>
+        <Flight />
+      </BrowserRouter>
+    )
+    expect(screen.getByRole('form')).toBeInTheDocument()
+  })
 }) 

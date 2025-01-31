@@ -17,7 +17,6 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-// @ts-expect-error type this
 import DistanceUnits from '../../../components/distance/DistanceUnits'
 
 import { type iInitialValues } from './types'
@@ -44,17 +43,17 @@ const validationSchema = yup.object().shape({
 const ShippingForm = (): JSX.Element => {
   const navigate = useNavigate()
 
-  const formik = useFormik({
+  const formik = useFormik<iInitialValues>({
     initialValues,
     validationSchema,
-    onSubmit: (values: object): void => {
-      navigate(`/estimates/${initialValues.type}`, { state: { values } })
+    onSubmit: (values: iInitialValues): void => {
+      navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
   return (
     <Box className='estimate'>
-      <form onSubmit={formik.handleSubmit}>
+      <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
           sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
@@ -85,6 +84,9 @@ const ShippingForm = (): JSX.Element => {
             <InputLabel id='weight_value-label'>Weight Value</InputLabel>
             <TextField
               id='weight_value'
+              inputProps={{
+                'aria-label': 'Weight Value'
+              }}
               {...formik.getFieldProps('weight_value')}
             />
             {formik.touched.weight_value !== undefined &&
@@ -99,6 +101,9 @@ const ShippingForm = (): JSX.Element => {
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>
             <TextField
               id='distance_value'
+              inputProps={{
+                'aria-label': 'Distance Value'
+              }}
               {...formik.getFieldProps('distance_value')}
             />
             {formik.touched.distance_value !== undefined &&

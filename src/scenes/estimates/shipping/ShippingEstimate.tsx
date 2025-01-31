@@ -7,15 +7,19 @@ import ShippingEstimateDisplay from './ShippingEstimateDisplay'
 
 // import data from '../../../data/shippingResponse.json'
 
-import { type iInitialValues } from './types'
+import { type iInitialValues, type iDisplayProps } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const ElectricityEstimate: React.FC<iInitialValues> = (
+interface ErrorResponse {
+  message: string
+}
+
+const ShippingEstimate: React.FC<iInitialValues> = (
   requestData: iInitialValues
 ): JSX.Element => {
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, error, data } = useQuery<iDisplayProps['data']>(
     [requestData.type, requestData],
     async () => {
       const response = await fetch(baseURL, {
@@ -28,19 +32,18 @@ const ElectricityEstimate: React.FC<iInitialValues> = (
       })
 
       if (!response.ok) {
-        const { message } = await response.json()
-
-        throw Error(message)
+        const errorData = await response.json() as ErrorResponse
+        throw Error(errorData.message)
       }
 
       return await response.json()
     }
   )
 
+  if (error !== null) return <ErrorDisplay error={error as Error} />
   if (isLoading) return <LoadingDisplay />
-  if (error !== null) return <ErrorDisplay error={error} />
-
-  return <ShippingEstimateDisplay {...data} />
+  if (!data) return <LoadingDisplay />
+  return <ShippingEstimateDisplay data={data} />
 }
 
-export default ElectricityEstimate
+export default ShippingEstimate

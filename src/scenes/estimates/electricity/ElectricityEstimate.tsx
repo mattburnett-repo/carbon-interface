@@ -7,16 +7,36 @@ import ElectricityEstimateDisplay from './ElectricityEstimateDisplay'
 
 // import data from '../../../data/electricityResponse.json'
 
-import { type iEstimateProps } from './types'
+import { type iEstimateProps, iInitialValues } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const ElectricityEstimate: React.FC<iEstimateProps> = (
-  requestData: iEstimateProps
-): JSX.Element => {
-  const { isLoading, error, data } = useQuery(
-    [requestData.type, requestData],
+interface EstimateResponse {
+  data: {
+    id: string
+    type: string
+    attributes: {
+      carbon_g: number
+      carbon_lb: number
+      carbon_kg: number
+      carbon_mt: number
+      estimated_at: string
+      electricity_unit: 'mwh' | 'kwh'
+      electricity_value: number
+      country: string
+      state: string
+    }
+  }
+}
+
+interface ErrorResponse {
+  message: string
+}
+
+const ElectricityEstimate: React.FC<iEstimateProps> = ({ estimateValues }) => {
+  const { isLoading, error, data } = useQuery<EstimateResponse, Error>(
+    [estimateValues.type, estimateValues],
     async () => {
       const response = await fetch(baseURL, {
         method: 'POST',
@@ -24,21 +44,23 @@ const ElectricityEstimate: React.FC<iEstimateProps> = (
           'Content-Type': 'application/json',
           Authorization: `Bearer ${apiKey}`
         },
-        body: JSON.stringify({ ...requestData })
+        body: JSON.stringify({ ...estimateValues })
       })
 
+      // const result = await response.json() as ApiResponse;
+      const result = await response.json() as EstimateResponse | ErrorResponse | { message: string };
+      
       if (!response.ok) {
-        const { message } = await response.json()
-
-        throw Error(message)
+        throw new Error((result as ErrorResponse).message || 'API Error')
       }
 
-      return await response.json()
+      return result as EstimateResponse;
     }
   )
 
   if (isLoading) return <LoadingDisplay />
-  if (error !== null) return <ErrorDisplay error={error} />
+  if (error) return <ErrorDisplay error={error} />
+  if (!data) return <LoadingDisplay />
 
   return <ElectricityEstimateDisplay {...data} />
 }

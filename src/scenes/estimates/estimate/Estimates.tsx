@@ -11,8 +11,26 @@ import EstimatesDisplay from './EstimatesDisplay'
 const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
+interface EstimateResponse {
+  data: Array<{
+    id: string;
+    type: string;
+    attributes: {
+      carbon_g: number;
+      carbon_lb: number;
+      carbon_kg: number;
+      carbon_mt: number;
+      estimated_at: string;
+    };
+  }>;
+}
+
+interface ErrorResponse {
+  message: string;
+}
+
 const Estimates = (): JSX.Element => {
-  const { isLoading, error, data } = useQuery(['estimate'], async () => {
+  const { isLoading, error, data } = useQuery<EstimateResponse, Error>(['estimate'], async () => {
     const response = await fetch(baseURL, {
       method: 'GET',
       headers: {
@@ -21,17 +39,18 @@ const Estimates = (): JSX.Element => {
       }
     })
 
+    const result = await response.json() as EstimateResponse | ErrorResponse;
+    
     if (!response.ok) {
-      const { message } = await response.json()
-
-      throw Error(message)
+      throw new Error((result as ErrorResponse).message || 'API Error')
     }
 
-    return await response.json()
+    return result as EstimateResponse
   })
 
   if (isLoading) return <LoadingDisplay />
-  if (error !== null) return <ErrorDisplay error={error} />
+  if (error) return <ErrorDisplay error={error} />
+  if (!data) return <LoadingDisplay />
 
   return <EstimatesDisplay data={data} />
 }
