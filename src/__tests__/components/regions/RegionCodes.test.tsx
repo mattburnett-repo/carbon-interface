@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { FormikProps } from 'formik'
 import RegionCodes, { useRegionCodes } from '../../../components/regions/RegionCodes'
+import { LocationOptionElement } from '../../../components/regions/types'
 
 // Mock the CountriesList module
 jest.mock('../../../components/regions/CountriesList', () => ({
@@ -24,7 +25,7 @@ jest.mock('../../../components/regions/CountriesList', () => ({
         { iso: 'QC', name: 'Quebec' }
       ]
     }
-  },
+  } as Record<string, LocationOptionElement>,
   regionsEnabled: ['US', 'CA']
 }))
 
@@ -33,6 +34,15 @@ describe('RegionCodes', () => {
     values: {
       country: 'US',
       state: 'CA'
+    },
+    handleChange: jest.fn(),
+    handleBlur: jest.fn()
+  } as unknown as FormikProps<{ country: string; state: string }>
+
+  const mockFormikCA = {
+    values: {
+      country: 'CA',
+      state: 'BC'
     },
     handleChange: jest.fn(),
     handleBlur: jest.fn()
@@ -49,31 +59,38 @@ describe('RegionCodes', () => {
 
   it('renders regions for US', async () => {
     render(<RegionCodes parentState={mockFormik} countryCode="US" />)
-    const select = screen.getByRole('combobox')
+    const select = screen.getByRole('button', { name: /state/i })
     await act(async () => {
       fireEvent.mouseDown(select)
     })
 
-    expect(screen.getByText('California')).toBeInTheDocument()
-    expect(screen.getByText('New York')).toBeInTheDocument()
-    expect(screen.getByText('Texas')).toBeInTheDocument()
+    // Use getAllByRole to find menu items
+    const options = screen.getAllByRole('option')
+    expect(options).toHaveLength(3)
+    expect(options[0]).toHaveTextContent('California')
+    expect(options[1]).toHaveTextContent('New York')
+    expect(options[2]).toHaveTextContent('Texas')
   })
 
   it('renders regions for Canada', async () => {
-    render(<RegionCodes parentState={mockFormik} countryCode="CA" />)
-    const select = screen.getByRole('combobox')
+    render(<RegionCodes parentState={mockFormikCA} countryCode="CA" />)
+    const select = screen.getByRole('button', { name: /state/i })
     await act(async () => {
       fireEvent.mouseDown(select)
     })
 
-    expect(screen.getByText('Ontario')).toBeInTheDocument()
-    expect(screen.getByText('British Columbia')).toBeInTheDocument()
-    expect(screen.getByText('Quebec')).toBeInTheDocument()
+    // Use getAllByRole to find menu items
+    const options = screen.getAllByRole('option')
+    expect(options).toHaveLength(3)
+    expect(options[0]).toHaveTextContent('British Columbia')
+    expect(options[1]).toHaveTextContent('Ontario')
+    expect(options[2]).toHaveTextContent('Quebec')
   })
 
   it('displays the correct selected state', () => {
     render(<RegionCodes parentState={mockFormik} countryCode="US" />)
-    expect(screen.getByRole('combobox')).toHaveValue('CA')
+    const select = screen.getByRole('button', { name: /state/i })
+    expect(select).toHaveTextContent('California')
   })
 
   it('handles state selection', async () => {
@@ -84,7 +101,7 @@ describe('RegionCodes', () => {
     }
 
     render(<RegionCodes parentState={mockFormikWithChange} countryCode="US" />)
-    const select = screen.getByRole('combobox')
+    const select = screen.getByRole('button', { name: /state/i })
     await act(async () => {
       fireEvent.mouseDown(select)
     })
@@ -138,15 +155,20 @@ describe('RegionCodes', () => {
       <RegionCodes parentState={mockFormikWithState} countryCode="US" />
     )
 
-    // Change country to Canada
     rerender(
-      <RegionCodes parentState={mockFormikWithState} countryCode="CA" />
+      <RegionCodes 
+        parentState={{
+          ...mockFormikWithState,
+          values: { country: 'CA', state: 'BC' }  // Use valid Canadian province
+        }} 
+        countryCode="CA" 
+      />
     )
 
     expect(mockOnChange).toHaveBeenCalledWith({
       target: {
         name: 'state',
-        value: 'ON'  // Ontario is first Canadian province in mock data
+        value: 'BC'
       }
     })
   })

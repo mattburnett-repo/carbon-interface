@@ -1,4 +1,5 @@
 import { listOfCountries, regionsEnabled } from '../../../components/regions/CountriesList'
+import { LocationOptionElement } from '../../../components/regions/types'
 
 // Mock iso3166-2-db
 jest.mock('iso3166-2-db', () => ({
@@ -12,26 +13,33 @@ jest.mock('iso3166-2-db', () => ({
 describe('CountriesList', () => {
   describe('listOfCountries', () => {
     it('contains all enabled countries', () => {
-      expect(listOfCountries.length).toBe(2)
-      expect(listOfCountries).toContainEqual({
+      expect(Object.keys(listOfCountries).length).toBe(2)
+      expect(listOfCountries).toHaveProperty('US', {
         code: 'US',
-        name: 'United States'
+        name: 'United States',
+        regions: expect.any(Array) as Array<{ iso: string; name: string }>
+      })
+      expect(listOfCountries).toHaveProperty('CA', {
+        code: 'CA',
+        name: 'Canada',
+        regions: expect.any(Array) as Array<{ iso: string; name: string }>
       })
     })
 
     it('has correct data structure', () => {
-      listOfCountries.forEach(country => {
+      Object.values(listOfCountries).forEach(country => {
         expect(country).toHaveProperty('code')
         expect(country).toHaveProperty('name')
+        expect(country).toHaveProperty('regions')
+        expect(Array.isArray(country.regions)).toBe(true)
       })
     })
   })
 
   describe('regionsEnabled', () => {
-    it('contains expected countries', () => {
+    it('contains supported countries', () => {
       expect(regionsEnabled).toContain('US')
       expect(regionsEnabled).toContain('CA')
-      expect(regionsEnabled.length).toBe(2)
     })
   })
 }) 

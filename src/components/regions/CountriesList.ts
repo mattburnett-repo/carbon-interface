@@ -95,7 +95,7 @@ const regionsData: RegionsData = {
   ]
 }
 
-// Convert to our app's format
+// Keep only this one
 export const listOfCountries: Record<string, LocationOptionElement> = {}
 Object.entries(countryData).forEach(([code, data]) => {
   listOfCountries[code] = {

@@ -16,7 +16,7 @@ import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined'
 interface ItemProps {
   title: string
   to: string
-  icon?: React.ReactElement
+  icon?: JSX.Element
   selected: string
   setSelected: (title: string) => void
   isCollapsed: boolean
@@ -25,6 +25,7 @@ interface ItemProps {
 const Item = ({ title, to, icon, selected, setSelected, isCollapsed }: ItemProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
   return (
     <Tooltip 
       title={title} 
@@ -82,25 +83,32 @@ const Sidebar = (): JSX.Element => {
           backgroundColor: 'transparent !important'
         },
         '& .pro-inner-item': {
-          padding: '5px 35px 5px 20px !important',
+          padding: '5px 20px 5px 20px !important',
           color: colors.grey[100],
           transition: 'all 0.3s ease-in-out',
           borderRadius: '4px',
-          margin: '0 15px',
-          width: 'calc(100% - 30px)'
+          margin: '0',
+          width: '100%'
         },
         '& .pro-inner-item:hover': {
-          color: '#868dfb !important',
+          color: `${colors.redAccent[200]} !important`,
           backgroundColor: `${colors.primary[400]}40 !important`,
-          transition: 'all 0.3s ease-in-out',
-          padding: '3px 33px 3px 18px !important'
+          transition: 'all 0.3s ease-in-out'
         },
         '& .pro-menu-item.active': {
-          color: '#6870fa !important'
+          color: `${colors.redAccent[200]} !important`,
+          backgroundColor: `${colors.primary[400]}40 !important`,
+          borderLeft: `4px solid ${colors.redAccent[200]}`
         },
         '& .pro-inner-item:focus-visible': {
           outline: `2px solid ${colors.grey[100]}`,
           outlineOffset: '2px'
+        },
+        '& .pro-menu-item': {
+          textAlign: 'left'
+        },
+        '& .pro-item-content': {
+          justifyContent: 'flex-start'
         }
       }}
     >
@@ -115,22 +123,19 @@ const Sidebar = (): JSX.Element => {
               />
             ) : undefined}
           >
-          {!isCollapsed && (
-            <Box 
-              display='flex' 
-              alignItems='center'
-            >
-              <Typography 
-                variant='h5'
-                sx={{ color: colors.grey[100] }}
-              >
-                Carbon Interface
-              </Typography>
-            </Box>
-          )}
-        </MenuItem>
+            {!isCollapsed && (
+              <Box>
+                <Typography 
+                  variant='h5'
+                  sx={{ color: colors.grey[100] }}
+                >
+                  Carbon Interface
+                </Typography>
+              </Box>
+            )}
+          </MenuItem>
 
-          <Box paddingLeft={isCollapsed ? undefined : '0'}>
+          <Box paddingLeft={isCollapsed ? undefined : '10%'}>
             <Item
               title='Dashboard'
               to='/'
@@ -140,21 +145,22 @@ const Sidebar = (): JSX.Element => {
               isCollapsed={isCollapsed}
             />
 
-            {isCollapsed ? (
+            {!isCollapsed ? (
+              <Typography
+                variant='h6'
+                color={colors.grey[300]}
+                sx={{ m: '15px 0 5px 0' }}
+              >
+                Estimates
+              </Typography>
+            ) : (
               <Divider sx={{ 
                 m: '15px 0',
                 borderColor: colors.grey[300],
                 opacity: 0.4
               }} />
-            ) : (
-              <Typography
-                variant='h6'
-                color={colors.grey[300]}
-                sx={{ m: '15px 5px 9px 20px' }}
-              >
-                Estimates
-              </Typography>
             )}
+
             <Item
               title='Electricity'
               to='/estimates/electricity'

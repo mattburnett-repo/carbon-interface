@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup, act } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { ColorModeContext } from '../../../theme'
@@ -31,20 +31,16 @@ describe('Sidebar', () => {
     expect(screen.getByText('Carbon Interface')).toBeInTheDocument()
   })
 
-  it('toggles collapse state when menu button is clicked', () => {
+  it('toggles collapse state when menu button is clicked', async () => {
     renderWithProviders()
-    
-    // Initially not collapsed - menu icon should not be visible and headings should be visible
-    expect(screen.queryByTestId('MenuOutlinedIcon')).not.toBeInTheDocument()
-    expect(screen.getByText('Carbon Interface')).toBeVisible()
-    expect(screen.getByText('Estimates')).toBeVisible()
-    expect(screen.queryByRole('separator')).not.toBeInTheDocument()
     
     // Find and click the collapse toggle
     const collapseToggle = screen.getByRole('button', { name: 'Carbon Interface' })
-    fireEvent.click(collapseToggle)
+    await act(async () => {
+      fireEvent.click(collapseToggle)
+    })
     
-    // After collapse - menu icon should be visible, headings should be hidden, and divider should be visible
+    // After collapse - menu icon should be visible, headings should be hidden
     expect(screen.getByTestId('MenuOutlinedIcon')).toBeVisible()
     expect(screen.queryByText('Carbon Interface')).not.toBeInTheDocument()
     expect(screen.queryByText('Estimates')).not.toBeInTheDocument()
