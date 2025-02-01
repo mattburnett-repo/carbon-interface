@@ -8,6 +8,7 @@ import { tokens } from '../../../theme'
 import ElectricityForm from './ElectricityForm'
 import ElectricityEstimate from './ElectricityEstimate'
 import { iInitialValues } from './types'
+import { defaultElectricityValues } from './defaults'
 
 type LocationState = {
   values: iInitialValues;
@@ -22,16 +23,7 @@ const Electricity = (): JSX.Element => {
 
   const handleSubmit = (values: iInitialValues): void => {
     // Handle form submission
-    console.log('Form submitted:', values)
   }
-
-  const defaultValues: iInitialValues = {
-    type: 'electricity',
-    electricity_value: 1,
-    electricity_unit: 'kwh' as const,
-    country: 'us',
-    state: 'ca'
-  } as const
 
   return (
     <Box
@@ -47,7 +39,7 @@ const Electricity = (): JSX.Element => {
       {!initialValues ? (
         <ElectricityForm
           onSubmit={handleSubmit}
-          initialValues={defaultValues}
+          initialValues={defaultElectricityValues}
         />
       ) : (
         <ElectricityEstimate 

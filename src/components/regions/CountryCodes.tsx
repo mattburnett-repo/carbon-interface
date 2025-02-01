@@ -3,6 +3,7 @@ import { InputLabel, Select, MenuItem } from '@mui/material'
 import { FormikProps } from 'formik'
 import { listOfCountries } from './CountriesList'
 import { LocationOptionElement } from './types'
+import { SelectChangeEvent } from '@mui/material/Select'
 
 interface CountryCodesProps<T> {
   parentState: FormikProps<T & {
@@ -12,22 +13,39 @@ interface CountryCodesProps<T> {
 }
 
 export const useCountryCodes = (): LocationOptionElement[] => {
-  const retVal: LocationOptionElement[] = []
-
-  Object.entries(listOfCountries)
-    .sort(([, a], [, b]) => (a.name > b.name ? 1 : -1))
-    .forEach(([, country]) =>
-      retVal.push({
-        code: country.code,
-        name: country.name
-      })
-    )
-
-  return retVal
+  return Object.entries(listOfCountries)
+    .sort(([codeA], [codeB]) => codeA.localeCompare(codeB))
+    .map(([, country]) => ({
+      code: country.code,
+      name: country.name
+    }))
 }
 
 const CountryCodes = <T,>({ parentState }: CountryCodesProps<T>): JSX.Element => {
+  const [open, setOpen] = React.useState(false)
   const countryCodes = useCountryCodes()
+
+  // Get first country from sorted list
+  const firstCountry = countryCodes[0]?.code
+  
+  // Ensure we have a valid uppercase country code
+  const currentValue = parentState.values.country?.toUpperCase()
+  
+  // Use current value if valid, otherwise use first country, fallback to 'DE' if list is empty
+  const value = countryCodes.some(c => c.code === currentValue) 
+    ? currentValue 
+    : firstCountry || 'DE'
+
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const syntheticEvent = {
+      target: {
+        name: 'country',
+        value: event.target.value.toUpperCase()
+      }
+    }
+    parentState.handleChange(syntheticEvent)
+    setOpen(false)
+  }
 
   return (
     <>
@@ -35,7 +53,13 @@ const CountryCodes = <T,>({ parentState }: CountryCodesProps<T>): JSX.Element =>
       <Select
         id='country'
         labelId='country-label'
-        {...parentState.getFieldProps('country')}
+        value={value}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        onChange={handleChange}
+        onBlur={parentState.handleBlur}
+        name="country"
       >
         {countryCodes.map((country) => (
           <MenuItem key={country.code} value={country.code}>

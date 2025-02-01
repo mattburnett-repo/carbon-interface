@@ -20,16 +20,10 @@ import { tokens } from '../../../theme'
 import CountryCodes from '../../../components/regions/CountryCodes'
 import { regionsEnabled } from '../../../components/regions/CountriesList'
 import RegionCodes from '../../../components/regions/RegionCodes'
+import { defaultElectricityValues } from './defaults'
 
 import { type iInitialValues, type iFormProps } from './types'
 
-const initialValues: iInitialValues = {
-  type: 'electricity',
-  electricity_unit: 'kwh',
-  electricity_value: 1,
-  country: 'DE',
-  state: ''
-}
 const validationSchema = yup.object().shape({
   electricity_value: yup
     .number()
@@ -37,7 +31,7 @@ const validationSchema = yup.object().shape({
     .required('Electricity Value is required. Numbers only.')
 })
 
-const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues }) => {
+const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defaultElectricityValues }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
@@ -46,17 +40,17 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues }) => {
   const formik = useFormik<iInitialValues>({
     initialValues,
     validationSchema,
+    enableReinitialize: true,
     onSubmit: (values: iInitialValues): void => {
       onSubmit(values)
       navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
-  // if API doesn't yet support state/region for a country,
-  //    set state/region value to original value/empty string
-  if (!regionsEnabled.includes(formik.values.country)) {
-    formik.values.state = initialValues.state
-  }
+  // Don't modify formik values directly
+  const stateValue = regionsEnabled.includes(formik.values.country) 
+    ? formik.values.state 
+    : ''
 
   return (
     <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
@@ -102,14 +96,14 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues }) => {
           <Grid item>
             <CountryCodes<iInitialValues> parentState={formik} />
           </Grid>
-          {regionsEnabled.includes(formik.values.country) ? (
+          {regionsEnabled.includes(formik.values.country) && (
             <Grid item>
               <RegionCodes<iInitialValues>
                 parentState={formik}
                 countryCode={formik.values.country}
               />
             </Grid>
-          ) : null}
+          )}
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
           <Button type='submit' color='secondary' variant='contained'>
