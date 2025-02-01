@@ -7,7 +7,7 @@ import FlightEstimateDisplay from './FlightEstimateDisplay'
 
 // import data from '../../../data/flightResponse.json'
 
-import { type iEstimateProps } from './types'
+import { type iEstimateProps, type iEstimateResponse } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
@@ -15,7 +15,7 @@ const apiKey: string = import.meta.env.VITE_API_KEY
 const FlightEstimate: React.FC<iEstimateProps> = (
   requestData: iEstimateProps
 ): JSX.Element => {
-  const { isLoading, error, data } = useQuery(
+  const { isLoading, error, data } = useQuery<iEstimateResponse>(
     [requestData.type, requestData],
     async () => {
       const response = await fetch(baseURL, {
@@ -28,8 +28,7 @@ const FlightEstimate: React.FC<iEstimateProps> = (
       })
 
       if (!response.ok) {
-        const { message } = await response.json()
-
+        const { message }: { message: string } = await response.json()
         throw Error(message)
       }
 
@@ -38,7 +37,8 @@ const FlightEstimate: React.FC<iEstimateProps> = (
   )
 
   if (isLoading) return <LoadingDisplay />
-  if (error !== null) return <ErrorDisplay error={error} />
+  if (error instanceof Error) return <ErrorDisplay error={error} />
+  if (!data) return <LoadingDisplay />
 
   return <FlightEstimateDisplay {...data} />
 }

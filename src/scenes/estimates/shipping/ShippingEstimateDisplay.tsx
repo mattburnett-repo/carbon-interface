@@ -1,15 +1,24 @@
 import React from 'react'
-
 import { Box, Grid, Typography, useTheme } from '@mui/material'
-
 import { tokens } from '../../../theme'
 
-import { type iDisplayProps } from './types'
-const ShippingEstimateDisplay = (data: iDisplayProps): JSX.Element => {
-  // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
-  //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
-  // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
+interface ShippingEstimateDisplayProps {
+  values: {
+    weight_unit: string
+    weight_value: number
+    distance_unit: string
+    distance_value: number
+    transport_method: string
+    estimated_at?: string
+    id?: string
+    carbon_g?: number
+    carbon_lb?: number
+    carbon_kg?: number
+    carbon_mt?: number
+  }
+}
 
+const ShippingEstimateDisplay: React.FC<ShippingEstimateDisplayProps> = ({ values }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
@@ -36,49 +45,48 @@ const ShippingEstimateDisplay = (data: iDisplayProps): JSX.Element => {
       >
         <Grid item>
           <Typography padding='0.5rem'>
-            Weight Unit: {data.data.attributes.weight_unit}
+            Weight Unit: {values.weight_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
             Weight Value:
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.weight_value
-            )}
+            {new Intl.NumberFormat('en-US', {}).format(values.weight_value)}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Distance Unit: {data.data.attributes.distance_unit}
+            Distance Unit: {values.distance_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
             Distance Value:{' '}
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.distance_value
-            )}
+            {new Intl.NumberFormat('en-US', {}).format(values.distance_value)}
           </Typography>
         </Grid>
 
         <Grid item>
           <Typography padding='0.5rem' textTransform={'capitalize'}>
-            Transport Method: {data.data.attributes.transport_method}
+            Transport Method: {values.transport_method}
           </Typography>
         </Grid>
-        <Grid item>
-          <Typography padding='0.5rem'>
-            Estimated at:
-            {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}
-            {data.data.attributes.estimated_at.replace(
-              /(\d{4})-(\d{2})-(\d{2}).*/,
-              '$3-$2-$1'
-            )}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography padding='0.5rem'>ID: {data.data.id}</Typography>
-        </Grid>
+        {values.estimated_at && (
+          <Grid item>
+            <Typography padding='0.5rem'>
+              Estimated at:
+              {values.estimated_at.replace(
+                /(\d{4})-(\d{2})-(\d{2}).*/,
+                '$3-$2-$1'
+              )}
+            </Typography>
+          </Grid>
+        )}
+        {values.id && (
+          <Grid item>
+            <Typography padding='0.5rem'>ID: {values.id}</Typography>
+          </Grid>
+        )}
       </Grid>
       <Grid
         container
@@ -86,38 +94,38 @@ const ShippingEstimateDisplay = (data: iDisplayProps): JSX.Element => {
         justifyContent={'center'}
         columnGap={'5rem'}
       >
-        <Grid item>
-          <Typography padding='0.5rem'>
-            Carbon (grams):{' '}
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_g
-            )}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography padding='0.5rem'>
-            Carbon (lbs):{' '}
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_lb
-            )}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography padding='0.5rem'>
-            Carbon (kg):{' '}
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_kg
-            )}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography padding='0.5rem'>
-            Carbon (mt):{' '}
-            {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_mt
-            )}
-          </Typography>
-        </Grid>
+        {values.carbon_g !== undefined && (
+          <Grid item>
+            <Typography padding='0.5rem'>
+              Carbon (grams):{' '}
+              {new Intl.NumberFormat('en-US', {}).format(values.carbon_g)}
+            </Typography>
+          </Grid>
+        )}
+        {values.carbon_lb !== undefined && (
+          <Grid item>
+            <Typography padding='0.5rem'>
+              Carbon (lbs):{' '}
+              {new Intl.NumberFormat('en-US', {}).format(values.carbon_lb)}
+            </Typography>
+          </Grid>
+        )}
+        {values.carbon_kg !== undefined && (
+          <Grid item>
+            <Typography padding='0.5rem'>
+              Carbon (kg):{' '}
+              {new Intl.NumberFormat('en-US', {}).format(values.carbon_kg)}
+            </Typography>
+          </Grid>
+        )}
+        {values.carbon_mt !== undefined && (
+          <Grid item>
+            <Typography padding='0.5rem'>
+              Carbon (mt):{' '}
+              {new Intl.NumberFormat('en-US', {}).format(values.carbon_mt)}
+            </Typography>
+          </Grid>
+        )}
       </Grid>
     </Box>
   )

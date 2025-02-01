@@ -41,6 +41,7 @@ export interface iDisplayProps {
 export interface iAirportSelectOptiion {
   code: string
   name: string
+  region: string
 }
 
 export interface iDisplayInitialValues {
@@ -49,6 +50,24 @@ export interface iDisplayInitialValues {
   destination_airport: string
   cabin_class: string
   legs: iLeg[]
+}
+
+export interface iEstimateResponse {
+  data: {
+    id: string
+    type: string
+    attributes: {
+      passengers: number
+      legs: iLeg[]
+      distance_value: number
+      distance_unit: string
+      estimated_at: string
+      carbon_g: number
+      carbon_lb: number
+      carbon_kg: number
+      carbon_mt: number
+    }
+  }
 }
 
 // Add mock data to test file

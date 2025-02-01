@@ -17,16 +17,14 @@ import {
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-import DistanceUnits from '../../../components/distance/DistanceUnits'
-
 import { type iInitialValues } from './types'
 
 const initialValues: iInitialValues = {
   type: 'shipping',
-  weight_unit: 'g',
-  weight_value: 1,
+  weight_unit: 'kg',
+  weight_value: 100,
   distance_unit: 'km',
-  distance_value: 1,
+  distance_value: 100,
   transport_method: 'truck'
 }
 const validationSchema = yup.object().shape({
@@ -47,7 +45,15 @@ const ShippingForm = (): JSX.Element => {
     initialValues,
     validationSchema,
     onSubmit: (values: iInitialValues): void => {
-      navigate(`/estimates/${values.type}`, { state: { values } })
+      navigate('/estimates/shipping', { 
+        state: { 
+          values: {
+            ...values,
+            weight_value: Number(values.weight_value),
+            distance_value: Number(values.distance_value)
+          }
+        } 
+      })
     }
   })
 
@@ -95,7 +101,20 @@ const ShippingForm = (): JSX.Element => {
             ) : null}
           </Grid>
           <Grid item>
-            <DistanceUnits parentState={formik} />
+            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
+            <Select
+              id='distance_unit'
+              labelId='distance_unit-label'
+              {...formik.getFieldProps('distance_unit')}
+              value={formik.values.distance_unit}
+              data-testid="distance-unit-select"
+              inputProps={{
+                'aria-label': 'Distance Unit'
+              }}
+            >
+              <MenuItem value={'km'}>Kilometers</MenuItem>
+              <MenuItem value={'mi'}>Miles</MenuItem>
+            </Select>
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>

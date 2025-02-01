@@ -1,0 +1,184 @@
+{
+  "airports": [
+    {
+      "code": "LHR",
+      "name": "London Heathrow",
+      "region": "Europe"
+    },
+    {
+      "code": "CDG",
+      "name": "Paris Charles de Gaulle",
+      "region": "Europe"
+    },
+    {
+      "code": "AMS",
+      "name": "Amsterdam Airport Schiphol",
+      "region": "Europe"
+    },
+    {
+      "code": "FRA",
+      "name": "Frankfurt Airport",
+      "region": "Europe"
+    },
+    {
+      "code": "IST",
+      "name": "Istanbul Airport",
+      "region": "Europe"
+    },
+    {
+      "code": "MAD",
+      "name": "Adolfo Suárez Madrid–Barajas",
+      "region": "Europe"
+    },
+    {
+      "code": "FCO",
+      "name": "Leonardo da Vinci Rome",
+      "region": "Europe"
+    },
+    {
+      "code": "MUC",
+      "name": "Munich Airport",
+      "region": "Europe"
+    },
+    {
+      "code": "ZRH",
+      "name": "Zurich Airport",
+      "region": "Europe"
+    },
+    {
+      "code": "CPH",
+      "name": "Copenhagen Airport",
+      "region": "Europe"
+    },
+    {
+      "code": "ATL",
+      "name": "Hartsfield-Jackson Atlanta International",
+      "region": "North America"
+    },
+    {
+      "code": "LAX",
+      "name": "Los Angeles International",
+      "region": "North America"
+    },
+    {
+      "code": "ORD",
+      "name": "Chicago O'Hare International",
+      "region": "North America"
+    },
+    {
+      "code": "DFW",
+      "name": "Dallas/Fort Worth International",
+      "region": "North America"
+    },
+    {
+      "code": "JFK",
+      "name": "John F Kennedy International",
+      "region": "North America"
+    },
+    {
+      "code": "SFO",
+      "name": "San Francisco International",
+      "region": "North America"
+    },
+    {
+      "code": "SEA",
+      "name": "Seattle-Tacoma International",
+      "region": "North America"
+    },
+    {
+      "code": "MIA",
+      "name": "Miami International",
+      "region": "North America"
+    },
+    {
+      "code": "YYZ",
+      "name": "Toronto Pearson International",
+      "region": "North America"
+    },
+    {
+      "code": "YVR",
+      "name": "Vancouver International",
+      "region": "North America"
+    },
+    {
+      "code": "MEX",
+      "name": "Mexico City International",
+      "region": "North America"
+    },
+    {
+      "code": "GRU",
+      "name": "São Paulo/Guarulhos International",
+      "region": "South America"
+    },
+    {
+      "code": "BOG",
+      "name": "El Dorado International Bogota",
+      "region": "South America"
+    },
+    {
+      "code": "EZE",
+      "name": "Ministro Pistarini International Buenos Aires",
+      "region": "South America"
+    },
+    {
+      "code": "SCL",
+      "name": "Arturo Merino Benítez Santiago",
+      "region": "South America"
+    },
+    {
+      "code": "LIM",
+      "name": "Jorge Chávez International Lima",
+      "region": "South America"
+    },
+    {
+      "code": "PEK",
+      "name": "Beijing Capital International",
+      "region": "Asia"
+    },
+    {
+      "code": "HND",
+      "name": "Tokyo Haneda International",
+      "region": "Asia"
+    },
+    {
+      "code": "DXB",
+      "name": "Dubai International",
+      "region": "Asia"
+    },
+    {
+      "code": "HKG",
+      "name": "Hong Kong International",
+      "region": "Asia"
+    },
+    {
+      "code": "ICN",
+      "name": "Seoul Incheon International",
+      "region": "Asia"
+    },
+    {
+      "code": "SIN",
+      "name": "Singapore Changi",
+      "region": "Asia"
+    },
+    {
+      "code": "BKK",
+      "name": "Suvarnabhumi Bangkok",
+      "region": "Asia"
+    },
+    {
+      "code": "KUL",
+      "name": "Kuala Lumpur International",
+      "region": "Asia"
+    },
+    {
+      "code": "DEL",
+      "name": "Indira Gandhi International Delhi",
+      "region": "Asia"
+    },
+    {
+      "code": "BOM",
+      "name": "Chhatrapati Shivaji Mumbai",
+      "region": "Asia"
+    }
+  ]
+}

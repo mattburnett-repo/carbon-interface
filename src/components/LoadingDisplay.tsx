@@ -1,12 +1,10 @@
 import React from 'react'
+import { Box, LinearProgress } from '@mui/material'
 
-import { Box } from '@mui/material'
-import LinearProgress from '@mui/material/LinearProgress'
-
-const LoadingDisplay = (): JSX.Element => {
+const LoadingDisplay: React.FC = () => {
   return (
-    <Box width={'75%'} margin={'auto'} marginTop={'5px'}>
-      <LinearProgress color='secondary' />
+    <Box sx={{ width: '100%', mt: '5rem' }}>
+      <LinearProgress color="secondary" />
     </Box>
   )
 }

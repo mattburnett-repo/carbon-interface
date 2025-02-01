@@ -2,12 +2,9 @@ import React from 'react'
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { FormikProps } from 'formik'
 import { iAirportSelectOptiion } from '../../scenes/estimates/flight/types'
-import airportCodes from 'airport-iata-codes'
+import airportsData from '../../data/airports.json'
 
-const airports: iAirportSelectOptiion[] = Object.entries(airportCodes).map(([code, name]) => ({
-  code,
-  name: name as string
-}))
+const airports: iAirportSelectOptiion[] = airportsData.airports
 
 interface Props {
   parentState: FormikProps<any>
@@ -24,10 +21,10 @@ const AirportSelect = ({ parentState, endpoint, title }: Props): JSX.Element => 
         label={title}
         {...parentState.getFieldProps(endpoint)}
       >
-        <MenuItem value="">Select Airport</MenuItem>
-        {airports.map(({ code, name }) => (
+        <MenuItem value="Select Airport" disabled>Select Airport</MenuItem>
+        {airports.map(({ code, name, region }) => (
           <MenuItem key={code} value={code}>
-            {code} - {name}
+            {code} - {name} ({region})
           </MenuItem>
         ))}
       </Select>

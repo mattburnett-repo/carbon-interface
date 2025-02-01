@@ -1,102 +1,112 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { Grid, Typography, Button, useTheme } from '@mui/material'
-
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
-
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
 import { tokens } from '../../theme'
 import AirportSelect from './AirportSelect'
 import CabinClassSelect from './CabinClassSelect'
+import { type iLeg } from '../../scenes/estimates/flight/types'
 
-import {
-  type iLeg,
-  type iDisplayInitialValues
-} from '../../scenes/estimates/flight/types'
+interface FlightLegProps {
+  legs?: iLeg[]
+  onLegsChange?: (legs: iLeg[]) => void
+  onUnsavedChanges?: (hasChanges: boolean) => void
+}
 
-const initialValues: iDisplayInitialValues = {
-  type: 'flight',
-  departure_airport: '',
-  destination_airport: '',
-  cabin_class: 'economy',
-  legs: []
+interface FlightLegFormValues {
+  departure_airport: string
+  destination_airport: string
+  cabin_class: 'economy' | 'business' | 'first'
+}
+
+const initialValues: FlightLegFormValues = {
+  departure_airport: 'Select Airport',
+  destination_airport: 'Select Airport',
+  cabin_class: 'economy'
 }
 
 const validationSchema = yup.object().shape({
-  departure_airport: yup.string().required('Departure airport is required.'),
+  departure_airport: yup
+    .string()
+    .test('valid-airport', 'Departure airport is required',
+      value => value !== 'Select Airport' && value !== '')
+    .required('Departure airport is required'),
   destination_airport: yup
     .string()
-    .required('Destination airport is required.'),
-  legs: yup.array().min(1, 'At least one leg is required.')
+    .test('valid-airport', 'Destination airport is required',
+      value => value !== 'Select Airport' && value !== '')
+    .required('Destination airport is required')
+    .test('different-airports', 
+      'Departure and destination airports must be different',
+      function(value) {
+        return value !== this.resolve(yup.ref('departure_airport'))
+      }
+    )
 })
 
-interface Props {
-  parentState: any[]  // TODO: Type this properly
-}
-
-const FlightLeg = ({ parentState = [] }: Props): JSX.Element => {
-  const navigate = useNavigate()
+const FlightLeg = ({ legs = [], onLegsChange = () => {}, onUnsavedChanges }: FlightLegProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    // right now, onSubmit doesn't do anything in this component
-    //    can't have a form inside of a form (this component is inside of the FlightForm component)
-    onSubmit: () => {}
+    onSubmit: () => {},
+    validateOnChange: true,
+    enableReinitialize: true
   })
 
+  // Add useEffect to check for unsaved changes
+  React.useEffect(() => {
+    onUnsavedChanges?.(formik.dirty && formik.isValid)
+  }, [formik.dirty, formik.isValid])
+
   const handleAddLeg = (): void => {
-    if (
-      formik.values.departure_airport !== '' &&
-      formik.values.destination_airport !== ''
-    ) {
-      const leg: iLeg = JSON.parse(
-        JSON.stringify({
-          departure_airport: formik.values.departure_airport,
-          destination_airport: formik.values.destination_airport,
-          cabin_class: formik.values.cabin_class
-        })
-      )
+    if (!formik.isValid || !formik.dirty) return
 
-      formik.values.legs.push(leg)
-      parentState.push(leg)
-
-      // do this to re-render the form and update the leg/s array display
-      navigate(`/estimates/${initialValues.type}`)
+    const newLeg: iLeg = {
+      departure_airport: formik.values.departure_airport,
+      destination_airport: formik.values.destination_airport,
+      cabin_class: formik.values.cabin_class
     }
+
+    onLegsChange([...legs, newLeg])
+    
+    // Reset just the form fields, not the entire form
+    formik.setValues({
+      departure_airport: 'Select Airport',
+      destination_airport: 'Select Airport',
+      cabin_class: 'economy'
+    })
+    formik.setTouched({})
   }
 
-  const handleRemoveLeg = (
-    e: React.MouseEvent<HTMLElement>,
-    i: number
-  ): void => {
-    formik.values.legs.splice(i, 1)
-    parentState.splice(i, 1)
-
-    // do this to re-render the form and update the leg/s array display
-    navigate(`/estimates/${initialValues.type}`)
+  const handleRemoveLeg = (index: number): void => {
+    const updatedLegs = legs.filter((_, i) => i !== index)
+    onLegsChange(updatedLegs)
   }
 
   return (
     <Grid item>
-      <Grid container gridTemplateColumns={'2'} marginBottom={'1rem'}>
+      <Grid container spacing={2} marginBottom={2}>
         <Grid item>
-          <Typography paddingRight='0.5rem'>Legs</Typography>
+          <Typography>Legs</Typography>
         </Grid>
-        <Grid item>
-          <Grid container columnGap={'2rem'}>
+        <Grid item xs>
+          <Grid container spacing={2} alignItems="flex-start">
             <Grid item>
               <AirportSelect
                 parentState={formik}
                 endpoint='departure_airport'
                 title='Departure Airport'
               />
+              {formik.touched.departure_airport && formik.errors.departure_airport && (
+                <Typography color="error" variant="caption">
+                  {formik.errors.departure_airport}
+                </Typography>
+              )}
             </Grid>
             <Grid item>
               <AirportSelect
@@ -104,13 +114,20 @@ const FlightLeg = ({ parentState = [] }: Props): JSX.Element => {
                 endpoint='destination_airport'
                 title='Destination Airport'
               />
+              {formik.touched.destination_airport && formik.errors.destination_airport && (
+                <Typography color="error" variant="caption">
+                  {formik.errors.destination_airport}
+                </Typography>
+              )}
             </Grid>
             <Grid item>
               <CabinClassSelect parentState={formik} />
             </Grid>
-            <Grid item margin={'auto'} marginTop={'2rem'}>
+            <Grid item>
               <Button
                 onClick={handleAddLeg}
+                disabled={!formik.isValid || !formik.dirty}
+                aria-label="Add leg"
                 sx={{
                   '&:hover': {
                     color: colors.primary[900],
@@ -125,30 +142,26 @@ const FlightLeg = ({ parentState = [] }: Props): JSX.Element => {
           </Grid>
         </Grid>
       </Grid>
-      {formik.values.legs.map((leg: iLeg, i: number) => (
+
+      {legs.map((leg, index) => (
         <Grid
           container
-          key={`flight-leg-container-${i}`}
-          columnGap={'2rem'}
-          justifyContent={'space-between'}
+          key={`leg-${index}`}
+          spacing={2}
+          alignItems="center"
+          marginBottom={1}
         >
-          <Grid item key={`leg-${i}`}>
-            {i}
-          </Grid>
-          <Grid item key={`departure-${i}`}>
-            {leg.departure_airport}
-          </Grid>
-          <Grid item key={`destination-${i}`}>
-            {leg.destination_airport}
-          </Grid>
-          <Grid item key={`cabin_class-${i}`}>
-            {leg.cabin_class}
-          </Grid>
-          <Grid item key={'handleAddLeg-$[i]'}>
+          <Grid item>{index + 1}</Grid>
+          <Grid item>{leg.departure_airport}</Grid>
+          <Grid item>{leg.destination_airport}</Grid>
+          <Grid item>{leg.cabin_class}</Grid>
+          <Grid item>
             <Button
-              key={`remove-button-${i}`}
-              onClick={(e) => {
-                handleRemoveLeg(e, i)
+              onClick={() => handleRemoveLeg(index)}
+              aria-label="Remove leg"
+              sx={{
+                color: colors.primary[100],
+                '&:hover': { color: colors.redAccent[500] }
               }}
             >
               <RemoveIcon />
@@ -156,14 +169,6 @@ const FlightLeg = ({ parentState = [] }: Props): JSX.Element => {
           </Grid>
         </Grid>
       ))}
-      {formik.values.legs.length < 1 ? (
-        <Grid item>
-          <Typography margin={'auto'} width={'fit-content'}>
-            Select a departure airport, a destination airport and a cabin class,
-            then click the plus (+) sign.
-          </Typography>
-        </Grid>
-      ) : null}
     </Grid>
   )
 }

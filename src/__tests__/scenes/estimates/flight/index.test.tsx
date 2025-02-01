@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { Formik } from 'formik'
 import Flight from '../../../../scenes/estimates/flight'
+import userEvent from '@testing-library/user-event'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,17 +46,21 @@ describe('Flight Estimate', () => {
   })
 
   it('shows validation errors for required fields', async () => {
-    renderWithProviders()
-    const form = screen.getByRole('form')
-    
-    // Submit empty form
-    await fireEvent.submit(form)
-    
-    // Wait for validation errors
+    render(
+      <BrowserRouter>
+        <Flight />
+      </BrowserRouter>
+    )
+
+    const submitButton = screen.getByRole('button', { name: /get estimate/i })
+    await userEvent.click(submitButton)
+
     await waitFor(() => {
       const errors = screen.getAllByRole('alert')
       expect(errors).toHaveLength(1)
-      expect(errors[0]).toHaveTextContent(/at least one flight leg is required/i)
+      expect(errors[0]).toHaveTextContent(
+        /select departure airport, destination airport, and cabin class, then click the \+ button/i
+      )
     }, {
       timeout: 2000
     })

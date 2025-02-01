@@ -22,11 +22,7 @@ import { type iFlightFormFields } from './types'
 const initialValues: iFlightFormFields = {
   type: 'flight',
   passengers: 1,
-  legs: [{
-    departure_airport: '',
-    destination_airport: '',
-    cabin_class: 'economy'
-  }],
+  legs: [],
   distance_unit: 'km',
   cabin_class: 'economy'
 }
@@ -98,14 +94,22 @@ const FlightForm = (): JSX.Element => {
             ) : null}
           </Grid>
 
-          <FlightLeg parentState={formik.values.legs} />
+          <FlightLeg 
+            legs={formik.values.legs} 
+            onLegsChange={(newLegs) => formik.setFieldValue('legs', newLegs)} 
+            onUnsavedChanges={(hasChanges) => formik.setFieldError(
+              'legs', 
+              hasChanges ? 'Click the + button to add this leg before getting estimate' : undefined
+            )}
+          />
           {formik.touched.legs !== undefined &&
           formik.errors.legs !== undefined ? (
             <Grid item xs={12}>
               <Typography role="alert" color="error" sx={{ textAlign: 'center', mt: 2 }}>
-                {Array.isArray(formik.errors.legs) 
-                  ? 'At least one flight leg is required.' 
-                  : String(formik.errors.legs)}
+                {formik.values.legs.length === 0 && 
+                 (!formik.isSubmitting || !formik.dirty)
+                  ? 'Select departure airport, destination airport, and cabin class, then click the + button'
+                  : 'Click the + button to add a flight leg'}
               </Typography>
             </Grid>
           ) : null}
