@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar'
-import { Box, IconButton, Typography, useTheme, Tooltip, Divider } from '@mui/material'
+import { Box, Typography, useTheme, Tooltip, Divider, useMediaQuery } from '@mui/material'
 import { Link } from 'react-router-dom'
 import 'react-pro-sidebar/dist/css/styles.css'
 import { tokens } from '../../theme'
@@ -12,7 +12,6 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined'
 import LocalGasStationOutlinedIcon from '@mui/icons-material/LocalGasStationOutlined'
 import FindInPageOutlinedIcon from '@mui/icons-material/FindInPageOutlined'
-import ladderIcon from '../../assets/ladderIcon_01.png'
 
 interface ItemProps {
   title: string
@@ -38,9 +37,16 @@ const Item = ({ title, to, icon, selected, setSelected, isCollapsed }: ItemProps
         style={{ color: colors.grey[100] }}
         onClick={() => setSelected(title)}
         icon={icon}
+        role="menuitem"
+        aria-label={title}
+        tabIndex={0}
       >
         <Typography>{title}</Typography>
-        <Link to={to} />
+        <Link 
+          to={to}
+          aria-label={`Navigate to ${title}`}
+          role="link"
+        />
       </MenuItem>
     </Tooltip>
   )
@@ -51,24 +57,50 @@ const Sidebar = (): JSX.Element => {
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [selected, setSelected] = useState('Dashboard')
+  
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'))
+
+  useEffect(() => {
+    setIsCollapsed(isMediumScreen)
+  }, [isMediumScreen])
 
   return (
     <Box
+      role="navigation"
+      aria-label="Main Navigation"
+      data-testid="sidebar-nav"
       sx={{
         '& .pro-sidebar-inner': {
-          background: `${colors.primary[400]} !important`
+          background: `${colors.primary[400]} !important`,
+          transition: 'background-color 0.3s ease-in-out'
+        },
+        '& .pro-menu-item:hover': {
+          backgroundColor: 'transparent !important',
+          transition: 'background-color 0.3s ease-in-out'
         },
         '& .pro-icon-wrapper': {
           backgroundColor: 'transparent !important'
         },
         '& .pro-inner-item': {
-          padding: '5px 35px 5px 20px !important'
+          padding: '5px 35px 5px 20px !important',
+          color: colors.grey[100],
+          transition: 'all 0.3s ease-in-out',
+          borderRadius: '4px',
+          margin: '0 15px',
+          width: 'calc(100% - 30px)'
         },
         '& .pro-inner-item:hover': {
-          color: '#868dfb !important'
+          color: '#868dfb !important',
+          backgroundColor: `${colors.primary[400]}40 !important`,
+          transition: 'all 0.3s ease-in-out',
+          padding: '3px 33px 3px 18px !important'
         },
         '& .pro-menu-item.active': {
           color: '#6870fa !important'
+        },
+        '& .pro-inner-item:focus-visible': {
+          outline: `2px solid ${colors.grey[100]}`,
+          outlineOffset: '2px'
         }
       }}
     >
@@ -76,14 +108,24 @@ const Sidebar = (): JSX.Element => {
         <Menu iconShape='square'>
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon data-testid="MenuOutlinedIcon" /> : undefined}
+            icon={isCollapsed ? (
+              <MenuOutlinedIcon 
+                data-testid="MenuOutlinedIcon" 
+                sx={{ color: colors.grey[100] }}
+              />
+            ) : undefined}
           >
           {!isCollapsed && (
             <Box 
               display='flex' 
               alignItems='center'
             >
-              <Typography variant='h5'>Carbon Interface</Typography>
+              <Typography 
+                variant='h5'
+                sx={{ color: colors.grey[100] }}
+              >
+                Carbon Interface
+              </Typography>
             </Box>
           )}
         </MenuItem>

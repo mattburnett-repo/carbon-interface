@@ -80,4 +80,42 @@ describe('Sidebar', () => {
       // but the data-mui-internal-clone-element attribute indicates the tooltip is enabled
     })
   })
+
+  it('has proper accessibility attributes', () => {
+    renderWithProviders()
+    
+    // Check main navigation role and label
+    const nav = screen.getByTestId('sidebar-nav')
+    expect(nav).toHaveAttribute('role', 'navigation')
+    expect(nav).toHaveAttribute('aria-label', 'Main Navigation')
+
+    // Check menu items have proper accessibility attributes
+    const menuItems = screen.getAllByRole('menuitem')
+    menuItems.forEach(item => {
+      expect(item).toHaveAttribute('aria-label')
+      expect(item).toHaveAttribute('tabindex', '0')
+    })
+
+    // Check links have descriptive labels
+    const links = screen.getAllByRole('link')
+    links.forEach(link => {
+      expect(link).toHaveAttribute('aria-label')
+      expect(link.getAttribute('aria-label')).toMatch(/Navigate to/)
+    })
+  })
+
+  it('maintains accessibility when collapsed', () => {
+    renderWithProviders()
+    
+    // Collapse the sidebar
+    const collapseToggle = screen.getByRole('button', { name: 'Carbon Interface' })
+    fireEvent.click(collapseToggle)
+
+    // Check tooltips are present for accessibility in collapsed state
+    const menuItems = screen.getAllByRole('menuitem')
+    menuItems.forEach(item => {
+      expect(item).toHaveAttribute('aria-label')
+      expect(item.closest('li')).toHaveAttribute('data-mui-internal-clone-element') // Tooltip present
+    })
+  })
 })
