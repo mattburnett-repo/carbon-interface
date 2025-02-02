@@ -34,6 +34,15 @@ const FuelCombustionEstimate: React.FC<iFormInitialValues> = (
 
       const responseData: { data: iDisplayProps['data'] } = await response.json()
       return responseData.data
+    },
+    {
+      retry: (failureCount, error: unknown) => {
+        // Don't retry if it's an API limit error
+        if ((error as Error).message?.includes('API request limit')) {
+          return false
+        }
+        return failureCount < 3
+      }
     }
   )
 

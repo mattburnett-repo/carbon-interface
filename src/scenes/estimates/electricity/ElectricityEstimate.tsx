@@ -55,6 +55,14 @@ const ElectricityEstimate: React.FC<iEstimateProps> = ({ estimateValues }) => {
       }
 
       return result as EstimateResponse;
+    },
+    {
+      retry: (failureCount, error: unknown) => {
+        if ((error as Error).message?.includes('API request limit')) {
+          return false
+        }
+        return failureCount < 3
+      }
     }
   )
 

@@ -23,9 +23,10 @@ export default function VehicleModels({ formik, models = [], loading }: Props): 
     <FormControl fullWidth sx={{ minWidth: '200px' }}>
       <InputLabel id="vehicle_model_id-label">Vehicle Model</InputLabel>
       <Select
-        labelId="vehicle_model_id-label"
-        id="vehicle_model_id"
+        id='vehicle_model_id'
+        labelId='vehicle_model_id-label'
         label="Vehicle Model"
+        data-testid="model-select"
         {...formik.getFieldProps('vehicle_model_id')}
         value={formik.values.vehicle_model_id || ' '}
         disabled={loading}

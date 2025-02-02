@@ -14,6 +14,7 @@ const ElectricityEstimateDisplay = (data: iDisplayProps): JSX.Element => {
     <Box
       className='estimate'
       sx={{ mt: '5rem', backgroundColor: colors.primary[400] }}
+      data-testid="electricity-estimate"
     >
       <Typography
         variant={'h1'}

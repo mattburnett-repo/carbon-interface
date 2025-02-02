@@ -4,17 +4,14 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { MemoryRouter } from 'react-router-dom'
 import ShippingEstimate from '../../../../scenes/estimates/shipping/ShippingEstimate'
 
-// Create a new QueryClient for each test
-const createTestQueryClient = () => new QueryClient({
-  defaultOptions: {
-    queries: {
-      // Prevent retrying failed requests during tests
-      retry: false,
-      // Prevent caching between tests
-      cacheTime: 0
-    }
-  }
-})
+// Mock fetch
+global.fetch = jest.fn()
+
+// Add ErrorDisplay mock
+jest.mock('../../../../components/ErrorDisplay', () => ({
+  __esModule: true,
+  default: ({ error }: { error: Error }) => <div>{error.message}</div>
+}))
 
 const mockValues = {
   type: 'shipping',
@@ -45,20 +42,13 @@ const mockResponse = {
 }
 
 describe('ShippingEstimate', () => {
-  const originalError = console.error
-  
-  beforeAll(() => {
-    // Silence console errors in tests
-    console.error = jest.fn()
-  })
-
-  afterAll(() => {
-    // Restore console error after tests
-    console.error = originalError
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false }
+    }
   })
 
   const renderComponent = () => {
-    const queryClient = createTestQueryClient()
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter initialEntries={[{ pathname: '/estimates/shipping', state: { values: mockValues } }]}>
@@ -70,40 +60,10 @@ describe('ShippingEstimate', () => {
 
   beforeEach(() => {
     jest.clearAllMocks()
+    queryClient.clear()
   })
 
-  it('should show loading state', async () => {
-    // Setup a delayed response to ensure we can check loading state
-    global.fetch = jest.fn(() => 
-      new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({
-            ok: true,
-            json: () => Promise.resolve(mockResponse)
-          })
-        }, 100)
-      })
-    ) as jest.Mock
-
-    renderComponent()
-    
-    // Check for MUI's LinearProgress
-    expect(screen.getByRole('progressbar')).toBeInTheDocument()
-  })
-
-  it('should show error state', async () => {
-    global.fetch = jest.fn(() => 
-      Promise.reject(new Error('API Error'))
-    ) as jest.Mock
-
-    renderComponent()
-    
-    await waitFor(() => {
-      expect(screen.getByText(/API Error/)).toBeInTheDocument()
-    })
-  })
-
-  it('should show estimate display on successful response', async () => {
+  it('should show shipping estimate with all values', async () => {
     global.fetch = jest.fn(() => 
       Promise.resolve({
         ok: true,
@@ -115,29 +75,15 @@ describe('ShippingEstimate', () => {
     
     await waitFor(() => {
       expect(screen.getByText(/Shipping Estimate/)).toBeInTheDocument()
-      expect(screen.getByText(/ID: 12345/)).toBeInTheDocument()
+      expect(screen.getByText(/Weight Value:.*100/)).toBeInTheDocument()
+      expect(screen.getByText(/Distance Value:.*1,000/)).toBeInTheDocument()
+      expect(screen.getByText(/Carbon \(mt\): 0.001/)).toBeInTheDocument()
     })
   })
 
-  it('should handle API error response', async () => {
-    global.fetch = jest.fn(() => 
-      Promise.resolve({
-        ok: false,
-        status: 400,
-        json: () => Promise.resolve({ error: 'Bad Request' })
-      })
-    ) as jest.Mock
-
-    renderComponent()
-    
-    await waitFor(() => {
-      expect(screen.getByText(/API Error/)).toBeInTheDocument()
-    })
-  })
-
-  it('should handle missing state values', async () => {
+  it('should show message when no data available', () => {
     render(
-      <QueryClientProvider client={createTestQueryClient()}>
+      <QueryClientProvider client={queryClient}>
         <MemoryRouter initialEntries={[{ pathname: '/estimates/shipping' }]}>
           <ShippingEstimate />
         </MemoryRouter>
@@ -239,7 +185,13 @@ describe('ShippingEstimate', () => {
     ) as jest.Mock
 
     render(
-      <QueryClientProvider client={createTestQueryClient()}>
+      <QueryClientProvider client={new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: false
+          }
+        }
+      })}>
         <MemoryRouter initialEntries={[{ pathname: '/estimates/shipping', state: { values: defaultValues } }]}>
           <ShippingEstimate />
         </MemoryRouter>

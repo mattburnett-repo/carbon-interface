@@ -5,6 +5,7 @@ import { FormikProvider, useFormik } from 'formik'
 import VehicleModels from '../../../components/vehicle/VehicleModels'
 import type { VehicleModel } from '../../../services/vehicleApi'
 import { type iInitialValues } from '../../../scenes/estimates/vehicle/types'
+import { Formik, Form } from 'formik'
 
 const mockModels: VehicleModel[] = [
   {
@@ -35,8 +36,8 @@ function TestWrapper({ loading = false }) {
       type: 'vehicle',
       distance_unit: 'km',
       distance_value: 0,
-      vehicle_make_id: '',
-      vehicle_model_id: ''
+      vehicle_make_id: 'test-make-id',
+      vehicle_model_id: 'model-1'
     },
     onSubmit: () => {}
   })

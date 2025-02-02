@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { Box } from '@mui/material'
 import LoadingDisplay from '../../../components/LoadingDisplay'
 import VehicleEstimateDisplay from './VehicleEstimateDisplay'
 import { type VehicleEstimate, type iInitialValues } from './types'
+import { useQuery } from 'react-query'
+import ErrorDisplay from '../../../components/ErrorDisplay'
 
 interface LocationState {
   state: {
@@ -14,12 +16,10 @@ interface LocationState {
 export default function VehicleEstimate(): JSX.Element {
   const location = useLocation() as LocationState
   const formValues = location.state.values
-  const [estimate, setEstimate] = useState<VehicleEstimate | null>(null)
 
-  useEffect(() => {
-    const getEstimate = async () => {
-      if (!formValues) return
-
+  const { isLoading, error, data } = useQuery<VehicleEstimate>(
+    ['vehicle', formValues],
+    async () => {
       const response = await fetch(
         `${import.meta.env.VITE_API_ESTIMATES_URL}`,
         {
@@ -38,23 +38,31 @@ export default function VehicleEstimate(): JSX.Element {
       )
 
       if (!response.ok) {
-        throw new Error('Failed to get estimate')
+        const { message }: { message: string } = await response.json()
+        throw Error(message)
       }
 
-      const data = await response.json() as VehicleEstimate
-      setEstimate(data)
+      return await response.json()
+    },
+    {
+      retry: (failureCount, error: unknown) => {
+        if ((error as Error).message?.includes('API request limit')) {
+          return false
+        }
+        return failureCount < 3
+      }
     }
+  )
 
-    getEstimate()
-  }, [formValues])
-
-  if (!formValues || !estimate) {
+  if (isLoading) {
     return <LoadingDisplay />
   }
+  if (error) return <ErrorDisplay error={error as Error} />
+  if (!data) return <LoadingDisplay />
 
   return (
     <Box data-testid="vehicle-estimate">
-      <VehicleEstimateDisplay estimate={estimate} />
+      <VehicleEstimateDisplay estimate={data} />
     </Box>
   )
 }

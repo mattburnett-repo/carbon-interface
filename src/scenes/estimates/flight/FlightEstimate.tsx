@@ -33,6 +33,14 @@ const FlightEstimate: React.FC<iEstimateProps> = (
       }
 
       return await response.json()
+    },
+    {
+      retry: (failureCount, error: unknown) => {
+        if ((error as Error).message?.includes('API request limit')) {
+          return false
+        }
+        return failureCount < 3
+      }
     }
   )
 

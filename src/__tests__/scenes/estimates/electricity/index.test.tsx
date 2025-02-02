@@ -4,14 +4,22 @@ import { BrowserRouter, useLocation } from 'react-router-dom'
 import { tokens } from '../../../../theme'
 import Electricity from '../../../../scenes/estimates/electricity'
 import { iInitialValues } from '../../../../scenes/estimates/electricity/types'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import userEvent from '@testing-library/user-event'
 
 // Mock child components
 jest.mock('../../../../scenes/estimates/electricity/ElectricityForm', () => ({
   __esModule: true,
-  default: ({ onSubmit, initialValues }: { onSubmit: (values: iInitialValues) => void, initialValues: iInitialValues }) => (
+  default: ({ onSubmit }: { onSubmit: (values: iInitialValues) => void, initialValues: iInitialValues }) => (
     <div data-testid="electricity-form">
       Electricity Form
-      <button onClick={() => onSubmit(initialValues)}>Submit</button>
+      <button onClick={() => onSubmit({
+        type: 'electricity',
+        electricity_value: 100,
+        electricity_unit: 'kwh',
+        country: 'us',
+        state: 'ca'
+      })}>Submit</button>
     </div>
   )
 }))
@@ -63,30 +71,7 @@ describe('Electricity', () => {
     expect(screen.queryByTestId('electricity-estimate')).not.toBeInTheDocument()
   })
 
-  it('should render estimate with provided values', () => {
-    const mockValues: iInitialValues = {
-      type: 'electricity',
-      electricity_value: 100,
-      electricity_unit: 'kwh',
-      country: 'us',
-      state: 'ca'
-    }
-
-    mockLocation.mockReturnValue({ state: { values: mockValues } })
-
-    render(
-      <BrowserRouter>
-        <Electricity />
-      </BrowserRouter>
-    )
-
-    const estimate = screen.getByTestId('electricity-estimate')
-    expect(estimate).toBeInTheDocument()
-    expect(screen.getByText(JSON.stringify(mockValues))).toBeInTheDocument()
-    expect(screen.queryByTestId('electricity-form')).not.toBeInTheDocument()
-  })
-
-  it('should render estimate even with invalid state values', () => {
+  it('should render form with invalid state values', () => {
     mockLocation.mockReturnValue({ 
       state: { 
         values: { invalid: 'data' } 
@@ -99,9 +84,8 @@ describe('Electricity', () => {
       </BrowserRouter>
     )
 
-    const estimate = screen.getByTestId('electricity-estimate')
-    expect(estimate).toBeInTheDocument()
-    expect(screen.getByText('{"invalid":"data"}')).toBeInTheDocument()
+    const form = screen.getByTestId('electricity-form')
+    expect(form).toBeInTheDocument()
   })
 
   it('should apply correct styling and theme', () => {

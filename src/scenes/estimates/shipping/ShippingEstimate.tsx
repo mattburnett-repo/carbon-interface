@@ -21,21 +21,19 @@ interface LocationState {
 }
 
 interface ApiResponse {
-  data: {
-    id: string
-    type: string
-    attributes: {
-      weight_unit: string
-      weight_value: number
-      distance_unit: string
-      distance_value: number
-      transport_method: string
-      estimated_at: string
-      carbon_g: number
-      carbon_lb: number
-      carbon_kg: number
-      carbon_mt: number
-    }
+  id: string
+  type: string
+  attributes: {
+    weight_unit: string
+    weight_value: number
+    distance_unit: string
+    distance_value: number
+    transport_method: string
+    estimated_at: string
+    carbon_g: number
+    carbon_lb: number
+    carbon_kg: number
+    carbon_mt: number
   }
 }
 
@@ -58,20 +56,21 @@ const ShippingEstimate: React.FC = () => {
       })
 
       if (!response.ok) {
-        throw new Error('API Error')
+        const errorResponse: { message: string } = await response.json()
+        throw new Error(errorResponse.message)
       }
 
-      const responseData = await response.json()
-
-      // Validate response structure
-      if (!responseData?.data?.attributes || !responseData?.data?.id) {
-        throw new Error('API Error')
-      }
-
-      return responseData
+      const responseData: { data: ApiResponse } = await response.json()
+      return responseData.data
     },
     {
-      enabled: !!state?.values
+      enabled: !!state?.values,
+      retry: (failureCount, error: unknown) => {
+        if ((error as Error).message?.includes('API request limit')) {
+          return false
+        }
+        return failureCount < 3
+      }
     }
   )
 
@@ -82,17 +81,17 @@ const ShippingEstimate: React.FC = () => {
   try {
     // Transform API response to match ShippingEstimateDisplay props
     const displayData = {
-      weight_unit: data.data.attributes.weight_unit,
-      weight_value: data.data.attributes.weight_value,
-      distance_unit: data.data.attributes.distance_unit,
-      distance_value: data.data.attributes.distance_value,
-      transport_method: data.data.attributes.transport_method,
-      estimated_at: data.data.attributes.estimated_at,
-      id: data.data.id,
-      carbon_g: data.data.attributes.carbon_g,
-      carbon_lb: data.data.attributes.carbon_lb,
-      carbon_kg: data.data.attributes.carbon_kg,
-      carbon_mt: data.data.attributes.carbon_mt
+      weight_unit: data.attributes.weight_unit,
+      weight_value: data.attributes.weight_value,
+      distance_unit: data.attributes.distance_unit,
+      distance_value: data.attributes.distance_value,
+      transport_method: data.attributes.transport_method,
+      estimated_at: data.attributes.estimated_at,
+      id: data.id,
+      carbon_g: data.attributes.carbon_g,
+      carbon_lb: data.attributes.carbon_lb,
+      carbon_kg: data.attributes.carbon_kg,
+      carbon_mt: data.attributes.carbon_mt
     }
 
     return (

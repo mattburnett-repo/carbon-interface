@@ -126,8 +126,11 @@ const VehicleForm = (): JSX.Element => {
           </Grid>
           <Grid item>
             <VehicleMakes formik={formik} makes={makes} />
+            {formik.touched.vehicle_make_id && formik.errors.vehicle_make_id ? (
+              <div style={{ color: 'red' }}>{formik.errors.vehicle_make_id}</div>
+            ) : null}
           </Grid>
-          {formik.values.vehicle_make_id && formik.values.vehicle_make_id !== ' ' && (
+          {formik.values.vehicle_make_id !== '' && (
             <Grid item>
               <VehicleModels 
                 formik={formik} 
@@ -135,6 +138,9 @@ const VehicleForm = (): JSX.Element => {
                 models={models}
                 loading={loadingModels}
               />
+              {formik.touched.vehicle_model_id && formik.errors.vehicle_model_id ? (
+                <div style={{ color: 'red' }}>{formik.errors.vehicle_model_id}</div>
+              ) : null}
             </Grid>
           )}
         </Grid>

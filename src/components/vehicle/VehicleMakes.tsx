@@ -18,6 +18,7 @@ export default function VehicleMakes({
     <FormControl fullWidth sx={{ minWidth: '200px' }}>
       <InputLabel id="vehicle_make_id-label">Vehicle Make</InputLabel>
       <Select
+        data-testid="make-select"
         labelId="vehicle_make_id-label"
         id="vehicle_make_id"
         label="Vehicle Make"
