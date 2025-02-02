@@ -12,7 +12,7 @@ interface Props {
 const VehicleMakes = ({ formik, makes = [] }: Props): JSX.Element => {
   return (
     <FormControl fullWidth>
-      <InputLabel id="vehicle_make_id-label">Make</InputLabel>
+      {/* <InputLabel id="vehicle_make_id-label">Make</InputLabel> */}
       <Select
         labelId="vehicle_make_id-label"
         id="vehicle_make_id"

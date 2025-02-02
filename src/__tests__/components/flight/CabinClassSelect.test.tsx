@@ -37,7 +37,7 @@ describe('CabinClassSelect', () => {
     expect(screen.getByRole('option', { name: /premium/i })).toBeInTheDocument()
   })
 
-  it('calls formik handlers when selecting an option', async () => {
+  it('selects an option', async () => {
     const user = userEvent.setup({ delay: null })
     renderWithMui(<CabinClassSelect {...mockProps} />)
     

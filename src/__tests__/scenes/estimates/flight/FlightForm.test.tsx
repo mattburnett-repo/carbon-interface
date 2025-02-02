@@ -80,7 +80,7 @@ describe('FlightForm', () => {
     renderForm()
 
     // Click the select to open dropdown
-    await user.click(screen.getByRole('button', { name: 'Kilometers' }))
+    await user.click(screen.getByRole('button', { name: /distance unit kilometers/i }))
 
     // Click miles option
     await user.click(screen.getByRole('option', { name: 'Miles' }))

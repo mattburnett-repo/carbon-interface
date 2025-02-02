@@ -61,9 +61,10 @@ describe('ShippingForm', () => {
 
   it('should have "km" as default distance unit', async () => {
     await renderComponent()
-    const distanceUnitSelect = screen.getByTestId('distance-unit-select')
+    const distanceUnitSelect = screen.getByRole('button', { name: /distance unit/i })
     expect(distanceUnitSelect).toBeInTheDocument()
-    expect(distanceUnitSelect.querySelector('input')).toHaveValue('km')
+    const input = screen.getByRole('button', { name: /distance unit/i }).nextElementSibling
+    expect(input).toHaveValue('km')
   })
 
   it('should validate weight value', async () => {

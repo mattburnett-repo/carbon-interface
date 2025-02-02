@@ -43,6 +43,6 @@ describe('Flight Estimate', () => {
     renderComponent()
     expect(screen.getByRole('form')).toBeInTheDocument()
     expect(screen.getByLabelText(/passengers/i)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Kilometers' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /distance unit kilometers/i })).toBeInTheDocument()
   })
 }) 

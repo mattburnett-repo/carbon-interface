@@ -107,7 +107,11 @@ const VehicleForm = (): JSX.Element => {
           spacing={5}
         >
           <Grid item>
-            <DistanceUnits formik={formik} />
+            <DistanceUnits
+              value={formik.values.distance_unit}
+              onChange={(value) => formik.setFieldValue('distance_unit', value)}
+              onBlur={() => formik.handleBlur('distance_unit')}
+            />
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>

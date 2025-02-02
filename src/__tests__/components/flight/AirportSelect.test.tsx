@@ -17,37 +17,42 @@ describe('AirportSelect', () => {
     })
   } as unknown as FormikProps<any>
 
-  const mockProps = {
-    parentState: mockFormik,
-    endpoint: 'departure_airport',
-    title: 'Departure Airport'
-  }
+  const airports = [
+    {
+      title: 'Departure Airport',
+      endpoint: 'departure_airport',
+      testAirport: 'LHR.*London Heathrow'
+    },
+    {
+      title: 'Destination Airport',
+      endpoint: 'destination_airport',
+      testAirport: 'CDG.*Paris Charles de Gaulle'
+    }
+  ] as const
 
   beforeEach(() => {
     jest.clearAllMocks()
   })
 
-  it('renders with correct label and is interactive', async () => {
+  it.each(airports)('renders $title with correct label and is interactive', async ({ title, endpoint }) => {
     const user = userEvent.setup({ delay: null })
-    renderWithMui(<AirportSelect {...mockProps} />)
+    renderWithMui(<AirportSelect parentState={mockFormik} endpoint={endpoint} title={title} />)
     
-    const select = screen.getByRole('button', { name: /departure airport/i })
+    const select = screen.getByRole('button', { name: new RegExp(title, 'i') })
     expect(select).toBeInTheDocument()
     
     await user.click(select)
     expect(select).toHaveAttribute('aria-expanded', 'true')
   })
 
-  it('calls formik onChange when selecting an option', async () => {
+  it.each(airports)('selects a $title option', async ({ title, endpoint, testAirport }) => {
     const user = userEvent.setup({ delay: null })
-    renderWithMui(<AirportSelect {...mockProps} />)
+    renderWithMui(<AirportSelect parentState={mockFormik} endpoint={endpoint} title={title} />)
     
-    // Open select and choose an option
-    const select = screen.getByRole('button', { name: /departure airport/i })
+    const select = screen.getByRole('button', { name: new RegExp(title, 'i') })
     await user.click(select)
     
-    // Select a specific airport (LHR - London Heathrow)
-    const option = screen.getByRole('option', { name: /LHR.*London Heathrow/ })
+    const option = screen.getByRole('option', { name: new RegExp(testAirport) })
     await user.click(option)
     
     expect(mockOnChange).toHaveBeenCalled()
@@ -62,7 +67,11 @@ describe('AirportSelect', () => {
       })
     } as unknown as FormikProps<any>
 
-    renderWithMui(<AirportSelect {...mockProps} parentState={mockFormikWithValue} />)
+    renderWithMui(<AirportSelect 
+      parentState={mockFormikWithValue} 
+      endpoint="departure_airport" 
+      title="Departure Airport" 
+    />)
     
     expect(screen.getByRole('button')).toHaveTextContent('LHR')
   })

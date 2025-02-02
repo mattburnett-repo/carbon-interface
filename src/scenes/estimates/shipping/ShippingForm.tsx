@@ -18,6 +18,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { type iInitialValues } from './types'
+import DistanceUnits from '../../../components/distance/DistanceUnits'
 
 const initialValues: iInitialValues = {
   type: 'shipping',
@@ -101,20 +102,11 @@ const ShippingForm = (): JSX.Element => {
             ) : null}
           </Grid>
           <Grid item>
-            <InputLabel id='distance_unit-label'>Distance Unit</InputLabel>
-            <Select
-              id='distance_unit'
-              labelId='distance_unit-label'
-              {...formik.getFieldProps('distance_unit')}
+            <DistanceUnits
               value={formik.values.distance_unit}
-              data-testid="distance-unit-select"
-              inputProps={{
-                'aria-label': 'Distance Unit'
-              }}
-            >
-              <MenuItem value={'km'}>Kilometers</MenuItem>
-              <MenuItem value={'mi'}>Miles</MenuItem>
-            </Select>
+              onChange={(value) => formik.setFieldValue('distance_unit', value)}
+              onBlur={() => formik.handleBlur('distance_unit')}
+            />
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>

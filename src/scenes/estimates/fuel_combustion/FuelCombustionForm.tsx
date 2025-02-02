@@ -23,8 +23,8 @@ import { type iFormInitialValues } from './types'
 
 const initialValues: iFormInitialValues = {
   type: 'fuel_combustion',
-  fuel_source_type: '',
-  fuel_source_unit: '',
+  fuel_source_type: 'bit',
+  fuel_source_unit: 'btu',
   fuel_source_value: 0
 }
 

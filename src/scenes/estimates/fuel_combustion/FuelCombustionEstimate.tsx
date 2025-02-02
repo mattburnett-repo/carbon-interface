@@ -32,7 +32,8 @@ const FuelCombustionEstimate: React.FC<iFormInitialValues> = (
         throw new Error(errorResponse.message)
       }
 
-      return await response.json()
+      const responseData: { data: iDisplayProps['data'] } = await response.json()
+      return responseData.data
     }
   )
 

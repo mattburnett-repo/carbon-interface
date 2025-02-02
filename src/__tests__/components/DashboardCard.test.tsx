@@ -4,13 +4,35 @@ import { BrowserRouter } from 'react-router-dom'
 import DashboardCard, { type iProps } from '../../components/DashboardCard'
 
 describe('DashboardCard', () => {
-  const defaultProps: iProps = {
-    title: 'Flight',
-    image: '/test-image.jpg',
-    endpoint: 'flight'
-  } as const
+  const cardTypes = [
+    {
+      title: 'Flight',
+      image: '/test-flight-image.jpg',
+      endpoint: 'flight'
+    },
+    {
+      title: 'Vehicle',
+      image: '/test-vehicle-image.jpg',
+      endpoint: 'vehicle'
+    },
+    {
+      title: 'Fuel Combustion',
+      image: '/test-fuel-image.jpg',
+      endpoint: 'fuel_combustion'
+    },
+    {
+      title: 'Electricity',
+      image: '/test-electricity-image.jpg',
+      endpoint: 'electricity'
+    },
+    {
+      title: 'Shipping',
+      image: '/test-shipping-image.jpg',
+      endpoint: 'shipping'
+    }
+  ] as const
 
-  const renderWithRouter = (props = defaultProps): ReturnType<typeof render> => {
+  const renderWithRouter = (props: iProps): ReturnType<typeof render> => {
     return render(
       <BrowserRouter>
         <DashboardCard {...props} />
@@ -18,22 +40,22 @@ describe('DashboardCard', () => {
     )
   }
 
-  it('renders card with title and image', (): void => {
-    renderWithRouter()
+  it.each(cardTypes)('renders $title card with title and image', (cardProps) => {
+    renderWithRouter(cardProps)
 
-    expect(screen.getByText('Flight')).toBeInTheDocument()
-    expect(screen.getByAltText('Flight image')).toHaveAttribute('src', '/test-image.jpg')
+    expect(screen.getByText(cardProps.title)).toBeInTheDocument()
+    expect(screen.getByAltText(`${cardProps.title} image`)).toHaveAttribute('src', cardProps.image)
   })
 
-  it('links to correct route when clicked', () => {
-    renderWithRouter()
+  it.each(cardTypes)('links to correct route for $title card', (cardProps) => {
+    renderWithRouter(cardProps)
 
     const link = screen.getByRole('link')
-    expect(link).toHaveAttribute('href', '/estimates/flight')
+    expect(link).toHaveAttribute('href', `/estimates/${cardProps.endpoint}`)
   })
 
   it('applies hover styles when hovered', () => {
-    renderWithRouter()
+    renderWithRouter(cardTypes[0])
 
     const card = screen.getByRole('link')
     fireEvent.mouseOver(card)

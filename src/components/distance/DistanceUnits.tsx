@@ -6,6 +6,7 @@ interface Props {
   value: string
   onChange: (value: string) => void
   onBlur?: () => void
+  name?: string
 }
 
 export default function DistanceUnits({ value, onChange, onBlur }: Props): JSX.Element {
@@ -17,6 +18,7 @@ export default function DistanceUnits({ value, onChange, onBlur }: Props): JSX.E
     <FormControl fullWidth>
       <InputLabel id="distance-unit-label">Distance Unit</InputLabel>
       <Select
+        labelId="distance-unit-label"
         label="Distance Unit"
         name="distance_unit"
         value={value}

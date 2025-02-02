@@ -10,14 +10,19 @@ import {
 } from '../../../components/fuel_combustion/FuelSources'
 
 import { type iDisplayProps } from './types'
+import LoadingDisplay from '../../../components/LoadingDisplay'
 
-const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
+const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
 
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
+  if (!data?.data?.attributes) {
+    return <LoadingDisplay />
+  }
 
   const fuelSourceName = useFuelSourceName(
     data.data.attributes.fuel_source_type
@@ -120,4 +125,4 @@ const VehicleEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   )
 }
 
-export default VehicleEstimateDisplay
+export default FuelCombustionEstimateDisplay
