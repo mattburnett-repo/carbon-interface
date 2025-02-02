@@ -74,11 +74,9 @@ const FuelCombustionForm = (): JSX.Element => {
           ) : null}
 
           <Grid item>
-            <InputLabel id='fuel_source_value-label'>
-              Fuel Source Value
-            </InputLabel>
             <TextField
               id='fuel_source_value'
+              label="Fuel Source Value"
               inputProps={{
                 'aria-label': 'Fuel Source Value'
               }}

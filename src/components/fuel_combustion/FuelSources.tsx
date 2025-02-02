@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputLabel, Select, MenuItem } from '@mui/material'
+import { InputLabel, Select, MenuItem, FormControl } from '@mui/material'
 import { FormikProps } from 'formik'
 import FuelSourceData from './fuelSourcesData'
 import { type iFormInitialValues } from '../../scenes/estimates/fuel_combustion/types'
@@ -41,11 +41,12 @@ export const FuelSourceTypes: React.FC<FuelSourceProps> = ({ parentState }) => {
   const fuelSourceTypes = useFuelSources()
 
   return (
-    <>
-      <InputLabel id='fuel_source_type-label'>Fuel Source Type</InputLabel>
+    <FormControl fullWidth sx={{ minWidth: '200px' }}>
+      <InputLabel id="fuel_source_type-label">Fuel Source Type</InputLabel>
       <Select
         id='fuel_source_type'
         labelId='fuel_source_type-label'
+        label="Fuel Source Type"
         {...parentState.getFieldProps('fuel_source_type')}
       >
         {fuelSourceTypes.map((type) => (
@@ -58,7 +59,7 @@ export const FuelSourceTypes: React.FC<FuelSourceProps> = ({ parentState }) => {
         parentState.errors.fuel_source_type !== undefined ? (
         <div>{String(parentState.errors.fuel_source_type)}</div>
       ) : null}
-    </>
+    </FormControl>
   )
 }
 
@@ -73,11 +74,12 @@ export const FuelSourceUnits: React.FC<FuelSourceProps> = ({ parentState }) => {
   const fuelSourceUnits = useFuelSourceUnits(parentState.values.fuel_source_type)
 
   return (
-    <>
-      <InputLabel id='fuel_source_unit-label'>Fuel Source Unit</InputLabel>
+    <FormControl fullWidth sx={{ minWidth: '200px' }}>
+      <InputLabel id="fuel_source_unit-label">Fuel Source Unit</InputLabel>
       <Select
         id='fuel_source_unit'
         labelId='fuel_source_unit-label'
+        label="Fuel Source Unit"
         {...parentState.getFieldProps('fuel_source_unit')}
       >
         {fuelSourceUnits.map((unit) => (
@@ -90,6 +92,6 @@ export const FuelSourceUnits: React.FC<FuelSourceProps> = ({ parentState }) => {
         parentState.errors.fuel_source_unit !== undefined ? (
         <div>{String(parentState.errors.fuel_source_unit)}</div>
       ) : null}
-    </>
+    </FormControl>
   )
 } 

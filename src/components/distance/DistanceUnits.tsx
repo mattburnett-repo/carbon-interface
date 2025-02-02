@@ -4,16 +4,12 @@ import { SelectChangeEvent } from '@mui/material/Select'
 
 interface Props {
   value: string
-  onChange: (value: string) => void
-  onBlur?: () => void
+  onChange: (event: SelectChangeEvent) => void
+  onBlur?: (e: React.FocusEvent<any>) => void
   name?: string
 }
 
 export default function DistanceUnits({ value, onChange, onBlur }: Props): JSX.Element {
-  const handleChange = (event: SelectChangeEvent) => {
-    onChange(event.target.value)
-  }
-
   return (
     <FormControl fullWidth>
       <InputLabel id="distance-unit-label">Distance Unit</InputLabel>
@@ -22,7 +18,7 @@ export default function DistanceUnits({ value, onChange, onBlur }: Props): JSX.E
         label="Distance Unit"
         name="distance_unit"
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         onBlur={onBlur}
       >
         <MenuItem value="km">Kilometers</MenuItem>

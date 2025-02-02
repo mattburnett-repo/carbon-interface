@@ -11,7 +11,8 @@ import {
   TextField,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  FormControl
 } from '@mui/material'
 
 import { useFormik } from 'formik'
@@ -75,22 +76,25 @@ const ShippingForm = (): JSX.Element => {
           gridTemplateColumns={'5'}
         >
           <Grid item>
-            <InputLabel id='weight_unit-label'>Weight Unit</InputLabel>
-            <Select
-              id='weight_unit'
-              labelId='weight_unit-label'
-              {...formik.getFieldProps('weight_unit')}
-            >
-              <MenuItem value={'g'}>Grams</MenuItem>
-              <MenuItem value={'kg'}>Kilograms</MenuItem>
-              <MenuItem value={'lb'}>Pounds</MenuItem>
-              <MenuItem value={'mt'}>Tonnes</MenuItem>
-            </Select>
+            <FormControl fullWidth>
+              <InputLabel id='weight_unit-label'>Weight Unit</InputLabel>
+              <Select
+                id='weight_unit'
+                labelId='weight_unit-label'
+                label="Weight Unit"
+                {...formik.getFieldProps('weight_unit')}
+              >
+                <MenuItem value={'g'}>Grams</MenuItem>
+                <MenuItem value={'kg'}>Kilograms</MenuItem>
+                <MenuItem value={'lb'}>Pounds</MenuItem>
+                <MenuItem value={'mt'}>Tonnes</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item>
-            <InputLabel id='weight_value-label'>Weight Value</InputLabel>
             <TextField
               id='weight_value'
+              label="Weight Value"
               inputProps={{
                 'aria-label': 'Weight Value'
               }}
@@ -104,14 +108,14 @@ const ShippingForm = (): JSX.Element => {
           <Grid item>
             <DistanceUnits
               value={formik.values.distance_unit}
-              onChange={(value) => formik.setFieldValue('distance_unit', value)}
-              onBlur={() => formik.handleBlur('distance_unit')}
+              onChange={(e) => formik.setFieldValue('distance_unit', e.target.value)}
+              onBlur={formik.handleBlur}
             />
           </Grid>
           <Grid item>
-            <InputLabel id='distance_value-label'>Distance Value</InputLabel>
             <TextField
               id='distance_value'
+              label="Distance Value"
               inputProps={{
                 'aria-label': 'Distance Value'
               }}
@@ -123,19 +127,20 @@ const ShippingForm = (): JSX.Element => {
             ) : null}
           </Grid>
           <Grid item>
-            <InputLabel id='transport_method-label'>
-              Transport Method
-            </InputLabel>
-            <Select
-              id='transport_method'
-              labelId='transport_method-label'
-              {...formik.getFieldProps('transport_method')}
-            >
-              <MenuItem value={'ship'}>Ship</MenuItem>
-              <MenuItem value={'train'}>Train</MenuItem>
-              <MenuItem value={'truck'}>Truck</MenuItem>
-              <MenuItem value={'plane'}>Plane</MenuItem>
-            </Select>
+            <FormControl fullWidth sx={{ minWidth: '200px' }}>
+              <InputLabel id='transport_method-label'>Transport Method</InputLabel>
+              <Select
+                id='transport_method'
+                labelId='transport_method-label'
+                label="Transport Method"
+                {...formik.getFieldProps('transport_method')}
+              >
+                <MenuItem value={'ship'}>Ship</MenuItem>
+                <MenuItem value={'train'}>Train</MenuItem>
+                <MenuItem value={'truck'}>Truck</MenuItem>
+                <MenuItem value={'plane'}>Plane</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>

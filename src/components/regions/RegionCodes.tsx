@@ -1,8 +1,9 @@
 import React from 'react'
-import { InputLabel, Select, MenuItem } from '@mui/material'
+import { InputLabel, Select, MenuItem, FormControl } from '@mui/material'
 import { FormikProps } from 'formik'
 import { listOfCountries } from './CountriesList'
 import { LocationOptionElement } from './types'
+import { SelectChangeEvent } from '@mui/material/Select'
 
 type CountryList = {
   [key: string]: {
@@ -35,6 +36,18 @@ export const useRegionCodes = (countryCode: string): LocationOptionElement[] => 
 
 const RegionCodes = <T,>({ parentState, countryCode }: RegionCodesProps<T>): JSX.Element => {
   const regionCodes = useRegionCodes(countryCode)
+  const [open, setOpen] = React.useState(false)
+
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const syntheticEvent = {
+      target: {
+        name: 'state',
+        value: event.target.value
+      }
+    }
+    parentState.handleChange(syntheticEvent)
+    setOpen(false)
+  }
 
   // Set default state when country changes
   React.useEffect(() => {
@@ -48,21 +61,17 @@ const RegionCodes = <T,>({ parentState, countryCode }: RegionCodesProps<T>): JSX
   }, [countryCode]) // Only depend on countryCode changes
 
   return (
-    <>
-      <InputLabel htmlFor="state" id="state-label">State</InputLabel>
+    <FormControl fullWidth>
+      <InputLabel id="state-label">State</InputLabel>
       <Select
-        id="state"
-        labelId="state-label"
+        id='state'
+        labelId='state-label'
         label="State"
         value={parentState.values.state || ''}
-        onChange={(e) => {
-          parentState.handleChange({
-            target: {
-              name: 'state',
-              value: e.target.value
-            }
-          })
-        }}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        onChange={handleChange}
         onBlur={parentState.handleBlur}
         name="state"
       >
@@ -72,7 +81,7 @@ const RegionCodes = <T,>({ parentState, countryCode }: RegionCodesProps<T>): JSX
           </MenuItem>
         ))}
       </Select>
-    </>
+    </FormControl>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputLabel, Select, MenuItem } from '@mui/material'
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 import { FormikProps } from 'formik'
 import { listOfCountries } from './CountriesList'
 import { LocationOptionElement } from './types'
@@ -48,11 +48,12 @@ const CountryCodes = <T,>({ parentState }: CountryCodesProps<T>): JSX.Element =>
   }
 
   return (
-    <>
-      <InputLabel id='country-label'>Country</InputLabel>
+    <FormControl fullWidth>
+      <InputLabel id="country-label">Country</InputLabel>
       <Select
         id='country'
         labelId='country-label'
+        label="Country"
         value={value}
         open={open}
         onOpen={() => setOpen(true)}
@@ -67,7 +68,7 @@ const CountryCodes = <T,>({ parentState }: CountryCodesProps<T>): JSX.Element =>
           </MenuItem>
         ))}
       </Select>
-    </>
+    </FormControl>
   )
 }
 

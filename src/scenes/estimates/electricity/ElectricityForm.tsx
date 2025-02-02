@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   Box,
+  FormControl,
   Grid,
   Typography,
   Button,
@@ -43,7 +44,6 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
     enableReinitialize: true,
     onSubmit: (values: iInitialValues): void => {
       onSubmit(values)
-      navigate(`/estimates/${values.type}`, { state: { values } })
     }
   })
 
@@ -68,24 +68,28 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
           columnGap={'12.5rem'}
         >
           <Grid item>
-            <InputLabel id='electricity_unit-label'>
-              Electricity Unit
-            </InputLabel>
-            <Select
-              id='electricity_unit'
-              labelId='electricity_unit-label'
-              {...formik.getFieldProps('electricity_unit')}
-            >
-              <MenuItem value={'kwh'}>KWH</MenuItem>
-              <MenuItem value={'mwh'}>MWH</MenuItem>
-            </Select>
+            <FormControl fullWidth sx={{ minWidth: '200px' }}>
+              <InputLabel id='electricity_unit-label'>
+                Electricity Unit
+              </InputLabel>
+              <Select
+                id='electricity_unit'
+                labelId='electricity_unit-label'
+                label="Electricity Unit"
+                {...formik.getFieldProps('electricity_unit')}
+              >
+                <MenuItem value={'kwh'}>KWH</MenuItem>
+                <MenuItem value={'mwh'}>MWH</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item>
-            <InputLabel id='electricity_value-label'>
+            {/* <InputLabel id='electricity_value-label'>
               Electricity Value
-            </InputLabel>
+            </InputLabel> */}
             <TextField
               id='electricity_value'
+              label="Electricity Value"
               {...formik.getFieldProps('electricity_value')}
             />
             {formik.touched.electricity_value !== undefined &&

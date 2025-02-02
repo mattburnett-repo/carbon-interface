@@ -16,7 +16,7 @@ const initialValues: iInitialValues = {
   distance_unit: 'km',
   distance_value: 0,
   vehicle_make_id: '',
-  vehicle_model_id: ''
+  vehicle_model_id: '',
 }
 
 const validationSchema = yup.object().shape({
@@ -40,9 +40,7 @@ const VehicleForm = (): JSX.Element => {
     initialValues,
     validationSchema,
     onSubmit: (values: iInitialValues): void => {
-      console.log('Form submission started')
       navigate(`/estimates/${values.type}`, { state: { values } })
-      console.log('Navigation completed')
     }
   })
 
@@ -109,15 +107,15 @@ const VehicleForm = (): JSX.Element => {
           <Grid item>
             <DistanceUnits
               value={formik.values.distance_unit}
-              onChange={(value) => formik.setFieldValue('distance_unit', value)}
-              onBlur={() => formik.handleBlur('distance_unit')}
+              onChange={(e) => formik.setFieldValue('distance_unit', e.target.value)}
+              onBlur={formik.handleBlur}
             />
           </Grid>
           <Grid item>
-            <InputLabel id='distance_value-label'>Distance Value</InputLabel>
             <TextField
               id='distance_value'
               name='distance_value'
+              label="Distance Value"
               type='number'
               value={formik.values.distance_value}
               onChange={formik.handleChange}
@@ -127,12 +125,10 @@ const VehicleForm = (): JSX.Element => {
             />
           </Grid>
           <Grid item>
-            <InputLabel id='vehicle_make_id-label'>Vehicle Make</InputLabel>
             <VehicleMakes formik={formik} makes={makes} />
           </Grid>
-          {formik.values.vehicle_make_id !== '' && (
+          {formik.values.vehicle_make_id && formik.values.vehicle_make_id !== ' ' && (
             <Grid item>
-              <InputLabel id='vehicle_model_id-label'>Vehicle Model</InputLabel>
               <VehicleModels 
                 formik={formik} 
                 makeId={formik.values.vehicle_make_id}

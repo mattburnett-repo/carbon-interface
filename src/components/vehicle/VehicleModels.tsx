@@ -11,22 +11,26 @@ interface Props {
   loading?: boolean
 }
 
-const VehicleModels = ({ formik, models = [], loading }: Props): JSX.Element => {
+export default function VehicleModels({ formik, models = [], loading }: Props): JSX.Element {
+  // Set initial value to first model if no value is selected
+  React.useEffect(() => {
+    if (models.length > 0 && !formik.values.vehicle_model_id) {
+      formik.setFieldValue('vehicle_model_id', models[0].data.id)
+    }
+  }, [models])
+
   return (
-    <FormControl fullWidth>
-      <InputLabel id="vehicle_model_id-label">Model</InputLabel>
+    <FormControl fullWidth sx={{ minWidth: '200px' }}>
+      <InputLabel id="vehicle_model_id-label">Vehicle Model</InputLabel>
       <Select
         labelId="vehicle_model_id-label"
         id="vehicle_model_id"
-        label="Model"
-        name="vehicle_model_id"
-        value={formik.values.vehicle_model_id}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        data-testid="model-select"
+        label="Vehicle Model"
+        {...formik.getFieldProps('vehicle_model_id')}
+        value={formik.values.vehicle_model_id || ' '}
         disabled={loading}
       >
-        <MenuItem value="" disabled>
+        <MenuItem value="">
           {loading ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <CircularProgress size={20} /> Loading models...
@@ -43,6 +47,4 @@ const VehicleModels = ({ formik, models = [], loading }: Props): JSX.Element => 
       </Select>
     </FormControl>
   )
-}
-
-export default VehicleModels 
+} 

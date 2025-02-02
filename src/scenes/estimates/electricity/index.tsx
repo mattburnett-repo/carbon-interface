@@ -1,28 +1,18 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-
+import React, { useState } from 'react'
 import { Box, useTheme } from '@mui/material'
-
 import { tokens } from '../../../theme'
-
 import ElectricityForm from './ElectricityForm'
 import ElectricityEstimate from './ElectricityEstimate'
-import { iInitialValues } from './types'
+import { type iInitialValues } from './types'
 import { defaultElectricityValues } from './defaults'
 
-type LocationState = {
-  values: iInitialValues;
-}
-
 const Electricity = (): JSX.Element => {
+  const [estimateValues, setEstimateValues] = useState<iInitialValues | null>(null)
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation() as { state: LocationState | null }
-  const initialValues: iInitialValues | undefined = location.state?.values
-
-  const handleSubmit = (values: iInitialValues): void => {
-    // Handle form submission
+  const handleSubmit = (values: iInitialValues) => {
+    setEstimateValues(values)
   }
 
   return (
@@ -36,16 +26,8 @@ const Electricity = (): JSX.Element => {
         backgroundColor: colors.primary[400]
       }}
     >
-      {!initialValues ? (
-        <ElectricityForm
-          onSubmit={handleSubmit}
-          initialValues={defaultElectricityValues}
-        />
-      ) : (
-        <ElectricityEstimate 
-          estimateValues={initialValues}
-        />
-      )}
+      <ElectricityForm onSubmit={handleSubmit} initialValues={defaultElectricityValues} />
+      {estimateValues && <ElectricityEstimate estimateValues={estimateValues} />}
     </Box>
   )
 }

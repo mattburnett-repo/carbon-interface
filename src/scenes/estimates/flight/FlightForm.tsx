@@ -77,14 +77,14 @@ const FlightForm = (): JSX.Element => {
           <Grid item>
             <DistanceUnits 
               value={formik.values.distance_unit}
-              onChange={formik.handleChange}
+              onChange={(e) => formik.setFieldValue('distance_unit', e.target.value)}
               onBlur={formik.handleBlur}
             />
           </Grid>
           <Grid item>
-            <InputLabel htmlFor="passengers">Passengers</InputLabel>
             <TextField
               id="passengers"
+              label="Passengers"
               inputProps={{ "aria-label": "passengers" }}
               {...formik.getFieldProps('passengers')}
             />
