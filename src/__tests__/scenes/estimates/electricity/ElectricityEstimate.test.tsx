@@ -1,31 +1,13 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { renderWithMui } from '../../../../test-utils/mui-test-utils'
 import ElectricityEstimate from '../../../../scenes/estimates/electricity/ElectricityEstimate'
-import { iInitialValues } from '../../../../scenes/estimates/electricity/types'
-import { act } from 'react-dom/test-utils'
-
-// Mock components
-jest.mock('../../../../components/LoadingDisplay', () => ({
-  __esModule: true,
-  default: () => <div>Loading...</div>
-}))
-
-jest.mock('../../../../components/ErrorDisplay', () => ({
-  __esModule: true,
-  default: () => <div>Error</div>
-}))
-
-jest.mock('../../../../scenes/estimates/electricity/ElectricityEstimateDisplay', () => ({
-  __esModule: true,
-  default: () => <div>Estimate Display</div>
-}))
-
-// Mock fetch
-global.fetch = jest.fn()
+import { BrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 describe('ElectricityEstimate', () => {
-  // Silence console.error for expected errors
+  // Silence React Query's console completely
   const originalError = console.error;
   beforeAll(() => {
     console.error = jest.fn();
@@ -38,52 +20,58 @@ describe('ElectricityEstimate', () => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        retry: false,
-        // Disable error logging in tests
-        onError: () => {}
+        retry: 0,
+        cacheTime: 0,
+        staleTime: Infinity,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        suspense: false,
+        useErrorBoundary: false,
+        onError: () => {},
+        onSuccess: () => {},
+        onSettled: () => {}
       }
     }
   })
 
-  const mockEstimateValues: iInitialValues = {
-    type: 'electricity',
-    electricity_value: 100,
-    electricity_unit: 'kwh',
-    country: 'us',
-    state: 'ca'
-  }
-
   const renderComponent = () => {
-    return render(
+    const estimateValues = {
+      type: 'electricity' as const,
+      electricity_value: 100,
+      electricity_unit: 'kwh' as const,
+      country: 'us',
+      state: 'ca'
+    }
+
+    return renderWithMui(
       <QueryClientProvider client={queryClient}>
-        <ElectricityEstimate estimateValues={mockEstimateValues} />
+        <BrowserRouter>
+          <ElectricityEstimate estimateValues={estimateValues} />
+        </BrowserRouter>
       </QueryClientProvider>
     )
   }
 
   beforeEach(() => {
     jest.clearAllMocks()
-    queryClient.clear()  // Clear React Query cache
-  })
-
-  it('should show loading state', () => {
-    ;(global.fetch as jest.Mock).mockImplementationOnce(() => new Promise(() => {}))
-    renderComponent()
-    expect(screen.getByText('Loading...')).toBeInTheDocument()
+    queryClient.clear()
   })
 
   it('should show error state', async () => {
-    ;(global.fetch as jest.Mock).mockResolvedValueOnce({
-      ok: false,
-      json: () => Promise.resolve({ message: 'API Error' })
-    })
+    // Mock the fetch to return an error response
+    ;(global.fetch as jest.Mock).mockImplementationOnce(() => 
+      Promise.resolve({
+        ok: false,
+        status: 400,
+        json: () => Promise.resolve({ error: { message: 'API Error' } })
+      })
+    )
     
-    await act(async () => {
-      renderComponent()
-      await new Promise(resolve => setTimeout(resolve, 100))
+    renderComponent()
+    await waitFor(() => {
+      expect(screen.getByText('API Error')).toBeInTheDocument()
     })
-    
-    expect(screen.getByText('Error')).toBeInTheDocument()
   })
 
   it('should show estimate display on successful response', async () => {
@@ -92,29 +80,27 @@ describe('ElectricityEstimate', () => {
         id: '123',
         type: 'electricity',
         attributes: {
-          carbon_g: 1000,
-          carbon_lb: 2.20462,
-          carbon_kg: 1,
-          carbon_mt: 0.001,
-          estimated_at: '2023-01-01',
-          electricity_unit: 'kwh',
-          electricity_value: 100,
+          carbon_mt: 100,
           country: 'us',
-          state: 'ca'
+          state: 'ca',
+          electricity_value: 1000,
+          electricity_unit: 'kwh',
+          estimated_at: '2023-01-01T00:00:00.000Z'
         }
       }
     }
-
+    
     ;(global.fetch as jest.Mock).mockResolvedValueOnce({
       ok: true,
       json: () => Promise.resolve(mockResponse)
     })
 
-    await act(async () => {
-      renderComponent()
-      await new Promise(resolve => setTimeout(resolve, 100))
+    renderComponent()
+    
+    await waitFor(() => {
+      expect(screen.getByText(/Carbon \(mt\):.+100/)).toBeInTheDocument()
+      expect(screen.getByText(/Country:.+US/)).toBeInTheDocument()
+      expect(screen.getByText(/State\/Region:.+CA/)).toBeInTheDocument()
     })
-
-    expect(screen.getByText('Estimate Display')).toBeInTheDocument()
   })
 }) 

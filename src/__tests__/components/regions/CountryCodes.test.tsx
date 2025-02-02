@@ -5,6 +5,8 @@ import CountryCodes, { useCountryCodes } from '../../../components/regions/Count
 import { FormikProps } from 'formik'
 import { LocationOptionElement } from '../../../components/regions/types'
 import { fireEvent } from '@testing-library/react'
+import { renderWithMui } from '../../../test-utils/mui-test-utils'
+import { Formik } from 'formik'
 
 // Update the mock to include Austria
 jest.mock('../../../components/regions/CountriesList', () => ({
@@ -37,19 +39,48 @@ describe('CountryCodes', () => {
     jest.clearAllMocks()
   })
 
-  it('renders country select with label', () => {
-    render(<CountryCodes parentState={mockFormik} />)
+  const renderWithFormik = () => {
+    return renderWithMui(
+      <Formik
+        initialValues={{
+          type: 'region',
+          country_code: '',
+          country: '',
+          state: ''
+        }}
+        onSubmit={jest.fn()}
+      >
+        {formik => <CountryCodes parentState={formik} />}
+      </Formik>
+    )
+  }
+
+  it('renders country code select', () => {
+    renderWithFormik()
     expect(screen.getByRole('button', { name: /country/i })).toBeInTheDocument()
   })
 
-  it('renders country options in alphabetical order', async () => {
-    render(<CountryCodes parentState={mockFormik} />)
+  it('renders country options', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithFormik()
+    
     const select = screen.getByRole('button', { name: /country/i })
-    await userEvent.click(select)
+    await user.click(select)
+    
+    expect(screen.getByRole('option', { name: /united states/i })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /united kingdom/i })).toBeInTheDocument()
+  })
+
+  it('renders country options in alphabetical order', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithFormik()
+    
+    const select = screen.getByRole('button', { name: /country/i })
+    await user.click(select)
     
     const options = screen.getAllByRole('option')
     const optionTexts = options.map(option => option.textContent)
-    expect(optionTexts).toEqual([...optionTexts].sort())
+    expect(optionTexts).toEqual(['Austria', 'Canada', 'United Kingdom', 'United States'])
   })
 
   it('handles country selection', async () => {

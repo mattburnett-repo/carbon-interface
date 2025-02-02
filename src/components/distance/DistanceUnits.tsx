@@ -1,33 +1,26 @@
 import React from 'react'
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
-import { FormikProps } from 'formik'
-
-interface FormValues {
-  distance_unit: string
-}
+import { Select, MenuItem, FormControl, InputLabel } from '@mui/material'
+import { SelectChangeEvent } from '@mui/material/Select'
 
 interface Props {
   value: string
-  onChange: {
-    (e: React.ChangeEvent<any>): void;
-    <T = string | React.ChangeEvent<any>>(field: T): T extends React.ChangeEvent<any> ? void : (e: string | React.ChangeEvent<any>) => void;
-  }
-  onBlur: {
-    (e: React.FocusEvent<any>): void;
-    <T = any>(fieldOrEvent: T): T extends string ? (e: any) => void : void;
-  }
+  onChange: (value: string) => void
+  onBlur?: () => void
 }
 
-const DistanceUnits = ({ value, onChange, onBlur }: Props): JSX.Element => {
+export default function DistanceUnits({ value, onChange, onBlur }: Props): JSX.Element {
+  const handleChange = (event: SelectChangeEvent) => {
+    onChange(event.target.value)
+  }
+
   return (
     <FormControl fullWidth>
       <InputLabel id="distance-unit-label">Distance Unit</InputLabel>
       <Select
-        labelId="distance-unit-label"
         label="Distance Unit"
         name="distance_unit"
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         onBlur={onBlur}
       >
         <MenuItem value="km">Kilometers</MenuItem>
@@ -35,6 +28,4 @@ const DistanceUnits = ({ value, onChange, onBlur }: Props): JSX.Element => {
       </Select>
     </FormControl>
   )
-}
-
-export default DistanceUnits 
+} 

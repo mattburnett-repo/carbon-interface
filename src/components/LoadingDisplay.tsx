@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, LinearProgress } from '@mui/material'
 
-const LoadingDisplay: React.FC = () => {
+const LoadingDisplay = () => {
   return (
-    <Box sx={{ width: '100%', mt: '5rem' }}>
-      <LinearProgress color="secondary" />
+    <Box data-testid="loading-container" sx={{ width: '75%', margin: '5px auto auto auto' }}>
+      <LinearProgress />
     </Box>
   )
 }

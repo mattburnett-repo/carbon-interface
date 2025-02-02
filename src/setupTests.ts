@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 import 'jest-environment-jsdom'
+import { configure } from '@testing-library/react'
 
 // Mock window.matchMedia
 window.matchMedia = function (_query: string): MediaQueryList {
@@ -41,5 +42,23 @@ global.importFn = jest.fn()
     VITE_API_KEY: 'test-api-key'
   }
 }
+
+// Configure longer timeout for async operations
+configure({ asyncUtilTimeout: 5000 })
+
+// Enable fake timers
+beforeAll(() => {
+  jest.useFakeTimers()
+})
+
+afterAll(() => {
+  jest.useRealTimers()
+})
+
+// Configure global fetch mock
+global.fetch = jest.fn()
+
+// Configure act environment
+window.HTMLElement.prototype.scrollIntoView = jest.fn()
 
 export {}

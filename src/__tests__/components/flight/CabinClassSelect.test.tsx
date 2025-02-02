@@ -1,8 +1,9 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CabinClassSelect from '../../../components/flight/CabinClassSelect'
 import { FormikProps } from 'formik'
+import { renderWithMui } from '../../../test-utils/mui-test-utils'
 
 describe('CabinClassSelect', () => {
   const mockFormik = {
@@ -17,17 +18,48 @@ describe('CabinClassSelect', () => {
     parentState: mockFormik
   }
 
-  it('renders with correct label', () => {
-    render(<CabinClassSelect {...mockProps} />)
-    expect(screen.getByLabelText(/cabin class/i)).toBeInTheDocument()
+  beforeEach(() => {
+    jest.clearAllMocks()
   })
 
-  it('renders cabin class options', async () => {
-    render(<CabinClassSelect {...mockProps} />)
-    const select = screen.getByLabelText(/cabin class/i)
-    await userEvent.click(select)
+  it('renders with correct label and options', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithMui(<CabinClassSelect {...mockProps} />)
     
+    // Check label and select exist
+    const select = screen.getByRole('button', { name: /cabin class/i })
+    expect(select).toBeInTheDocument()
+    
+    // Check options are shown when clicked
+    await user.click(select)
+    expect(select).toHaveAttribute('aria-expanded', 'true')
     expect(screen.getByRole('option', { name: /economy/i })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: /premium/i })).toBeInTheDocument()
+  })
+
+  it('calls formik handlers when selecting an option', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithMui(<CabinClassSelect {...mockProps} />)
+    
+    const select = screen.getByRole('button', { name: /cabin class/i })
+    await user.click(select)
+    
+    const option = screen.getByRole('option', { name: /economy/i })
+    await user.click(option)
+    
+    expect(mockFormik.getFieldProps).toHaveBeenCalled()
+  })
+
+  it('displays initial value when provided', () => {
+    const mockFormikWithValue = {
+      getFieldProps: jest.fn().mockReturnValue({
+        value: 'economy',
+        onChange: jest.fn(),
+        onBlur: jest.fn()
+      })
+    } as unknown as FormikProps<any>
+
+    renderWithMui(<CabinClassSelect {...mockProps} parentState={mockFormikWithValue} />)
+    expect(screen.getByRole('button')).toHaveTextContent(/economy/i)
   })
 }) 

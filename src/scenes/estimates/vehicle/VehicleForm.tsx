@@ -1,26 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-import {
-  Box,
-  Grid,
-  Typography,
-  Button,
-  TextField,
-  InputLabel
-} from '@mui/material'
-
+import { Box, Grid, Typography, Button, InputLabel, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
-// @ts-expect-error type this
-import VehicleMakes from '../../../components/vehicle/VehicleMakes.jsx'
-// @ts-expect-error type this
-import VehicleModels from '../../../components/vehicle/VehicleModels.jsx'
-// @ts-expect-error type this
+import VehicleMakes from '../../../components/vehicle/VehicleMakes'
+import VehicleModels from '../../../components/vehicle/VehicleModels'
 import DistanceUnits from '../../../components/distance/DistanceUnits'
-
 import { type iInitialValues } from './types'
+import { type VehicleMake, fetchVehicleMakes } from '../../../services/vehicleApi'
+import { type VehicleModel, fetchVehicleModels } from '../../../services/vehicleApi'
 
 const initialValues: iInitialValues = {
   type: 'vehicle',
@@ -29,6 +18,7 @@ const initialValues: iInitialValues = {
   vehicle_make_id: '',
   vehicle_model_id: ''
 }
+
 const validationSchema = yup.object().shape({
   vehicle_make_id: yup.string().required('Vehicle make is required.'),
   vehicle_model_id: yup.string().required('Vehicle model is required.'),
@@ -40,14 +30,66 @@ const validationSchema = yup.object().shape({
 
 const VehicleForm = (): JSX.Element => {
   const navigate = useNavigate()
+  const [makes, setMakes] = useState<VehicleMake[]>([])
+  const [models, setModels] = useState<VehicleModel[]>([])
+  const [loading, setLoading] = useState(true)
+  const [loadingModels, setLoadingModels] = useState(false)
+  const [modelCache, setModelCache] = useState<Record<string, VehicleModel[]>>({})
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values: object): void => {
-      navigate(`/estimates/${initialValues.type}`, { state: { values } })
+    onSubmit: (values: iInitialValues): void => {
+      console.log('Form submission started')
+      navigate(`/estimates/${values.type}`, { state: { values } })
+      console.log('Navigation completed')
     }
   })
+
+  useEffect(() => {
+    const getMakes = async () => {
+      try {
+        const data = await fetchVehicleMakes()
+        setMakes(data)
+      } catch (err) {
+        console.error('Failed to fetch makes:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    getMakes()
+  }, [])
+
+  useEffect(() => {
+    const getModels = async () => {
+      if (!formik.values.vehicle_make_id) return
+      
+      // Reset model selection when make changes
+      formik.setFieldValue('vehicle_model_id', '')
+      
+      // Check cache first
+      if (modelCache[formik.values.vehicle_make_id]) {
+        setModels(modelCache[formik.values.vehicle_make_id])
+        return
+      }
+
+      setLoadingModels(true)
+      try {
+        const data = await fetchVehicleModels(formik.values.vehicle_make_id)
+        setModels(data)
+        // Cache the results
+        setModelCache(prev => ({
+          ...prev,
+          [formik.values.vehicle_make_id]: data
+        }))
+      } catch (err) {
+        console.error('Failed to fetch models:', err)
+      } finally {
+        setLoadingModels(false)
+      }
+    }
+    getModels()
+  }, [formik.values.vehicle_make_id, modelCache])
 
   return (
     <Box className='estimate'>
@@ -60,47 +102,41 @@ const VehicleForm = (): JSX.Element => {
         </Typography>
         <Grid
           container
-          alignContent={'space-around'}
-          justifyContent={'center'}
-          columnGap={'5rem'}
-          gridTemplateColumns={'5'}
+          alignContent='space-around'
+          justifyContent='center'
+          spacing={5}
         >
           <Grid item>
-            <DistanceUnits parentState={formik} />
+            <DistanceUnits formik={formik} />
           </Grid>
           <Grid item>
             <InputLabel id='distance_value-label'>Distance Value</InputLabel>
             <TextField
               id='distance_value'
-              {...formik.getFieldProps('distance_value')}
+              name='distance_value'
+              type='number'
+              value={formik.values.distance_value}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.distance_value && !!formik.errors.distance_value}
+              helperText={formik.touched.distance_value && formik.errors.distance_value}
             />
-            {formik.touched.distance_value !== undefined &&
-            formik.errors.distance_value !== undefined ? (
-              <div>{formik.errors.distance_value}</div>
-            ) : null}
           </Grid>
           <Grid item>
             <InputLabel id='vehicle_make_id-label'>Vehicle Make</InputLabel>
-            <VehicleMakes parentState={formik} />
-            {formik.touched.vehicle_make_id !== undefined ||
-            formik.errors.vehicle_make_id !== undefined ? (
-              <div>{formik.errors.vehicle_make_id}</div>
-            ) : null}
+            <VehicleMakes formik={formik} makes={makes} />
           </Grid>
-          {formik.values.vehicle_make_id !== '' &&
-          formik.values.vehicle_make_id !== undefined ? (
+          {formik.values.vehicle_make_id !== '' && (
             <Grid item>
               <InputLabel id='vehicle_model_id-label'>Vehicle Model</InputLabel>
-              <VehicleModels
-                parentState={formik}
+              <VehicleModels 
+                formik={formik} 
                 makeId={formik.values.vehicle_make_id}
+                models={models}
+                loading={loadingModels}
               />
-              {formik.touched.vehicle_model_id !== undefined &&
-              formik.errors.vehicle_model_id !== undefined ? (
-                <div>{formik.errors.vehicle_model_id}</div>
-              ) : null}
             </Grid>
-          ) : null}
+          )}
         </Grid>
         <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
           <Button type='submit' color='secondary' variant='contained'>

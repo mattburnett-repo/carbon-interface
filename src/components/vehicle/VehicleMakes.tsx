@@ -1,53 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { Autocomplete, TextField } from '@mui/material'
-import { VehicleMake, VehicleMakeResponse, VehicleMakesProps } from './types'
+import React from 'react'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { FormikProps } from 'formik'
+import { iInitialValues } from '../../scenes/estimates/vehicle/types'
+import type { VehicleMake } from '../../services/vehicleApi'
 
-const theURL = import.meta.env.VITE_API_VEHICLE_MAKES_URL as string
-const apiKey = import.meta.env.VITE_API_KEY as string
+interface Props {
+  formik: FormikProps<iInitialValues>
+  makes?: VehicleMake[]
+}
 
-const VehicleMakes = ({ parentState }: VehicleMakesProps): JSX.Element => {
-  const [vehicleMakes, setVehicleMakes] = useState<Record<string, VehicleMakeResponse>>({})
-
-  useEffect(() => {
-    fetch(theURL, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
-      }
-    })
-      .then(response => response.json())
-      .then((data: Record<string, VehicleMakeResponse>) => setVehicleMakes(data))
-      .catch((err: Error) => {
-        console.error('Failed to fetch vehicle makes:', err.message)
-        setVehicleMakes({})  // Set empty state on error
-      })
-  }, [])
-
-  const vehicleMakesList: VehicleMake[] = Object.keys(vehicleMakes)
-    .sort((a, b) =>
-      vehicleMakes[a].data.attributes.name > vehicleMakes[b].data.attributes.name ? 1 : -1
-    )
-    .map((record) => ({
-      id: vehicleMakes[record].data.id,
-      name: vehicleMakes[record].data.attributes.name
-    }))
-
+const VehicleMakes = ({ formik, makes = [] }: Props): JSX.Element => {
   return (
-    <Autocomplete
-      disablePortal
-      loading
-      id='vehicle_make_id'
-      onChange={(_, value) => {
-        parentState.setFieldValue('vehicle_make_id', value?.id)
-      }}
-      isOptionEqualToValue={(option, value) => option.id === value.id}
-      options={vehicleMakesList}
-      getOptionLabel={(option) => option.name || ''}
-      renderInput={(params) => <TextField {...params} />}
-      fullWidth
-      sx={{ width: '250px' }}
-    />
+    <FormControl fullWidth>
+      <InputLabel id="vehicle_make_id-label">Make</InputLabel>
+      <Select
+        labelId="vehicle_make_id-label"
+        id="vehicle_make_id"
+        label="Make"
+        name="vehicle_make_id"
+        value={formik.values.vehicle_make_id}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        data-testid="make-select"
+      >
+        <MenuItem value="" disabled>Select a make</MenuItem>
+        {makes.map(make => (
+          <MenuItem key={make.data.id} value={make.data.id}>
+            {make.data.attributes.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   )
 }
 

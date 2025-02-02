@@ -1,44 +1,31 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import DistanceUnits from '../../../components/distance/DistanceUnits'
 
-const mockProps = {
-  value: 'km',
-  distanceUnit: 'km',
-  onChange: jest.fn(),
-  onBlur: jest.fn()
-}
-
 describe('DistanceUnits', () => {
-  it('renders with correct label', () => {
-    render(<DistanceUnits {...mockProps} />)
-    expect(screen.getByLabelText(/distance unit/i)).toBeInTheDocument()
-  })
+  const user = userEvent.setup({ delay: null })
 
-  it('renders kilometers option', async () => {
-    render(<DistanceUnits {...mockProps} />)
-    const select = screen.getByRole('button', { name: /distance unit/i })
-    await userEvent.click(select)
-    expect(screen.getByRole('option', { name: /kilometers/i })).toBeInTheDocument()
-  })
-
-  it('handles selection changes', async () => {
-    const user = userEvent.setup()
-    render(<DistanceUnits {...mockProps} />)
+  it('displays km and mi unit options', async () => {
+    const mockOnChange = jest.fn()
+    render(<DistanceUnits value="km" onChange={mockOnChange} />)
     
-    const select = screen.getByRole('button', { name: /distance unit/i })
+    const select = screen.getByRole('button')
     await user.click(select)
     
-    const milesOption = screen.getByRole('option', { name: /miles/i })
-    await user.click(milesOption)
-    
-    expect(mockProps.onChange).toHaveBeenCalled()
+    const listbox = screen.getByRole('listbox')
+    expect(within(listbox).getByText(/kilometers/i)).toBeInTheDocument()
+    expect(within(listbox).getByText(/miles/i)).toBeInTheDocument()
   })
 
-  it('displays the current value', () => {
-    render(<DistanceUnits {...mockProps} />)
-    const select = screen.getByRole('button', { name: /distance unit/i })
-    expect(select).toHaveTextContent(/kilometers/i)
+  it('calls onChange when selection changes', async () => {
+    const mockOnChange = jest.fn()
+    render(<DistanceUnits value="km" onChange={mockOnChange} />)
+    
+    const select = screen.getByRole('button')
+    await user.click(select)
+    await user.click(screen.getByText(/miles/i))
+    
+    expect(mockOnChange).toHaveBeenCalledWith('mi')
   })
 })

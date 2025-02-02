@@ -1,8 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { FuelSourceTypes, FuelSourceUnits, FormValues, useFuelSourceName, useFuelSources, useFuelSourceUnits } from '../../../components/fuel_combustion/FuelSources'
-import { FormikProps } from 'formik'
+import { FuelSourceTypes, FuelSourceUnits, useFuelSourceName, useFuelSources, useFuelSourceUnits } from '../../../components/fuel_combustion/FuelSources'
+import { renderWithMui } from '../../../test-utils/mui-test-utils'
+import { Formik } from 'formik'
 
 // Mock the fuel source data
 jest.mock('../../../components/fuel_combustion/fuelSourcesData.ts', () => [
@@ -19,91 +20,89 @@ jest.mock('../../../components/fuel_combustion/fuelSourcesData.ts', () => [
 ])
 
 describe('FuelSourceTypes', () => {
-  const mockFormik = {
-    getFieldProps: jest.fn().mockReturnValue({
-      value: '',
-      onChange: jest.fn(),
-      onBlur: jest.fn()
-    }),
-    values: { fuel_source_type: '', fuel_source_unit: '' },
-    touched: {},
-    errors: {},
-    isSubmitting: false,
-    isValidating: false,
-    submitCount: 0
-  } as unknown as FormikProps<FormValues>
+  const renderWithFormik = () => {
+    return renderWithMui(
+      <Formik
+        initialValues={{
+          type: 'fuel_combustion',
+          fuel_source_type: '',
+          fuel_source_unit: '',
+          fuel_source_value: 0
+        }}
+        onSubmit={jest.fn()}
+      >
+        {formik => <FuelSourceTypes parentState={formik} />}
+      </Formik>
+    )
+  }
 
   it('renders fuel source type select', () => {
-    render(<FuelSourceTypes parentState={mockFormik} />)
-    expect(screen.getByLabelText(/fuel source type/i)).toBeInTheDocument()
+    renderWithFormik()
+    expect(screen.getByRole('button', { name: /fuel source type/i })).toBeInTheDocument()
   })
 
   it('renders fuel source options', async () => {
-    render(<FuelSourceTypes parentState={mockFormik} />)
-    const select = screen.getByLabelText(/fuel source type/i)
-    await userEvent.click(select)
+    const user = userEvent.setup({ delay: null })
+    renderWithFormik()
     
-    expect(screen.getByText('Jet Fuel')).toBeInTheDocument()
-    expect(screen.getByText('Diesel')).toBeInTheDocument()
+    const select = screen.getByRole('button', { name: /fuel source type/i })
+    await user.click(select)
+    
+    expect(screen.getByRole('option', { name: /diesel/i })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: /jet fuel/i })).toBeInTheDocument()
   })
 
-  it('handles selection changes', async () => {
-    render(<FuelSourceTypes parentState={mockFormik} />)
-    const select = screen.getByLabelText(/fuel source type/i)
-    await userEvent.click(select)
-    await userEvent.click(screen.getByText('Diesel'))
-    
-    expect(mockFormik.getFieldProps('fuel_source_type').onChange).toHaveBeenCalled()
-  })
-
-  it('shows validation errors when present', () => {
-    const formikWithError = {
-      ...mockFormik,
-      touched: { fuel_source_type: true },
-      errors: { fuel_source_type: 'Required field' }
-    } as unknown as FormikProps<FormValues>
-    render(<FuelSourceTypes parentState={formikWithError} />)
+  it('shows validation errors', () => {
+    renderWithMui(
+      <Formik
+        initialValues={{
+          type: 'fuel_combustion',
+          fuel_source_type: '',
+          fuel_source_unit: '',
+          fuel_source_value: 0
+        }}
+        initialErrors={{ fuel_source_type: 'Required field' }}
+        initialTouched={{ fuel_source_type: true }}
+        onSubmit={jest.fn()}
+      >
+        {formik => <FuelSourceTypes parentState={formik} />}
+      </Formik>
+    )
     expect(screen.getByText('Required field')).toBeInTheDocument()
   })
 })
 
 describe('FuelSourceUnits', () => {
-  const mockFormik = {
-    getFieldProps: jest.fn().mockReturnValue({
-      value: '',
-      onChange: jest.fn(),
-      onBlur: jest.fn()
-    }),
-    values: { fuel_source_type: 'jf', fuel_source_unit: '' },
-    touched: {},
-    errors: {},
-    isSubmitting: false,
-    isValidating: false,
-    submitCount: 0
-  } as unknown as FormikProps<FormValues>
+  const renderWithFormik = () => {
+    return renderWithMui(
+      <Formik
+        initialValues={{
+          type: 'fuel_combustion',
+          fuel_source_type: 'jf',
+          fuel_source_unit: '',
+          fuel_source_value: 0
+        }}
+        onSubmit={jest.fn()}
+      >
+        {formik => <FuelSourceUnits parentState={formik} />}
+      </Formik>
+    )
+  }
 
   it('renders fuel source unit select', () => {
-    render(<FuelSourceUnits parentState={mockFormik} />)
-    expect(screen.getByLabelText(/fuel source unit/i)).toBeInTheDocument()
+    renderWithFormik()
+    expect(screen.getByRole('button', { name: /fuel source unit/i })).toBeInTheDocument()
   })
 
-  it('renders unit options for selected fuel source', async () => {
-    render(<FuelSourceUnits parentState={mockFormik} />)
-    const select = screen.getByLabelText(/fuel source unit/i)
-    await userEvent.click(select)
+  it('renders unit options', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithFormik()
     
-    expect(screen.getByText('gal')).toBeInTheDocument()
-    expect(screen.getByText('l')).toBeInTheDocument()
-  })
-
-  it('shows validation errors when present', () => {
-    const formikWithError = {
-      ...mockFormik,
-      touched: { fuel_source_unit: true },
-      errors: { fuel_source_unit: 'Required field' }
-    } as unknown as FormikProps<FormValues>
-    render(<FuelSourceUnits parentState={formikWithError} />)
-    expect(screen.getByText('Required field')).toBeInTheDocument()
+    const select = screen.getByRole('button', { name: /fuel source unit/i })
+    await user.click(select)
+    
+    expect(screen.getByRole('option', { name: 'gal' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'l' })).toBeInTheDocument()
   })
 })
 

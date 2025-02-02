@@ -1,19 +1,23 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-
 import { Box, useTheme } from '@mui/material'
-
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
 
 import VehicleForm from './VehicleForm'
 import VehicleEstimate from './VehicleEstimate'
+import { iInitialValues } from './types'
+
+interface LocationState {
+  state: {
+    values: iInitialValues
+  } | null
+}
 
 const Vehicle = (): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation()
+  const location = useLocation() as unknown as LocationState
 
   return (
     <Box
@@ -28,10 +32,12 @@ const Vehicle = (): JSX.Element => {
     >
       <VehicleForm />
       {location.state?.values !== undefined && (
-        <VehicleEstimate {...location.state.values} />
+        <VehicleEstimate />
       )}
     </Box>
   )
 }
 
 export default Vehicle
+
+export { VehicleForm, VehicleEstimate }

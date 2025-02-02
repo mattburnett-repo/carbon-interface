@@ -1,15 +1,19 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import AirportSelect from '../../../components/flight/AirportSelect'
 import { FormikProps } from 'formik'
+import { renderWithMui } from '../../../test-utils/mui-test-utils'
 
 describe('AirportSelect', () => {
+  const mockOnChange = jest.fn()
+  const mockOnBlur = jest.fn()
+
   const mockFormik = {
     getFieldProps: jest.fn().mockReturnValue({
       value: '',
-      onChange: jest.fn(),
-      onBlur: jest.fn()
+      onChange: mockOnChange,
+      onBlur: mockOnBlur
     })
   } as unknown as FormikProps<any>
 
@@ -19,16 +23,47 @@ describe('AirportSelect', () => {
     title: 'Departure Airport'
   }
 
-  it('renders with correct label', () => {
-    render(<AirportSelect {...mockProps} />)
-    expect(screen.getByLabelText(/departure airport/i)).toBeInTheDocument()
+  beforeEach(() => {
+    jest.clearAllMocks()
   })
 
-  it('renders default option', async () => {
-    render(<AirportSelect {...mockProps} />)
-    const select = screen.getByLabelText(/departure airport/i)
-    await userEvent.click(select)
+  it('renders with correct label and is interactive', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithMui(<AirportSelect {...mockProps} />)
     
-    expect(screen.getByRole('option', { name: /select airport/i })).toBeInTheDocument()
+    const select = screen.getByRole('button', { name: /departure airport/i })
+    expect(select).toBeInTheDocument()
+    
+    await user.click(select)
+    expect(select).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('calls formik onChange when selecting an option', async () => {
+    const user = userEvent.setup({ delay: null })
+    renderWithMui(<AirportSelect {...mockProps} />)
+    
+    // Open select and choose an option
+    const select = screen.getByRole('button', { name: /departure airport/i })
+    await user.click(select)
+    
+    // Select a specific airport (LHR - London Heathrow)
+    const option = screen.getByRole('option', { name: /LHR.*London Heathrow/ })
+    await user.click(option)
+    
+    expect(mockOnChange).toHaveBeenCalled()
+  })
+
+  it('displays initial value when provided', () => {
+    const mockFormikWithValue = {
+      getFieldProps: jest.fn().mockReturnValue({
+        value: 'LHR',
+        onChange: mockOnChange,
+        onBlur: mockOnBlur
+      })
+    } as unknown as FormikProps<any>
+
+    renderWithMui(<AirportSelect {...mockProps} parentState={mockFormikWithValue} />)
+    
+    expect(screen.getByRole('button')).toHaveTextContent('LHR')
   })
 }) 

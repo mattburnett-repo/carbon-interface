@@ -1,0 +1,1280 @@
+{
+  "makes": [
+    {
+      "id": "b233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Toyota",
+      "models": [
+        {
+          "id": "7268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Camry",
+          "years": [
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Camry 2025"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Camry 2024"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Camry 2023"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Camry 2022"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Camry 2021"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Camry 2020"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Camry 2019"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Camry 2018"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Camry 2017"
+            },
+            {
+              "id": "7268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Camry 2016"
+            }
+          ]
+        },
+        {
+          "id": "8268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Corolla",
+          "years": [
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Corolla 2024"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Corolla 2023"
+            }
+          ]
+        },
+        {
+          "id": "9268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "RAV4",
+          "years": [
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "RAV4 2024"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "RAV4 2023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "973a3c8b-8541-4fab-b4f3-c5ca9809a769",
+      "name": "Honda",
+      "models": [
+        {
+          "id": "74b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b",
+          "name": "Civic",
+          "years": [
+            {
+              "id": "74b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2024",
+              "year": 2024,
+              "full_name": "Civic 2024"
+            },
+            {
+              "id": "74b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2023",
+              "year": 2023,
+              "full_name": "Civic 2023"
+            }
+          ]
+        },
+        {
+          "id": "84b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b",
+          "name": "Accord",
+          "years": [
+            {
+              "id": "84b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2024",
+              "year": 2024,
+              "full_name": "Accord 2024"
+            },
+            {
+              "id": "84b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2023",
+              "year": 2023,
+              "full_name": "Accord 2023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a73a3c8b-8541-4fab-b4f3-c5ca9809a769",
+      "name": "BMW",
+      "models": [
+        {
+          "id": "94b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b",
+          "name": "3 Series",
+          "years": [
+            {
+              "id": "94b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2024",
+              "year": 2024,
+              "full_name": "3 Series 2024"
+            },
+            {
+              "id": "94b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2023",
+              "year": 2023,
+              "full_name": "3 Series 2023"
+            }
+          ]
+        },
+        {
+          "id": "a4b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b",
+          "name": "X5",
+          "years": [
+            {
+              "id": "a4b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2024",
+              "year": 2024,
+              "full_name": "X5 2024"
+            },
+            {
+              "id": "a4b0c1c7-a2e6-4f5b-b5c5-7c6fe5c35c1b-2023",
+              "year": 2023,
+              "full_name": "X5 2023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "c233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Volkswagen",
+      "models": [
+        {
+          "id": "8268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Golf",
+          "years": [
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Golf 2025"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Golf 2024"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Golf 2023"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Golf 2022"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Golf 2021"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Golf 2020"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Golf 2019"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Golf 2018"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Golf 2017"
+            },
+            {
+              "id": "8268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Golf 2016"
+            }
+          ]
+        },
+        {
+          "id": "8368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Passat",
+          "years": [
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Passat 2025"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Passat 2024"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Passat 2023"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Passat 2022"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Passat 2021"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Passat 2020"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Passat 2019"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Passat 2018"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Passat 2017"
+            },
+            {
+              "id": "8368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Passat 2016"
+            }
+          ]
+        },
+        {
+          "id": "8468a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Tiguan",
+          "years": [
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Tiguan 2025"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Tiguan 2024"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Tiguan 2023"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Tiguan 2022"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Tiguan 2021"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Tiguan 2020"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Tiguan 2019"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Tiguan 2018"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Tiguan 2017"
+            },
+            {
+              "id": "8468a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Tiguan 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Mercedes-Benz",
+      "models": [
+        {
+          "id": "9268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "C-Class",
+          "years": [
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "C-Class 2025"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "C-Class 2024"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "C-Class 2023"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "C-Class 2022"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "C-Class 2021"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "C-Class 2020"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "C-Class 2019"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "C-Class 2018"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "C-Class 2017"
+            },
+            {
+              "id": "9268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "C-Class 2016"
+            }
+          ]
+        },
+        {
+          "id": "9368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "E-Class",
+          "years": [
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "E-Class 2025"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "E-Class 2024"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "E-Class 2023"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "E-Class 2022"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "E-Class 2021"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "E-Class 2020"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "E-Class 2019"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "E-Class 2018"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "E-Class 2017"
+            },
+            {
+              "id": "9368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "E-Class 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Ford",
+      "models": [
+        {
+          "id": "a268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "F-150",
+          "years": [
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "F-150 2025"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "F-150 2024"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "F-150 2023"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "F-150 2022"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "F-150 2021"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "F-150 2020"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "F-150 2019"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "F-150 2018"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "F-150 2017"
+            },
+            {
+              "id": "a268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "F-150 2016"
+            }
+          ]
+        },
+        {
+          "id": "a368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Mustang",
+          "years": [
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Mustang 2025"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Mustang 2024"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Mustang 2023"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Mustang 2022"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Mustang 2021"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Mustang 2020"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Mustang 2019"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Mustang 2018"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Mustang 2017"
+            },
+            {
+              "id": "a368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Mustang 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Hyundai",
+      "models": [
+        {
+          "id": "b268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Elantra",
+          "years": [
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Elantra 2025"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Elantra 2024"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Elantra 2023"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Elantra 2022"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Elantra 2021"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Elantra 2020"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Elantra 2019"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Elantra 2018"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Elantra 2017"
+            },
+            {
+              "id": "b268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Elantra 2016"
+            }
+          ]
+        },
+        {
+          "id": "b368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Sonata",
+          "years": [
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Sonata 2025"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Sonata 2024"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Sonata 2023"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Sonata 2022"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Sonata 2021"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Sonata 2020"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Sonata 2019"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Sonata 2018"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Sonata 2017"
+            },
+            {
+              "id": "b368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Sonata 2016"
+            }
+          ]
+        },
+        {
+          "id": "b468a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Tucson",
+          "years": [
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Tucson 2025"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Tucson 2024"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Tucson 2023"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Tucson 2022"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Tucson 2021"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Tucson 2020"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Tucson 2019"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Tucson 2018"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Tucson 2017"
+            },
+            {
+              "id": "b468a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Tucson 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Audi",
+      "models": [
+        {
+          "id": "c268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "A4",
+          "years": [
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "A4 2025"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "A4 2024"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "A4 2023"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "A4 2022"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "A4 2021"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "A4 2020"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "A4 2019"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "A4 2018"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "A4 2017"
+            },
+            {
+              "id": "c268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "A4 2016"
+            }
+          ]
+        },
+        {
+          "id": "c368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Q5",
+          "years": [
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Q5 2025"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Q5 2024"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Q5 2023"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Q5 2022"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Q5 2021"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Q5 2020"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Q5 2019"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Q5 2018"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Q5 2017"
+            },
+            {
+              "id": "c368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Q5 2016"
+            }
+          ]
+        },
+        {
+          "id": "c468a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "A6",
+          "years": [
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "A6 2025"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "A6 2024"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "A6 2023"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "A6 2022"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "A6 2021"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "A6 2020"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "A6 2019"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "A6 2018"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "A6 2017"
+            },
+            {
+              "id": "c468a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "A6 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Nissan",
+      "models": [
+        {
+          "id": "d268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Altima",
+          "years": [
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Altima 2025"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Altima 2024"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Altima 2023"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Altima 2022"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Altima 2021"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Altima 2020"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Altima 2019"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Altima 2018"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Altima 2017"
+            },
+            {
+              "id": "d268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Altima 2016"
+            }
+          ]
+        },
+        {
+          "id": "d368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Rogue",
+          "years": [
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Rogue 2025"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Rogue 2024"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Rogue 2023"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Rogue 2022"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Rogue 2021"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Rogue 2020"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Rogue 2019"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Rogue 2018"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Rogue 2017"
+            },
+            {
+              "id": "d368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Rogue 2016"
+            }
+          ]
+        },
+        {
+          "id": "d468a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Sentra",
+          "years": [
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Sentra 2025"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Sentra 2024"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Sentra 2023"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Sentra 2022"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Sentra 2021"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Sentra 2020"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Sentra 2019"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Sentra 2018"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Sentra 2017"
+            },
+            {
+              "id": "d468a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Sentra 2016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i233408a-9468-4276-9c21-47b1d088cf3f",
+      "name": "Kia",
+      "models": [
+        {
+          "id": "e268a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Telluride",
+          "years": [
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Telluride 2025"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Telluride 2024"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Telluride 2023"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Telluride 2022"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Telluride 2021"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Telluride 2020"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Telluride 2019"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Telluride 2018"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Telluride 2017"
+            },
+            {
+              "id": "e268a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Telluride 2016"
+            }
+          ]
+        },
+        {
+          "id": "e368a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "K5",
+          "years": [
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "K5 2025"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "K5 2024"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "K5 2023"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "K5 2022"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "K5 2021"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "K5 2020"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "K5 2019"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "K5 2018"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "K5 2017"
+            },
+            {
+              "id": "e368a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "K5 2016"
+            }
+          ]
+        },
+        {
+          "id": "e468a9b7-17e8-4c8d-acca-57059252afe9",
+          "name": "Sportage",
+          "years": [
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2025",
+              "year": 2025,
+              "full_name": "Sportage 2025"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2024",
+              "year": 2024,
+              "full_name": "Sportage 2024"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2023",
+              "year": 2023,
+              "full_name": "Sportage 2023"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2022",
+              "year": 2022,
+              "full_name": "Sportage 2022"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2021",
+              "year": 2021,
+              "full_name": "Sportage 2021"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2020",
+              "year": 2020,
+              "full_name": "Sportage 2020"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2019",
+              "year": 2019,
+              "full_name": "Sportage 2019"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2018",
+              "year": 2018,
+              "full_name": "Sportage 2018"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2017",
+              "year": 2017,
+              "full_name": "Sportage 2017"
+            },
+            {
+              "id": "e468a9b7-17e8-4c8d-acca-57059252afe9-2016",
+              "year": 2016,
+              "full_name": "Sportage 2016"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

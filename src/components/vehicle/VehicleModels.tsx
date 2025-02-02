@@ -1,63 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import { Autocomplete, TextField } from '@mui/material'
-import { VehicleModel, VehicleModelResponse, VehicleModelsProps } from './types'
+import React from 'react'
+import { FormControl, InputLabel, MenuItem, Select, CircularProgress } from '@mui/material'
+import { FormikProps } from 'formik'
+import { iInitialValues } from '../../scenes/estimates/vehicle/types'
+import type { VehicleModel } from '../../services/vehicleApi'
 
-const baseURL = import.meta.env.VITE_API_VEHICLE_MAKES_URL as string
-const apiKey = import.meta.env.VITE_API_KEY as string
+interface Props {
+  formik: FormikProps<iInitialValues>
+  makeId: string
+  models: VehicleModel[]
+  loading?: boolean
+}
 
-const VehicleModels = ({ parentState, makeId }: VehicleModelsProps): JSX.Element => {
-  const theURL = `${baseURL}/${makeId}/vehicle_models`
-  const [vehicleModels, setVehicleModels] = useState<Record<string, VehicleModelResponse>>({})
-
-  useEffect(() => {
-    const fetchModels = async () => {
-      try {
-        const response = await fetch(theURL, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`
-          }
-        })
-        const data = await response.json() as Record<string, VehicleModelResponse>
-        setVehicleModels(data)
-      } catch {
-        setVehicleModels({})
-      }
-    }
-    
-    fetchModels()
-  }, [makeId, theURL])
-
-  const vehicleModelsList: VehicleModel[] = Object.keys(vehicleModels)
-    .sort((a, b) =>
-      vehicleModels[a].data.attributes.name > vehicleModels[b].data.attributes.name ? 1 : -1
-    )
-    .sort((a, b) =>
-      vehicleModels[a].data.attributes.year > vehicleModels[b].data.attributes.year ? -1 : 1
-    )
-    .map((record) => ({
-      id: vehicleModels[record].data.id,
-      year: vehicleModels[record].data.attributes.year,
-      name: vehicleModels[record].data.attributes.name
-    }))
-
+const VehicleModels = ({ formik, models = [], loading }: Props): JSX.Element => {
   return (
-    <Autocomplete
-      data-testid="vehicle-model-autocomplete"
-      disablePortal
-      loading
-      id='vehicle_model_id'
-      onChange={(_, value) => {
-        parentState.setFieldValue('vehicle_model_id', value?.id)
-      }}
-      isOptionEqualToValue={(option, value) => option.id === value.id}
-      options={vehicleModelsList}
-      getOptionLabel={(option) => `${option.year}  ${option.name} ${option.id.substring(0, 5)}`}
-      renderInput={(params) => <TextField {...params} />}
-      fullWidth
-      sx={{ width: '250px' }}
-    />
+    <FormControl fullWidth>
+      <InputLabel id="vehicle_model_id-label">Model</InputLabel>
+      <Select
+        labelId="vehicle_model_id-label"
+        id="vehicle_model_id"
+        label="Model"
+        name="vehicle_model_id"
+        value={formik.values.vehicle_model_id}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        data-testid="model-select"
+        disabled={loading}
+      >
+        <MenuItem value="" disabled>
+          {loading ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <CircularProgress size={20} /> Loading models...
+            </div>
+          ) : (
+            'Select a model'
+          )}
+        </MenuItem>
+        {models.map(model => (
+          <MenuItem key={model.data.id} value={model.data.id}>
+            {model.data.attributes.name} ({model.data.attributes.year})
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   )
 }
 
