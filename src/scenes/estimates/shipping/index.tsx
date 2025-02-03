@@ -1,22 +1,33 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-
+import React, { useState } from 'react'
 import { Box, useTheme } from '@mui/material'
-
 import { tokens } from '../../../theme'
-import { type iInitialValues } from './types'
-
 import ShippingForm from './ShippingForm'
 import ShippingEstimate from './ShippingEstimate'
+import { type iInitialValues } from './types'
+import { EstimateLayout } from '../../layout/EstimateLayout'
 
-interface LocationState {
-  state: { values: iInitialValues } | null
+// Add fadeIn keyframe animation
+const fadeIn = {
+  '@keyframes fadeIn': {
+    '0%': {
+      opacity: 0,
+      transform: 'translateY(10px)'
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'translateY(0)'
+    }
+  }
 }
 
 const Shipping = (): JSX.Element => {
+  const [estimateValues, setEstimateValues] = useState<iInitialValues | null>(null)
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const location = useLocation() as LocationState
+
+  const handleSubmit = (values: iInitialValues) => {
+    setEstimateValues(values)
+  }
 
   return (
     <Box
@@ -29,10 +40,10 @@ const Shipping = (): JSX.Element => {
         backgroundColor: colors.primary[400]
       }}
     >
-      <ShippingForm />
-      {location.state?.values !== undefined && (
-        <ShippingEstimate {...location.state.values} />
-      )}
+      <EstimateLayout
+        formSection={<ShippingForm onSubmit={handleSubmit} />}
+        displaySection={<ShippingEstimate estimateValues={estimateValues} />}
+      />
     </Box>
   )
 }

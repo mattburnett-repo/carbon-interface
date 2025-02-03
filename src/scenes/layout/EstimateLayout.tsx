@@ -13,9 +13,9 @@ export const EstimateLayout = ({ formSection, displaySection }: EstimateLayoutPr
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        maxWidth: '600px',  // Mobile device feel while staying desktop-friendly
-        margin: '0 auto',   // Centers the layout
-        border: '1px solid grey',  // Added border
+        maxWidth: '600px',
+        margin: '0 auto',
+        border: '1px solid grey',
       }}
     >
       <Box
@@ -23,7 +23,7 @@ export const EstimateLayout = ({ formSection, displaySection }: EstimateLayoutPr
           height: '34%',
           padding: '10px',
           overflow: 'auto',
-          border: '1px dashed grey'  // Added interior border
+          border: '1px dashed grey'
         }}
       >
         {formSection}
@@ -36,7 +36,7 @@ export const EstimateLayout = ({ formSection, displaySection }: EstimateLayoutPr
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          border: '1px dashed grey'  // Added interior border
+          border: '1px dashed grey'
         }}
       >
         {displaySection}

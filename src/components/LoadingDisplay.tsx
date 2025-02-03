@@ -10,14 +10,18 @@ const LoadingDisplay = () => {
     <Box 
       data-testid="loading-container" 
       sx={{ 
-        width: '100%',  // Take full width
-        margin: '5px auto auto auto',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        padding: 2,
         backgroundColor: colors.primary[400],
-        height: '89vh',
-        padding: '20px'  // Add some padding like other components
       }}
     >
-      <LinearProgress />
+      <Box sx={{ width: '100%', mt: 2 }}>
+        <LinearProgress />
+      </Box>
     </Box>
   )
 }

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import {
   Box,
   Grid,
@@ -12,14 +10,19 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormControl
+  FormControl,
+  useTheme
 } from '@mui/material'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
+import { tokens } from '../../../theme'
 import { type iInitialValues } from './types'
 import DistanceUnits from '../../../components/distance/DistanceUnits'
+
+interface ShippingFormProps {
+  onSubmit: (values: iInitialValues) => void;
+}
 
 const initialValues: iInitialValues = {
   type: 'shipping',
@@ -40,31 +43,36 @@ const validationSchema = yup.object().shape({
     .required('Distance value is required. Numbers only.')
 })
 
-const ShippingForm = (): JSX.Element => {
-  const navigate = useNavigate()
+const ShippingForm = ({ onSubmit }: ShippingFormProps): JSX.Element => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
 
   const formik = useFormik<iInitialValues>({
     initialValues,
     validationSchema,
     onSubmit: (values: iInitialValues): void => {
-      navigate('/estimates/shipping', { 
-        state: { 
-          values: {
-            ...values,
-            weight_value: Number(values.weight_value),
-            distance_value: Number(values.distance_value)
-          }
-        } 
+      onSubmit({
+        ...values,
+        weight_value: Number(values.weight_value),
+        distance_value: Number(values.distance_value)
       })
     }
   })
 
   return (
-    <Box className='estimate'>
+    <Box className='estimate' sx={{ 
+      backgroundColor: colors.primary[400],
+      transition: 'background-color 0.3s ease-in-out'
+    }}>
       <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
-          sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
+          sx={{
+            textAlign: 'center',
+            mb: '1rem',
+            textTransform: 'capitalize',
+            fontSize: '2rem'
+          }}
         >
           {formik.values.type}
         </Typography>
