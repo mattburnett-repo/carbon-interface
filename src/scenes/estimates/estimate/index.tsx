@@ -2,10 +2,7 @@ import React from 'react'
 // import { useLocation } from 'react-router-dom'
 
 import { Box, useTheme } from '@mui/material'
-
-// @ts-expect-error type this
 import { tokens } from '../../../theme'
-
 import Estimates from './Estimates'
 
 const Estimate = (): JSX.Element => {
@@ -20,7 +17,8 @@ const Estimate = (): JSX.Element => {
         alignContent: 'center',
         justifyContent: 'center',
         p: '30px',
-        backgroundColor: colors.primary[400]
+        backgroundColor: colors.primary[400],
+        transition: 'all 0.5s ease-out'
       }}
     >
       <Estimates />

@@ -1,16 +1,17 @@
 import React from 'react'
-
-import { Box, Typography } from '@mui/material'
-
+import { Box, Typography, useTheme } from '@mui/material'
 import {
   DataGrid,
   GridToolbar,
   type GridRowsProp,
   type GridColDef
 } from '@mui/x-data-grid'
+import { tokens } from '../../../theme'
 
 const EstimatesDisplay = (props: any): JSX.Element => {
   const { data } = props
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
 
   const rows: GridRowsProp = data.map((row: any, i: number) => {
     return {
@@ -36,7 +37,12 @@ const EstimatesDisplay = (props: any): JSX.Element => {
     <Box className='estimate' style={{ height: '85vh' }}>
       <Typography
         variant='h1'
-        sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
+        sx={{
+          textAlign: 'center',
+          mb: '1rem',
+          textTransform: 'capitalize',
+          fontSize: '2rem'
+        }}
       >
         Estimates
       </Typography>
