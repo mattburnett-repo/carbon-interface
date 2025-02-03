@@ -4,6 +4,8 @@ export interface iFlightFormFields {
   legs: iLeg[]
   distance_unit: 'km' | 'mi'
   cabin_class: 'economy' | 'premium'
+  departure_airport: string
+  destination_airport: string
 }
 
 export interface iLeg {
@@ -65,7 +67,6 @@ export interface iEstimateResponse {
     }
   }
 }
-
 // Add mock data to test file
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

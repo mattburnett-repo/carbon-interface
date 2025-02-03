@@ -13,6 +13,7 @@ interface FlightLegProps {
   legs?: iLeg[]
   onLegsChange?: (legs: iLeg[]) => void
   onUnsavedChanges?: (hasChanges: boolean) => void
+  showOnly?: 'departure' | 'destination' | 'cabin' | 'review';
 }
 
 interface FlightLegFormValues {

@@ -1,24 +1,19 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import {
   Box,
   Grid,
   Typography,
   Button,
   TextField,
+  useTheme
 } from '@mui/material'
-
-import { useFormik } from 'formik'
+import { Formik, FormikProps } from 'formik'
 import * as yup from 'yup'
-
-import {
-  FuelSourceTypes,
-  FuelSourceUnits
-
-} from '../../../components/fuel_combustion/FuelSources'
-
+import { tokens } from '../../../theme'
 import { type iInitialValues } from './types'
+import { FuelSourceTypes, FuelSourceUnits, useFuelSourceName } from '../../../components/fuel_combustion/FuelSources'
+import { MultiStepForm } from '../../multi-step-form/MultiStepForm'
+import { FormStep } from '../../multi-step-form/FormStep'
 
 const initialValues: iInitialValues = {
   type: 'fuel_combustion',
@@ -36,72 +31,134 @@ const validationSchema = yup.object().shape({
     .required('Fuel source value is required.')
 })
 
-interface FuelCombustionFormProps {
-  onSubmit: (values: iInitialValues) => void;
-}
-
-const FuelCombustionForm = ({ onSubmit }: FuelCombustionFormProps): JSX.Element => {
-  const navigate = useNavigate()
-
-  const formik = useFormik<iInitialValues>({
-    initialValues,
-    validationSchema,
-    onSubmit: (values: iInitialValues): void => {
-      onSubmit(values)
-    }
-  })
+const FuelCombustionForm = ({ onSubmit }: { onSubmit: (values: iInitialValues) => void }): JSX.Element => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
 
   return (
-    <Box className='estimate'>
-      <form role="form" onSubmit={formik.handleSubmit}>
-        <Typography
-          variant='h1'
-          sx={{
-            textAlign: 'center',
-            mb: '1rem',
-            textTransform: 'capitalize',
-            fontSize: '2rem'
-          }}
-        >
-          {formik.values.type}
-        </Typography>
-        <Grid
-          container
-          alignContent={'space-around'}
-          justifyContent={'center'}
-          columnGap={'5rem'}
-          gridTemplateColumns={'5'}
-        >
-          <Grid item>
-            <FuelSourceTypes parentState={formik} />
-          </Grid>
-          {formik.values.fuel_source_type !== '' ? (
-            <Grid item>
-              <FuelSourceUnits parentState={formik} />
-            </Grid>
-          ) : null}
+    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {(formik) => {
+          const fuelSourceName = useFuelSourceName(formik.values.fuel_source_type)
+          
+          const handleStepChange = (step: number, isGoingBack: boolean = false) => {
+            if (isGoingBack) return true
 
-          <Grid item>
-            <TextField
-              id='fuel_source_value'
-              label="Fuel Source Value"
-              inputProps={{
-                'aria-label': 'Fuel Source Value'
-              }}
-              {...formik.getFieldProps('fuel_source_value')}
-            />
-            {formik.touched.fuel_source_value !== undefined &&
-            formik.errors.fuel_source_value !== undefined ? (
-              <div>{formik.errors.fuel_source_value}</div>
-            ) : null}
-          </Grid>
-        </Grid>
-        <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
-          <Button type='submit' color='secondary' variant='contained'>
-            Get Estimate
-          </Button>
-        </Box>
-      </form>
+            switch(step) {
+              case 3: // Validating Fuel Source Value
+                formik.setFieldTouched('fuel_source_value', true)
+                if (!formik.values.fuel_source_value || formik.values.fuel_source_value <= 0) {
+                  formik.setFieldError('fuel_source_value', 'Fuel source value must be greater than 0')
+                  return false
+                }
+                return true
+              default:
+                return true
+            }
+          }
+          
+          return (
+            <MultiStepForm onStepChange={handleStepChange}>
+              {/* Step 1: Fuel Source Type */}
+              <FormStep>
+                <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                  Fuel Source Type
+                </Typography>
+                <Grid container justifyContent='center'>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <FuelSourceTypes parentState={formik} />
+                  </Grid>
+                </Grid>
+              </FormStep>
+
+              {/* Step 2: Fuel Source Unit */}
+              <FormStep>
+                <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                  Fuel Source Unit
+                </Typography>
+                <Grid container justifyContent='center'>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <FuelSourceUnits parentState={formik} />
+                  </Grid>
+                </Grid>
+              </FormStep>
+
+              {/* Step 3: Fuel Source Value */}
+              <FormStep>
+                <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                  Fuel Source Value
+                </Typography>
+                <Grid container justifyContent='center'>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <TextField
+                      fullWidth
+                      id='fuel_source_value'
+                      label="Fuel Source Value"
+                      type="number"
+                      {...formik.getFieldProps('fuel_source_value')}
+                    />
+                    {formik.touched.fuel_source_value && formik.errors.fuel_source_value ? (
+                      <Typography color="error" sx={{ mt: 1 }}>{formik.errors.fuel_source_value}</Typography>
+                    ) : null}
+                  </Grid>
+                </Grid>
+              </FormStep>
+
+                            {/* Step 4: Review & Submit */}
+              <FormStep isSubmitStep={true}>
+                <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                  Review & Submit
+                </Typography>
+                <Grid 
+                  container 
+                  justifyContent='center' 
+                  alignItems='center'
+                  direction='column'
+                  spacing={2}
+                >
+                  <Grid item sx={{ width: '100%', maxWidth: '600px' }}>
+                    <Typography variant="h6" sx={{ mb: 2 }}>
+                      Selected Fuel Source:
+                    </Typography>
+                    <Box 
+                      sx={{ 
+                        p: 2,
+                        border: 1,
+                        borderColor: 'divider',
+                        borderRadius: 1
+                      }}
+                    >
+                      <Typography>
+                        Type: {fuelSourceName}
+                      </Typography>
+                      <Typography>
+                        Unit: {formik.values.fuel_source_unit}
+                      </Typography>
+                      <Typography>
+                        Value: {formik.values.fuel_source_value}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => formik.handleSubmit()}
+                    >
+                      Get Estimate
+                    </Button>
+                  </Grid>
+                </Grid>
+              </FormStep>
+            </MultiStepForm>
+          )
+        }}
+      </Formik>
     </Box>
   )
 }

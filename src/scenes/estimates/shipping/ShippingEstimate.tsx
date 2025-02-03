@@ -78,4 +78,4 @@ const ShippingEstimate: React.FC<iEstimateProps> = ({ estimateValues }): JSX.Ele
   return <ShippingEstimateDisplay values={data.attributes} />
 }
 
-export default ShippingEstimate
+export default ShippingEstimate 

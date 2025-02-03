@@ -1,0 +1,18 @@
+We are implementing multi-step forms for estimate modules in the application. Here's the specific task breakdown:
+The problem:
+Some estimate module forms (like ElectricityForm.tsx) have too many form elements
+These forms don't fit well in the new layout format recently implemented
+The forms are too crowded
+The solution:
+Convert the crowded forms into multi-step forms
+Keep all existing functionality intact
+Only reorganize the form elements to fit the layout better
+Technical context:
+The forms are in src/scenes under module-specific directories (e.g., 'electricity')
+The app uses Formik for form handling
+There's an existing 'multi-step-form' folder in src/scenes where new components should go
+We should leverage existing Formik implementation unless it's unnecessarily complex
+Goal:
+Clean up form elements to fit the new layout neatly
+Use multi-step forms as a simple solution to this layout problem
+No need to re-evaluate or change existing functionality

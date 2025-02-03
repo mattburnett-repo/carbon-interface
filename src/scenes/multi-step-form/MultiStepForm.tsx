@@ -1,115 +1,88 @@
-import React, { useState } from 'react';
-import { Formik, Form } from 'formik';
-import {
-  Stepper,
-  Step as MUIStep,
-  StepLabel,
-  Button,
-  Box,
-  Paper
-} from '@mui/material';
-
-export interface Step {
-  id: string;
-  title: string;
-  component: React.ComponentType<any>;
-  validationSchema?: any;
-}
+import React, { ReactNode, useState } from 'react';
+import { Form } from 'formik';
+import { Box, Button } from '@mui/material';
 
 interface MultiStepFormProps {
-  steps: Step[];
-  initialValues: any;
-  onSubmit: (values: any) => void;
-  onCancel?: () => void;
+  children: ReactNode[];
+  currentStep?: number;
+  onStepChange?: (step: number, isGoingBack?: boolean) => boolean;
 }
 
-const MultiStepForm: React.FC<MultiStepFormProps> = ({
-  steps,
-  initialValues,
-  onSubmit,
-  onCancel
+interface StepContextType {
+  setStep: (step: number, isGoingBack?: boolean) => void;
+}
+
+interface FormStepProps {
+  isSubmitStep?: boolean;
+  children: ReactNode;
+}
+
+export const StepContext = React.createContext<StepContextType>({
+  setStep: () => {}
+});
+
+export const MultiStepForm: React.FC<MultiStepFormProps> = ({ 
+  children,
+  currentStep = 0,
+  onStepChange
 }) => {
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const currentStep = steps[currentStepIndex];
+  const [step, setStep] = useState(currentStep);
+  const steps = React.Children.toArray(children);
+  const isLastStep = step === steps.length - 1;
+  const currentChild = steps[step] as React.ReactElement<FormStepProps>;
+  const isSubmitStep = currentChild.props.isSubmitStep;
 
-  const handleNext = () => {
-    if (currentStepIndex < steps.length - 1) {
-      setCurrentStepIndex(currentStepIndex + 1);
+  const handleSetStep = (newStep: number, isGoingBack?: boolean) => {
+    setStep(Math.min(Math.max(newStep, 0), steps.length - 1));
+    if (onStepChange) {
+      onStepChange(newStep, isGoingBack);
     }
   };
 
-  const handlePrevious = () => {
-    if (currentStepIndex > 0) {
-      setCurrentStepIndex(currentStepIndex - 1);
+  const next = () => {
+    if (onStepChange) {
+      const isValid = onStepChange(step + 1);
+      if (!isValid) return;
     }
+    setStep(Math.min(step + 1, steps.length - 1));
   };
 
-  const isLastStep = currentStepIndex === steps.length - 1;
+  const previous = () => {
+    handleSetStep(step - 1, true);
+  };
 
   return (
-    <Paper elevation={2} sx={{ p: 3 }}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={currentStep.validationSchema}
-        onSubmit={(values) => {
-          if (isLastStep) {
-            onSubmit(values);
-          } else {
-            handleNext();
-          }
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Stepper activeStep={currentStepIndex} sx={{ mb: 4 }}>
-              {steps.map((step) => (
-                <MUIStep key={step.id}>
-                  <StepLabel>{step.title}</StepLabel>
-                </MUIStep>
-              ))}
-            </Stepper>
-
-            <Box sx={{ mb: 4 }}>
-              {React.createElement(currentStep.component)}
-            </Box>
-
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Box>
-                {currentStepIndex > 0 && (
-                  <Button
-                    variant="outlined"
-                    onClick={handlePrevious}
-                    sx={{ mr: 1 }}
-                  >
-                    Previous
-                  </Button>
-                )}
-              </Box>
-              
-              <Box>
-                {onCancel && (
-                  <Button
-                    variant="outlined"
-                    onClick={onCancel}
-                    sx={{ mr: 1 }}
-                  >
-                    Cancel
-                  </Button>
-                )}
-                <Button
-                  variant="contained"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  {isLastStep ? 'Submit' : 'Next'}
-                </Button>
-              </Box>
-            </Box>
-          </Form>
+    <StepContext.Provider value={{ setStep: handleSetStep }}>
+      <Form>
+        {steps[step]}
+        
+        {!isSubmitStep && (
+          <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
+            {step > 0 && (
+              <Button
+                type="button"
+                onClick={previous}
+                color='secondary'
+                variant='contained'
+                sx={{ mr: 2 }}
+              >
+                Back
+              </Button>
+            )}
+            
+            {!isLastStep && (
+              <Button
+                type="button"
+                onClick={next}
+                color='secondary'
+                variant='contained'
+              >
+                Next
+              </Button>
+            )}
+          </Box>
         )}
-      </Formik>
-    </Paper>
+      </Form>
+    </StepContext.Provider>
   );
 };
-
-export default MultiStepForm; 

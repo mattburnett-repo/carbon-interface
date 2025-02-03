@@ -14,14 +14,13 @@ interface Props {
 
 const AirportSelect = ({ parentState, endpoint, title }: Props): JSX.Element => {
   return (
-    <FormControl>
+    <FormControl sx={{ minWidth: '300px' }}>
       <InputLabel id={`${endpoint}-label`}>{title}</InputLabel>
       <Select
         labelId={`${endpoint}-label`}
         label={title}
         {...parentState.getFieldProps(endpoint)}
       >
-        <MenuItem value="Select Airport" disabled>Select Airport</MenuItem>
         {airports.map(({ code, name, region }) => (
           <MenuItem key={code} value={code}>
             {code} - {name} ({region})
@@ -32,4 +31,4 @@ const AirportSelect = ({ parentState, endpoint, title }: Props): JSX.Element => 
   )
 }
 
-export default AirportSelect 
+export default AirportSelect

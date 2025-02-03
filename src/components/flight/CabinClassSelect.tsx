@@ -8,7 +8,7 @@ interface Props {
 
 const CabinClassSelect = ({ parentState }: Props): JSX.Element => {
   return (
-    <FormControl>
+    <FormControl fullWidth>  {/* Add fullWidth prop */}
       <InputLabel id="cabin-class-label">Cabin Class</InputLabel>
       <Select
         labelId="cabin-class-label"

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-
 import React from 'react'
 import {
   Box,
@@ -13,16 +11,13 @@ import {
   FormControl,
   useTheme
 } from '@mui/material'
-
-import { useFormik } from 'formik'
+import { Formik } from 'formik'
 import * as yup from 'yup'
 import { tokens } from '../../../theme'
 import { type iInitialValues } from './types'
 import DistanceUnits from '../../../components/distance/DistanceUnits'
-
-interface ShippingFormProps {
-  onSubmit: (values: iInitialValues) => void;
-}
+import { MultiStepForm } from '../../multi-step-form/MultiStepForm'
+import { FormStep } from '../../multi-step-form/FormStep'
 
 const initialValues: iInitialValues = {
   type: 'shipping',
@@ -32,6 +27,7 @@ const initialValues: iInitialValues = {
   distance_value: 100,
   transport_method: 'truck'
 }
+
 const validationSchema = yup.object().shape({
   weight_value: yup
     .number()
@@ -43,124 +39,163 @@ const validationSchema = yup.object().shape({
     .required('Distance value is required. Numbers only.')
 })
 
-const ShippingForm = ({ onSubmit }: ShippingFormProps): JSX.Element => {
+const ShippingForm = ({ onSubmit }: { onSubmit: (values: iInitialValues) => void }): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const formik = useFormik<iInitialValues>({
-    initialValues,
-    validationSchema,
-    onSubmit: (values: iInitialValues): void => {
-      onSubmit({
-        ...values,
-        weight_value: Number(values.weight_value),
-        distance_value: Number(values.distance_value)
-      })
-    }
-  })
-
   return (
-    <Box className='estimate' sx={{ 
-      backgroundColor: colors.primary[400],
-      transition: 'background-color 0.3s ease-in-out'
-    }}>
-      <form role="form" onSubmit={formik.handleSubmit}>
-        <Typography
-          variant='h1'
-          sx={{
-            textAlign: 'center',
-            mb: '1rem',
-            textTransform: 'capitalize',
-            fontSize: '2rem'
-          }}
-        >
-          {formik.values.type}
-        </Typography>
-        <Grid
-          container
-          alignContent={'space-around'}
-          justifyContent={'center'}
-          columnGap={'5rem'}
-          gridTemplateColumns={'5'}
-        >
-          <Grid item>
-            <FormControl fullWidth>
-              <InputLabel id='weight_unit-label'>Weight Unit</InputLabel>
-              <Select
-                id='weight_unit'
-                labelId='weight_unit-label'
-                label="Weight Unit"
-                {...formik.getFieldProps('weight_unit')}
-              >
-                <MenuItem value={'g'}>Grams</MenuItem>
-                <MenuItem value={'kg'}>Kilograms</MenuItem>
-                <MenuItem value={'lb'}>Pounds</MenuItem>
-                <MenuItem value={'mt'}>Tonnes</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item>
-            <TextField
-              id='weight_value'
-              label="Weight Value"
-              inputProps={{
-                'aria-label': 'Weight Value'
-              }}
-              {...formik.getFieldProps('weight_value')}
-            />
-            {formik.touched.weight_value !== undefined &&
-            formik.errors.weight_value !== undefined ? (
-              <div>{formik.errors.weight_value}</div>
-            ) : null}
-          </Grid>
-          <Grid item>
-            <DistanceUnits
-              value={formik.values.distance_unit}
-              onChange={(e) => formik.setFieldValue('distance_unit', e.target.value)}
-              onBlur={formik.handleBlur}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              id='distance_value'
-              label="Distance Value"
-              inputProps={{
-                'aria-label': 'Distance Value'
-              }}
-              {...formik.getFieldProps('distance_value')}
-            />
-            {formik.touched.distance_value !== undefined &&
-            formik.errors.distance_value !== undefined ? (
-              <div>{formik.errors.distance_value}</div>
-            ) : null}
-          </Grid>
-          <Grid item>
-            <FormControl fullWidth sx={{ minWidth: '200px' }}>
-              <InputLabel id='transport_method-label'>Transport Method</InputLabel>
-              <Select
-                id='transport_method'
-                labelId='transport_method-label'
-                label="Transport Method"
-                {...formik.getFieldProps('transport_method')}
-              >
-                <MenuItem value={'ship'}>Ship</MenuItem>
-                <MenuItem value={'train'}>Train</MenuItem>
-                <MenuItem value={'truck'}>Truck</MenuItem>
-                <MenuItem value={'plane'}>Plane</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-        </Grid>
-        <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
-          <Button type='submit' color='secondary' variant='contained'>
-            Get Estimate
-          </Button>
-        </Box>
-      </form>
+    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        {(formik) => (
+          <MultiStepForm>
+            {/* Step 1: Weight */}
+            <FormStep>
+              <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                Weight
+              </Typography>
+              <Grid container justifyContent='center' spacing={2}>
+                <Grid item>
+                  <FormControl>
+                    <InputLabel id='weight_unit-label'>Weight Unit</InputLabel>
+                    <Select
+                      id='weight_unit'
+                      labelId='weight_unit-label'
+                      label="Weight Unit"
+                      {...formik.getFieldProps('weight_unit')}
+                    >
+                      <MenuItem value={'g'}>Grams</MenuItem>
+                      <MenuItem value={'kg'}>Kilograms</MenuItem>
+                      <MenuItem value={'lb'}>Pounds</MenuItem>
+                      <MenuItem value={'mt'}>Tonnes</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    id='weight_value'
+                    label="Weight Value"
+                    inputProps={{
+                      'aria-label': 'Weight Value'
+                    }}
+                    {...formik.getFieldProps('weight_value')}
+                  />
+                  {formik.touched.weight_value && formik.errors.weight_value ? (
+                    <Typography color="error" sx={{ mt: 1 }}>{formik.errors.weight_value}</Typography>
+                  ) : null}
+                </Grid>
+              </Grid>
+            </FormStep>
+
+            {/* Step 2: Distance */}
+            <FormStep>
+              <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                Distance
+              </Typography>
+              <Grid container justifyContent='center' spacing={2}>
+                <Grid item>
+                  <DistanceUnits
+                    value={formik.values.distance_unit}
+                    onChange={(e) => formik.setFieldValue('distance_unit', e.target.value)}
+                    onBlur={formik.handleBlur}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    id='distance_value'
+                    label="Distance Value"
+                    inputProps={{
+                      'aria-label': 'Distance Value'
+                    }}
+                    {...formik.getFieldProps('distance_value')}
+                  />
+                  {formik.touched.distance_value && formik.errors.distance_value ? (
+                    <Typography color="error" sx={{ mt: 1 }}>{formik.errors.distance_value}</Typography>
+                  ) : null}
+                </Grid>
+              </Grid>
+            </FormStep>
+
+            {/* Step 3: Transport Method */}
+            <FormStep>
+              <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                Transport Method
+              </Typography>
+              <Grid container justifyContent='center'>
+                <Grid item xs={12} sm={6} md={4}>
+                  <FormControl fullWidth>
+                    <InputLabel id='transport_method-label'>Transport Method</InputLabel>
+                    <Select
+                      id='transport_method'
+                      labelId='transport_method-label'
+                      label="Transport Method"
+                      {...formik.getFieldProps('transport_method')}
+                    >
+                      <MenuItem value={'ship'}>Ship</MenuItem>
+                      <MenuItem value={'train'}>Train</MenuItem>
+                      <MenuItem value={'truck'}>Truck</MenuItem>
+                      <MenuItem value={'plane'}>Plane</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </FormStep>
+
+            {/* Step 4: Review & Submit */}
+              <FormStep isSubmitStep={true}>
+                <Typography variant='h1' sx={{ textAlign: 'center', mb: '1rem', fontSize: '2rem' }}>
+                  Review & Submit
+                </Typography>
+                <Grid 
+                  container 
+                  justifyContent='center' 
+                  alignItems='center'
+                  direction='column'
+                  spacing={2}
+                >
+                  <Grid item sx={{ width: '100%', maxWidth: '600px' }}>
+                    <Typography variant="h6" sx={{ mb: 2 }}>
+                      Shipping Details:
+                    </Typography>
+                    <Box 
+                      sx={{ 
+                        p: 2,
+                        border: 1,
+                        borderColor: 'divider',
+                        borderRadius: 1
+                      }}
+                    >
+                      <Typography>
+                        Weight: {formik.values.weight_value} {formik.values.weight_unit}
+                      </Typography>
+                      <Typography>
+                        Distance: {formik.values.distance_value} {formik.values.distance_unit}
+                      </Typography>
+                      <Typography>
+                        Transport Method: {formik.values.transport_method}
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => formik.handleSubmit()}
+                    >
+                      Get Estimate
+                    </Button>
+                  </Grid>
+                </Grid>
+              </FormStep>
+          </MultiStepForm>
+        )}
+      </Formik>
     </Box>
   )
 }
 
 export default ShippingForm
-
-/* eslint-enable @typescript-eslint/strict-boolean-expressions */

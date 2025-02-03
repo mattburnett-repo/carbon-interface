@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormControl, TextField, InputAdornment, FormHelperText } from '@mui/material'
+import { FormControl, TextField, FormHelperText } from '@mui/material'
 
 interface iProps {
   value: string
@@ -21,11 +21,8 @@ export default function DistanceInput(props: iProps) {
         onChange={props.onChange}
         onBlur={props.onBlur}
         required={props.required}
-        InputProps={{
-          endAdornment: <InputAdornment position="end">{props.unit}</InputAdornment>
-        }}
       />
       {props.error && <FormHelperText>{props.error}</FormHelperText>}
     </FormControl>
   )
-} 
+}
