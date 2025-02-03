@@ -46,7 +46,7 @@ const EstimatesDisplay = (props: any): JSX.Element => {
       >
         Estimates
       </Typography>
-      <Box sx={{ minHeight: '70vh', width: '100%' }}>
+      <Box sx={{ height: '70vh', width: '100%' }}>
         <DataGrid
           checkboxSelection
           rows={rows}

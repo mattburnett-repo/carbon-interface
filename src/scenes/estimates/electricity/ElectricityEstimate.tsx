@@ -69,7 +69,7 @@ const ElectricityEstimate: React.FC<iEstimateProps> = ({ estimateValues }) => {
   )
 
   if (isLoading) return <LoadingDisplay />
-  if (error) return <ErrorDisplay error={error} />
+  if (error) return <ErrorDisplay error={error} requestData={estimateValues} />
   if (!data) return <LoadingDisplay />
 
   return <ElectricityEstimateDisplay data={data.data} />

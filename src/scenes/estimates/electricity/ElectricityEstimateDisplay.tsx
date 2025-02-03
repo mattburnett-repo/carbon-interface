@@ -23,13 +23,14 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
       {!data ? (
         <img src="/lightbulb.jpg" alt="Electricity estimate" style={{ width: '400px' }} />
       ) : (
-        <Box className='estimate' sx={{ mt: '5rem', backgroundColor: colors.primary[400] }}>
+        <Box className='estimate' sx={{ mt: '2rem', backgroundColor: colors.primary[400] }}>
           <Typography
             variant={'h1'}
             sx={{
               textAlign: 'center',
-              marginTop: '0.75 rem',
-              textTransform: 'capitalize'
+              mb: 2,
+              textTransform: 'capitalize',
+              fontSize: '2rem'
             }}
           >
             Electricity Estimate
@@ -39,31 +40,32 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
             container
             alignContent={'space-between'}
             justifyContent={'center'}
-            columnGap={'5rem'}
+            spacing={2}
+            sx={{ mb: 4 }}
           >
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Unit: {data.attributes.electricity_unit}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Value: {data.attributes.electricity_value}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Country: {data.attributes.country.toUpperCase()}
               </Typography>
             </Grid>
-            {data.attributes.state !== '' ? (
-              <Grid item>
+            {data.attributes.state !== '' && (
+              <Grid item xs={12} md={6}>
                 <Typography padding='0.5rem'>
                   State/Region: {data.attributes.state.toUpperCase()}
                 </Typography>
               </Grid>
-            ) : null}
-            <Grid item>
+            )}
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Estimated at:
                 {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}
@@ -73,7 +75,7 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
                 )}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>ID: {data.id}</Typography>
             </Grid>
           </Grid>
@@ -81,9 +83,9 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
             container
             alignContent={'space-between'}
             justifyContent={'center'}
-            columnGap={'5rem'}
+            spacing={3}
           >
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Carbon (grams):{' '}
                 {new Intl.NumberFormat('en-US', {}).format(
@@ -91,7 +93,7 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
                 )}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Carbon (lbs):{' '}
                 {new Intl.NumberFormat('en-US', {}).format(
@@ -99,7 +101,7 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
                 )}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Carbon (kg):{' '}
                 {new Intl.NumberFormat('en-US', {}).format(
@@ -107,7 +109,7 @@ const ElectricityEstimateDisplay = ({ data }: iDisplayProps) => {
                 )}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={6}>
               <Typography padding='0.5rem'>
                 Carbon (mt):{' '}
                 {new Intl.NumberFormat('en-US', {}).format(

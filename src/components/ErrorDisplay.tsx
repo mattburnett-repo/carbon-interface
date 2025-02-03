@@ -4,6 +4,7 @@ interface ErrorDisplayProps {
   error: {
     message: string
   }
+  requestData?: unknown  // Keep it generic
 }
 
 const ErrorDisplay = ({ error }: ErrorDisplayProps): JSX.Element => {
