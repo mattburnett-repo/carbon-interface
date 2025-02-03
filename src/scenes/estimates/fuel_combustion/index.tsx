@@ -1,23 +1,19 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-
+import React, { useState } from 'react'
 import { Box, useTheme } from '@mui/material'
-
 import { tokens } from '../../../theme'
-
 import FuelCombustionForm from './FuelCombustionForm'
 import FuelCombustionEstimate from './FuelCombustionEstimate'
-import { type iFormInitialValues } from './types'
-
-interface LocationState {
-  state: { values: iFormInitialValues } | null
-}
+import { EstimateLayout } from '../../layout/EstimateLayout'
+import { type iInitialValues } from './types'
 
 const FuelCombustion = (): JSX.Element => {
+  const [estimateValues, setEstimateValues] = useState<iInitialValues | null>(null)
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation() as LocationState
+  const handleSubmit = (values: iInitialValues) => {
+    setEstimateValues(values)
+  }
 
   return (
     <Box
@@ -30,10 +26,10 @@ const FuelCombustion = (): JSX.Element => {
         backgroundColor: colors.primary[400]
       }}
     >
-      <FuelCombustionForm />
-      {location.state?.values !== undefined && (
-        <FuelCombustionEstimate {...location.state.values} />
-      )}
+      <EstimateLayout
+        formSection={<FuelCombustionForm onSubmit={handleSubmit} />}
+        displaySection={<FuelCombustionEstimate estimateValues={estimateValues} />}
+      />
     </Box>
   )
 }

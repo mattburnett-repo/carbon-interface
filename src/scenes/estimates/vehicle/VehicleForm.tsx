@@ -97,7 +97,12 @@ const VehicleForm = ({ onSubmit }: VehicleFormProps): JSX.Element => {
       <form onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
-          sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
+          sx={{
+            textAlign: 'center',
+            mb: '1rem',
+            textTransform: 'capitalize',
+            fontSize: '2rem'
+          }}
         >
           {formik.values.type}
         </Typography>

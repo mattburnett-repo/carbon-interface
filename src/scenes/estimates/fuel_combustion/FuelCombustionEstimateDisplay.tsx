@@ -1,18 +1,17 @@
 import React from 'react'
 
 import { Box, Grid, Typography, useTheme } from '@mui/material'
-
 import { tokens } from '../../../theme'
-
 import {
   useFuelSourceName
-
 } from '../../../components/fuel_combustion/FuelSources'
+import { type FuelCombustionEstimate } from './types'
 
-import { type iDisplayProps } from './types'
-import LoadingDisplay from '../../../components/LoadingDisplay'
+interface Props {
+  estimate: FuelCombustionEstimate | null
+}
 
-const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
+const FuelCombustionEstimateDisplay = ({ estimate }: Props): JSX.Element => {
   // We have to reference the prop data as data.data.someValue because the API returns { "data": {the api response}}
   //    and useQuery returns the API response as 'data' var, ie {data: {"data": {the api response}}}
   // TLDR: the duplicate data.data.someData is unavoidable because the api response and useQuery both use 'data' as a key
@@ -20,12 +19,26 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  if (!data?.data?.attributes) {
-    return <LoadingDisplay />
+  if (!estimate) {
+    return (
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: colors.primary[400],
+          transition: 'background-color 0.3s ease-in-out'
+        }}
+      >
+        <img src="/gas-pump.jpg" alt="Fuel combustion estimate" style={{ width: '400px' }} />
+      </Box>
+    )
   }
 
   const fuelSourceName = useFuelSourceName(
-    data.data.attributes.fuel_source_type
+    estimate.attributes.fuel_source_type
   )
 
   return (
@@ -56,14 +69,14 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
-            Fuel Source Unit: {data.data.attributes.fuel_source_unit}
+            Fuel Source Unit: {estimate.attributes.fuel_source_unit}
           </Typography>
         </Grid>
         <Grid item>
           <Typography padding='0.5rem'>
             Fuel Source Value:{' '}
             {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.fuel_source_value
+              estimate.attributes.fuel_source_value
             )}
           </Typography>
         </Grid>
@@ -72,14 +85,14 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           <Typography padding='0.5rem'>
             Estimated at:
             {/* https://stackoverflow.com/questions/44493088/format-a-date-string-in-javascript */}
-            {data.data.attributes.estimated_at.replace(
+            {estimate.attributes.estimated_at.replace(
               /(\d{4})-(\d{2})-(\d{2}).*/,
               '$3-$2-$1'
             )}
           </Typography>
         </Grid>
         <Grid item>
-          <Typography padding='0.5rem'>ID: {data.data.id}</Typography>
+          <Typography padding='0.5rem'>ID: {estimate.id}</Typography>
         </Grid>
       </Grid>
       <Grid
@@ -92,7 +105,7 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           <Typography padding='0.5rem'>
             Carbon (grams):{' '}
             {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_g
+              estimate.attributes.carbon_g
             )}
           </Typography>
         </Grid>
@@ -100,7 +113,7 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           <Typography padding='0.5rem'>
             Carbon (lbs):{' '}
             {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_lb
+              estimate.attributes.carbon_lb
             )}
           </Typography>
         </Grid>
@@ -108,7 +121,7 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           <Typography padding='0.5rem'>
             Carbon (kg):{' '}
             {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_kg
+              estimate.attributes.carbon_kg
             )}
           </Typography>
         </Grid>
@@ -116,7 +129,7 @@ const FuelCombustionEstimateDisplay = (data: iDisplayProps): JSX.Element => {
           <Typography padding='0.5rem'>
             Carbon (mt):{' '}
             {new Intl.NumberFormat('en-US', {}).format(
-              data.data.attributes.carbon_mt
+              estimate.attributes.carbon_mt
             )}
           </Typography>
         </Grid>

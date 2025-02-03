@@ -7,37 +7,37 @@ import FuelCombustionEstimateDisplay from './FuelCombustionEstimateDisplay'
 
 // import data from '../../../data/fuelSourceResponse.json'
 
-import { type iFormInitialValues, type iDisplayProps } from './types'
+import { type FuelCombustionEstimate as FuelEstimateType, type iEstimateProps } from './types'
 
 const baseURL: string = import.meta.env.VITE_API_ESTIMATES_URL
 const apiKey: string = import.meta.env.VITE_API_KEY
 
-const FuelCombustionEstimate: React.FC<iFormInitialValues> = (
-  requestData: iFormInitialValues
-): JSX.Element => {
-  const { isLoading, error, data } = useQuery<iDisplayProps['data']>(
-    [requestData.type, requestData],
+const FuelCombustionEstimate = ({ estimateValues }: iEstimateProps): JSX.Element => {
+  if (!estimateValues) {
+    return <FuelCombustionEstimateDisplay estimate={null} />
+  }
+
+  const { isLoading, error, data } = useQuery<FuelEstimateType>(
+    ['fuel', estimateValues],
     async () => {
       const response = await fetch(baseURL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...requestData })
+        body: JSON.stringify(estimateValues)
       })
 
       if (!response.ok) {
-        const errorResponse: { message: string } = await response.json()
-        throw new Error(errorResponse.message)
+        const { message }: { message: string } = await response.json()
+        throw Error(message)
       }
 
-      const responseData: { data: iDisplayProps['data'] } = await response.json()
-      return responseData.data
+      return await response.json()
     },
     {
       retry: (failureCount, error: unknown) => {
-        // Don't retry if it's an API limit error
         if ((error as Error).message?.includes('API request limit')) {
           return false
         }
@@ -47,10 +47,10 @@ const FuelCombustionEstimate: React.FC<iFormInitialValues> = (
   )
 
   if (isLoading) return <LoadingDisplay />
-  if (error !== null) return <ErrorDisplay error={error as Error} />
-  if (data === undefined) return <LoadingDisplay />
+  if (error) return <ErrorDisplay error={error as Error} />
+  if (!data) return <LoadingDisplay />
 
-  return <FuelCombustionEstimateDisplay data={data} />
+  return <FuelCombustionEstimateDisplay estimate={data} />
 }
 
 export default FuelCombustionEstimate

@@ -7,7 +7,6 @@ import {
   Typography,
   Button,
   TextField,
-  InputLabel
 } from '@mui/material'
 
 import { useFormik } from 'formik'
@@ -19,9 +18,9 @@ import {
 
 } from '../../../components/fuel_combustion/FuelSources'
 
-import { type iFormInitialValues } from './types'
+import { type iInitialValues } from './types'
 
-const initialValues: iFormInitialValues = {
+const initialValues: iInitialValues = {
   type: 'fuel_combustion',
   fuel_source_type: 'bit',
   fuel_source_unit: 'btu',
@@ -37,14 +36,18 @@ const validationSchema = yup.object().shape({
     .required('Fuel source value is required.')
 })
 
-const FuelCombustionForm = (): JSX.Element => {
+interface FuelCombustionFormProps {
+  onSubmit: (values: iInitialValues) => void;
+}
+
+const FuelCombustionForm = ({ onSubmit }: FuelCombustionFormProps): JSX.Element => {
   const navigate = useNavigate()
 
-  const formik = useFormik<iFormInitialValues>({
+  const formik = useFormik<iInitialValues>({
     initialValues,
     validationSchema,
-    onSubmit: (values: iFormInitialValues): void => {
-      navigate(`/estimates/${values.type}`, { state: { values } })
+    onSubmit: (values: iInitialValues): void => {
+      onSubmit(values)
     }
   })
 
@@ -53,9 +56,14 @@ const FuelCombustionForm = (): JSX.Element => {
       <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
-          sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
+          sx={{
+            textAlign: 'center',
+            mb: '1rem',
+            textTransform: 'capitalize',
+            fontSize: '2rem'
+          }}
         >
-          Fuel Combustion
+          {formik.values.type}
         </Typography>
         <Grid
           container

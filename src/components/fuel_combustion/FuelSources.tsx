@@ -2,7 +2,7 @@ import React from 'react'
 import { InputLabel, Select, MenuItem, FormControl } from '@mui/material'
 import { FormikProps } from 'formik'
 import FuelSourceData from './fuelSourcesData'
-import { type iFormInitialValues } from '../../scenes/estimates/fuel_combustion/types'
+import { type iInitialValues } from '../../scenes/estimates/fuel_combustion/types'
 
 interface FuelSource {
   api_name: string
@@ -11,7 +11,7 @@ interface FuelSource {
 }
 
 interface FuelSourceProps {
-  parentState: FormikProps<iFormInitialValues>
+  parentState: FormikProps<iInitialValues>;
 }
 
 // get id/api_name and name for all fuel sources

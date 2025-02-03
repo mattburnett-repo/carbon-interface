@@ -31,3 +31,28 @@ export interface iDisplayProps {
     }
   }
 }
+
+export interface iInitialValues {
+  type: 'fuel_combustion'
+  fuel_source_type: string
+  fuel_source_unit: string
+  fuel_source_value: number
+}
+
+export interface iEstimateProps {
+  estimateValues: iInitialValues | null
+}
+
+export interface FuelCombustionEstimate {
+  id: string
+  attributes: {
+    fuel_source_type: string
+    fuel_source_unit: string
+    fuel_source_value: number
+    estimated_at: string
+    carbon_g: number
+    carbon_lb: number
+    carbon_kg: number
+    carbon_mt: number
+  }
+}
