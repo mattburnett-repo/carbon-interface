@@ -13,7 +13,7 @@ const Estimate = (): JSX.Element => {
     <Box
       sx={{
         m: 'auto',
-        height: '89vh',
+        minHeight: '89vh',
         alignContent: 'center',
         justifyContent: 'center',
         p: '30px',
