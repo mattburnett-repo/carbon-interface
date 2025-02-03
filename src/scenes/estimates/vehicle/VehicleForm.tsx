@@ -28,8 +28,11 @@ const validationSchema = yup.object().shape({
     .required('Distance value is required. Numbers only.')
 })
 
-const VehicleForm = (): JSX.Element => {
-  const navigate = useNavigate()
+interface VehicleFormProps {
+  onSubmit: (values: iInitialValues) => void;
+}
+
+const VehicleForm = ({ onSubmit }: VehicleFormProps): JSX.Element => {
   const [makes, setMakes] = useState<VehicleMake[]>([])
   const [models, setModels] = useState<VehicleModel[]>([])
   const [loading, setLoading] = useState(true)
@@ -40,7 +43,7 @@ const VehicleForm = (): JSX.Element => {
     initialValues,
     validationSchema,
     onSubmit: (values: iInitialValues): void => {
-      navigate(`/estimates/${values.type}`, { state: { values } })
+      onSubmit(values)
     }
   })
 

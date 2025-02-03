@@ -1,23 +1,19 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
 import { Box, useTheme } from '@mui/material'
 import { tokens } from '../../../theme'
-
 import VehicleForm from './VehicleForm'
 import VehicleEstimate from './VehicleEstimate'
-import { iInitialValues } from './types'
-
-interface LocationState {
-  state: {
-    values: iInitialValues
-  } | null
-}
+import { EstimateLayout } from '../../layout/EstimateLayout'
+import { type iInitialValues } from './types'
 
 const Vehicle = (): JSX.Element => {
+  const [estimateValues, setEstimateValues] = useState<iInitialValues | null>(null)
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
-  const location = useLocation() as unknown as LocationState
+  const handleSubmit = (values: iInitialValues) => {
+    setEstimateValues(values)
+  }
 
   return (
     <Box
@@ -30,10 +26,10 @@ const Vehicle = (): JSX.Element => {
         backgroundColor: colors.primary[400]
       }}
     >
-      <VehicleForm />
-      {location.state?.values !== undefined && (
-        <VehicleEstimate />
-      )}
+      <EstimateLayout
+        formSection={<VehicleForm onSubmit={handleSubmit} />}
+        displaySection={<VehicleEstimate estimateValues={estimateValues} />}
+      />
     </Box>
   )
 }

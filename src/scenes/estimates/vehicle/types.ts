@@ -12,10 +12,7 @@ export interface SelectOption {
 }
 
 export interface iEstimateProps {
-  type: string
-  distance_unit: 'km' | 'mi'
-  distance_value: number
-  vehicle_model_id: string
+  estimateValues: iInitialValues | null;
 }
 
 interface EstimateAttributes {
