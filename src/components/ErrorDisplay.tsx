@@ -1,23 +1,34 @@
-import React from 'react'
-
 import { Box, Typography } from '@mui/material'
 
 interface ErrorDisplayProps {
   error: {
-    name: string
     message: string
   }
 }
 
 const ErrorDisplay = ({ error }: ErrorDisplayProps): JSX.Element => {
-  const { name, message } = error
-
   return (
-    <Box className='estimate' padding={'5rem'}>
-      <Typography variant={'h1'} paddingBottom={'2rem'}>
-        {name}
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        padding: 2,
+      }}
+    >
+      <Typography 
+        variant="h5" 
+        color="error"
+        sx={{
+          textAlign: 'center',
+          wordBreak: 'break-word',
+          maxWidth: '100%'
+        }}
+      >
+        {error.message}
       </Typography>
-      <Typography variant={'h2'}>{message}</Typography>
     </Box>
   )
 }

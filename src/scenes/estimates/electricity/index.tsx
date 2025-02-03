@@ -5,6 +5,7 @@ import ElectricityForm from './ElectricityForm'
 import ElectricityEstimate from './ElectricityEstimate'
 import { type iInitialValues } from './types'
 import { defaultElectricityValues } from './defaults'
+import { EstimateLayout } from '../../layout/EstimateLayout'
 
 const Electricity = (): JSX.Element => {
   const [estimateValues, setEstimateValues] = useState<iInitialValues | null>(null)
@@ -23,11 +24,18 @@ const Electricity = (): JSX.Element => {
         alignContent: 'center',
         justifyContent: 'center',
         p: '30px',
-        backgroundColor: colors.primary[400]
+        backgroundColor: colors.primary[400],
+        transition: 'background-color 0.3s ease-in-out'
       }}
     >
-      <ElectricityForm onSubmit={handleSubmit} initialValues={defaultElectricityValues} />
-      {estimateValues && <ElectricityEstimate estimateValues={estimateValues} />}
+      <EstimateLayout
+        formSection={
+          <ElectricityForm onSubmit={handleSubmit} initialValues={defaultElectricityValues} />
+        }
+        displaySection={
+          <ElectricityEstimate estimateValues={estimateValues} />
+        }
+      />
     </Box>
   )
 }

@@ -53,11 +53,19 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
     : ''
 
   return (
-    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
+    <Box className='estimate' sx={{ 
+      backgroundColor: colors.primary[400],
+      transition: 'background-color 0.3s ease-in-out'
+    }}>
       <form onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
-          sx={{ textAlign: 'center', mb: '2rem', textTransform: 'capitalize' }}
+          sx={{ 
+            textAlign: 'center', 
+            mb: '1rem',
+            textTransform: 'capitalize',
+            fontSize: '2rem'
+          }}
         >
           {formik.values.type}
         </Typography>
@@ -65,10 +73,11 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
           container
           alignContent={'space-around'}
           justifyContent={'center'}
-          columnGap={'12.5rem'}
+          spacing={2}
+          sx={{ px: 1 }}
         >
-          <Grid item>
-            <FormControl fullWidth sx={{ minWidth: '200px' }}>
+          <Grid item xs={12} sm={6} md={3}>
+            <FormControl fullWidth>
               <InputLabel id='electricity_unit-label'>
                 Electricity Unit
               </InputLabel>
@@ -83,11 +92,9 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
               </Select>
             </FormControl>
           </Grid>
-          <Grid item>
-            {/* <InputLabel id='electricity_value-label'>
-              Electricity Value
-            </InputLabel> */}
+          <Grid item xs={12} sm={6} md={3}>
             <TextField
+              fullWidth
               id='electricity_value'
               label="Electricity Value"
               {...formik.getFieldProps('electricity_value')}
@@ -97,11 +104,11 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
               <div>{formik.errors.electricity_value}</div>
             ) : null}
           </Grid>
-          <Grid item>
+          <Grid item xs={12} sm={6} md={3}>
             <CountryCodes<iInitialValues> parentState={formik} />
           </Grid>
           {regionsEnabled.includes(formik.values.country) && (
-            <Grid item>
+            <Grid item xs={12} sm={6} md={3}>
               <RegionCodes<iInitialValues>
                 parentState={formik}
                 countryCode={formik.values.country}
@@ -109,7 +116,7 @@ const ElectricityForm: React.FC<iFormProps> = ({ onSubmit, initialValues = defau
             </Grid>
           )}
         </Grid>
-        <Box display='flex' justifyContent='center' mt='2rem' p='1rem'>
+        <Box display='flex' justifyContent='center' mt='3rem'>
           <Button type='submit' color='secondary' variant='contained'>
             Get Estimate
           </Button>

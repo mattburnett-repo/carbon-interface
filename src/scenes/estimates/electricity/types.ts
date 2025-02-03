@@ -14,7 +14,7 @@ export interface iFormProps {
 
 // estimate
 export interface iEstimateProps {
-  estimateValues: iInitialValues;
+  estimateValues: iInitialValues | null;
 }
 
 // display
@@ -33,5 +33,5 @@ export interface iDisplayProps {
       carbon_kg: number
       carbon_mt: number
     }
-  }
+  } | null
 }
