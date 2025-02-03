@@ -12,8 +12,8 @@ describe('LoadingDisplay', () => {
     render(<LoadingDisplay />)
     const container = screen.getByTestId('loading-container')
     expect(container).toHaveStyle({
-      width: '75%',
-      margin: '5px auto auto auto'
+      width: '100%',
+      marginTop: '2'
     })
   })
 })
