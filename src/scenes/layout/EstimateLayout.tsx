@@ -22,7 +22,8 @@ export const EstimateLayout = ({ formSection, displaySection }: EstimateLayoutPr
         sx={{
           height: '34%',
           padding: '10px',
-          overflow: 'auto'
+          overflow: 'auto',
+          border: '1px dashed grey'  // Added interior border
         }}
       >
         {formSection}
@@ -34,7 +35,8 @@ export const EstimateLayout = ({ formSection, displaySection }: EstimateLayoutPr
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          textAlign: 'center'
+          textAlign: 'center',
+          border: '1px dashed grey'  // Added interior border
         }}
       >
         {displaySection}

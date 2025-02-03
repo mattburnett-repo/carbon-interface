@@ -13,11 +13,7 @@ export interface iLeg {
 }
 
 export interface iEstimateProps {
-  type: string
-  passengers: number
-  legs: iLeg[]
-  distance_unit: 'km' | 'mi'
-  cabin_class: 'economy' | 'premium'
+  estimateValues: iFlightFormFields | null;
 }
 
 export interface iDisplayProps {
@@ -35,7 +31,7 @@ export interface iDisplayProps {
       carbon_kg: number
       carbon_mt: number
     }
-  }
+  } | null
 }
 
 export interface iAirportSelectOptiion {

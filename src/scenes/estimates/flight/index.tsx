@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Box, useTheme } from '@mui/material'
 import { tokens } from '../../../theme'
 import FlightForm from './FlightForm'
 import FlightEstimate from './FlightEstimate'
+import { EstimateLayout } from '../../layout/EstimateLayout'
 import { type iFlightFormFields } from './types'
 
 interface LocationState {
@@ -11,9 +12,13 @@ interface LocationState {
 }
 
 const Flight = (): JSX.Element => {
+  const [estimateValues, setEstimateValues] = useState<iFlightFormFields | null>(null)
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const location = useLocation() as { state: LocationState }
+
+  const handleSubmit = (values: iFlightFormFields) => {
+    setEstimateValues(values)
+  }
 
   return (
     <Box
@@ -23,13 +28,14 @@ const Flight = (): JSX.Element => {
         alignContent: 'center',
         justifyContent: 'center',
         p: '30px',
-        backgroundColor: colors.primary[400]
+        backgroundColor: colors.primary[400],
+        transition: 'background-color 0.3s ease-in-out'
       }}
     >
-      <FlightForm />
-      {location.state?.values !== undefined && (
-        <FlightEstimate {...location.state.values} />
-      )}
+      <EstimateLayout
+        formSection={<FlightForm onSubmit={handleSubmit} />}
+        displaySection={<FlightEstimate estimateValues={estimateValues} />}
+      />
     </Box>
   )
 }

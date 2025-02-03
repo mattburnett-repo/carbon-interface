@@ -41,29 +41,31 @@ const validationSchema = yup.object().shape({
     .required('Passenger Count is required. Numbers only.')
 })
 
-const FlightForm = (): JSX.Element => {
+const FlightForm = ({ onSubmit }: { onSubmit: (values: iFlightFormFields) => void }): JSX.Element => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
-  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values: iFlightFormFields): void => {
-      navigate(`/estimates/${values.type}`, { state: { values } })
+      onSubmit(values)
     }
   })
 
   return (
-    <Box className='estimate' sx={{ backgroundColor: colors.primary[400] }}>
+    <Box className='estimate' sx={{ 
+      backgroundColor: colors.primary[400],
+      transition: 'background-color 0.3s ease-in-out'
+    }}>
       <form role="form" onSubmit={formik.handleSubmit}>
         <Typography
           variant='h1'
           sx={{
             textAlign: 'center',
-            mb: '2rem',
-            textTransform: 'capitalize'
+            mb: '1rem',
+            textTransform: 'capitalize',
+            fontSize: '2rem'
           }}
         >
           {formik.values.type}
@@ -72,7 +74,8 @@ const FlightForm = (): JSX.Element => {
           container
           alignContent={'space-around'}
           justifyContent={'center'}
-          columnGap={'12.5rem'}
+          spacing={2}
+          sx={{ px: 1 }}
         >
           <Grid item>
             <DistanceUnits 
