@@ -19,16 +19,25 @@ jest.mock('../../../components/fuel_combustion/fuelSourcesData.ts', () => [
   }
 ])
 
+interface FormValues {
+  type: 'fuel_combustion'
+  fuel_source_type: string
+  fuel_source_unit: string
+  fuel_source_value: number
+}
+
+const initialValues: FormValues = {
+  type: 'fuel_combustion',
+  fuel_source_type: '',
+  fuel_source_unit: '',
+  fuel_source_value: 0
+}
+
 describe('FuelSourceTypes', () => {
   const renderWithFormik = () => {
     return renderWithMui(
       <Formik
-        initialValues={{
-          type: 'fuel_combustion',
-          fuel_source_type: '',
-          fuel_source_unit: '',
-          fuel_source_value: 0
-        }}
+        initialValues={initialValues}
         onSubmit={jest.fn()}
       >
         {formik => <FuelSourceTypes parentState={formik} />}
@@ -55,12 +64,7 @@ describe('FuelSourceTypes', () => {
   it('shows validation errors', () => {
     renderWithMui(
       <Formik
-        initialValues={{
-          type: 'fuel_combustion',
-          fuel_source_type: '',
-          fuel_source_unit: '',
-          fuel_source_value: 0
-        }}
+        initialValues={initialValues}
         initialErrors={{ fuel_source_type: 'Required field' }}
         initialTouched={{ fuel_source_type: true }}
         onSubmit={jest.fn()}
@@ -76,12 +80,7 @@ describe('FuelSourceUnits', () => {
   const renderWithFormik = () => {
     return renderWithMui(
       <Formik
-        initialValues={{
-          type: 'fuel_combustion',
-          fuel_source_type: 'jf',
-          fuel_source_unit: '',
-          fuel_source_value: 0
-        }}
+        initialValues={initialValues}
         onSubmit={jest.fn()}
       >
         {formik => <FuelSourceUnits parentState={formik} />}
@@ -136,4 +135,4 @@ describe('useFuelSourceUnits', () => {
     const units = useFuelSourceUnits('diesel')
     expect(units).toEqual([{ unit: 'gal' }, { unit: 'l' }])
   })
-}) 
+})
